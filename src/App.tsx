@@ -6,18 +6,28 @@ import Gauge from './components/Gauge/Gauge';
 function App() {
   const [selectedSymbol, setSelectedSymbol] = useState<string | undefined>();
   const [opponentChoice, setOpponentChoice] = useState<string | undefined>();
-  const [resultString, setResultString] = useState<string | undefined>();
+  const [resultString, setResultString] = useState('');
   const opponentPossibleChoices = ['◯', '□', '△'];
   const [playerHP, setPlayerHP] = useState(100);
   const [opponentHP, setOpponentHP] = useState(100);
   const [round, setRound] = useState(0);
   const [game, setGame] = useState(true);
 
-  const handleClick = (symbol: string) => {
+  const handleSymbolClick = (symbol: string) => {
     const rand = Math.floor(Math.random() * 3);
     setSelectedSymbol(symbol);
     setOpponentChoice(opponentPossibleChoices[rand]);
     setRound((prev) => prev + 1);
+  };
+
+  const handleRetryClick = () => {
+    setPlayerHP(100);
+    setOpponentHP(100);
+    setRound(0);
+    setSelectedSymbol(undefined);
+    setOpponentChoice(undefined);
+    setResultString('');
+    setGame(true);
   };
 
   useEffect(() => {
@@ -43,10 +53,10 @@ function App() {
   useEffect(() => {
     if (playerHP <= 0) {
       setGame(false);
-      setResultString('GAME OVER');
+      setResultString(`GAME OVER. ${round} rounds game`);
     } else if (opponentHP <= 0) {
       setGame(false);
-      setResultString('YOU WIN');
+      setResultString(`YOU WIN. ${round} rounds game`);
     }
   }, [playerHP, opponentHP]);
 
@@ -58,18 +68,44 @@ function App() {
         <div
           className={`text-center p-3 border rounded rounded-3 ${style.flexCenter} ${style.fit}`}
         >
-          <Button label='◯' color='danger' onClick={handleClick} game={game} />
-          <Button label='□' color='success' onClick={handleClick} game={game} />
-          <Button label='△' color='primary' onClick={handleClick} game={game} />
+          <Button
+            label='◯'
+            color='danger'
+            onClick={handleSymbolClick}
+            game={game}
+          />
+          <Button
+            label='□'
+            color='success'
+            onClick={handleSymbolClick}
+            game={game}
+          />
+          <Button
+            label='△'
+            color='primary'
+            onClick={handleSymbolClick}
+            game={game}
+          />
         </div>
       </div>
       <p className='text-center my-3'>
         {selectedSymbol && game
           ? `Your opponent plays: ${opponentChoice}. ${resultString}`
-          : resultString}
+          : `${resultString}`}
       </p>
       <Gauge label='Player' percent={playerHP} />
       <Gauge label='Opponent' percent={opponentHP} />
+      <div className={style.flexCenter}>
+        {!game && (
+          <button
+            className='btn btn-warning text-center my-3'
+            // style={{ display: game ? 'block' : 'none' }}
+            onClick={handleRetryClick}
+          >
+            Retry?
+          </button>
+        )}
+      </div>
     </div>
   );
 }
