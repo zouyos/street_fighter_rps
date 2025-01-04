@@ -1,0 +1,8 @@
+.fit {
+  width: fit-content;
+}
+
+.flexCenter {
+  display: flex;
+  justify-content: center;
+}
