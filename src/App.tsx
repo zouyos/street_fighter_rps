@@ -7,7 +7,7 @@ function App() {
   const [selectedSymbol, setSelectedSymbol] = useState<string | undefined>();
   const [opponentChoice, setOpponentChoice] = useState<string | undefined>();
   const [resultString, setResultString] = useState('');
-  const opponentPossibleChoices = ['◯', '□', '△'];
+  const opponentPossibleChoices = ['〇', '▢', '△'];
   const [playerHP, setPlayerHP] = useState(100);
   const [opponentHP, setOpponentHP] = useState(100);
   const [round, setRound] = useState(0);
@@ -37,9 +37,9 @@ function App() {
       if (selectedSymbol === opponentChoice) {
         setResultString('DRAW');
       } else if (
-        (selectedSymbol === '◯' && opponentChoice === '△') ||
-        (selectedSymbol === '□' && opponentChoice === '◯') ||
-        (selectedSymbol === '△' && opponentChoice === '□')
+        (selectedSymbol === '〇' && opponentChoice === '△') ||
+        (selectedSymbol === '▢' && opponentChoice === '〇') ||
+        (selectedSymbol === '△' && opponentChoice === '▢')
       ) {
         setOpponentHP((prev) => Math.max(prev - 20, 0));
         setResultString('Opponent loses 20 HP');
@@ -69,13 +69,13 @@ function App() {
           className={`text-center p-3 border rounded rounded-3 ${style.flexCenter} ${style.fit}`}
         >
           <Button
-            label='◯'
+            label='〇'
             color='danger'
             onClick={handleSymbolClick}
             game={game}
           />
           <Button
-            label='□'
+            label='▢'
             color='success'
             onClick={handleSymbolClick}
             game={game}
