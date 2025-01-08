@@ -2,18 +2,23 @@ import { useState, useEffect } from 'react';
 import style from './style.module.css';
 import Button from './components/Button/Button';
 import Gauge from './components/Gauge/Gauge';
+import { Circle, Square, Triangle } from 'react-bootstrap-icons';
 
 function App() {
-  const [selectedSymbol, setSelectedSymbol] = useState<string | undefined>();
-  const [opponentChoice, setOpponentChoice] = useState<string | undefined>();
+  const [selectedSymbol, setSelectedSymbol] = useState<
+    JSX.Element | undefined
+  >();
+  const [opponentChoice, setOpponentChoice] = useState<
+    JSX.Element | undefined
+  >();
   const [resultString, setResultString] = useState('');
-  const opponentPossibleChoices = ['〇', '▢', '△'];
+  const opponentPossibleChoices = [<Circle />, <Square />, <Triangle />];
   const [playerHP, setPlayerHP] = useState(100);
   const [opponentHP, setOpponentHP] = useState(100);
   const [round, setRound] = useState(0);
   const [game, setGame] = useState(true);
 
-  const handleSymbolClick = (symbol: string) => {
+  const handleSymbolClick = (symbol: JSX.Element) => {
     const rand = Math.floor(Math.random() * 3);
     setSelectedSymbol(symbol);
     setOpponentChoice(opponentPossibleChoices[rand]);
@@ -37,9 +42,9 @@ function App() {
       if (selectedSymbol === opponentChoice) {
         setResultString('DRAW');
       } else if (
-        (selectedSymbol === '〇' && opponentChoice === '△') ||
-        (selectedSymbol === '▢' && opponentChoice === '〇') ||
-        (selectedSymbol === '△' && opponentChoice === '▢')
+        (selectedSymbol === <Circle /> && opponentChoice === <Triangle />) ||
+        (selectedSymbol === <Square /> && opponentChoice === <Circle />) ||
+        (selectedSymbol === <Triangle /> && opponentChoice === <Square />)
       ) {
         setOpponentHP((prev) => Math.max(prev - 20, 0));
         setResultString('Opponent loses 20 HP');
@@ -69,19 +74,19 @@ function App() {
           className={`text-center p-3 border rounded rounded-3 ${style.flexCenter} ${style.fit}`}
         >
           <Button
-            label='〇'
+            label={<Circle />}
             color='danger'
             onClick={handleSymbolClick}
             game={game}
           />
           <Button
-            label='▢'
+            label={<Square />}
             color='success'
             onClick={handleSymbolClick}
             game={game}
           />
           <Button
-            label='△'
+            label={<Triangle />}
             color='primary'
             onClick={handleSymbolClick}
             game={game}
@@ -89,17 +94,23 @@ function App() {
         </div>
       </div>
       <p className='text-center my-3'>
-        {selectedSymbol && game
-          ? `Your opponent plays: ${opponentChoice}. ${resultString}`
-          : `${resultString}`}
+        {selectedSymbol && game ? (
+          <>
+            Your opponent plays:{' '}
+            <span className='icon-inline'>{opponentChoice}</span>.{' '}
+            {resultString}
+          </>
+        ) : (
+          `${resultString}`
+        )}
       </p>
+
       <Gauge label='Player' percent={playerHP} />
       <Gauge label='Opponent' percent={opponentHP} />
       <div className={style.flexCenter}>
         {!game && (
           <button
             className='btn btn-warning text-center my-3'
-            // style={{ display: game ? 'block' : 'none' }}
             onClick={handleRetryClick}
           >
             Retry?

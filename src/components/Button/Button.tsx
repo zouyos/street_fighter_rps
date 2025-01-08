@@ -1,9 +1,9 @@
 import style from './style.module.css';
 
 type ButtonProps = {
-  label: string;
+  label: JSX.Element;
   color: string;
-  onClick: (symbol: string) => void;
+  onClick: (symbol: JSX.Element) => void;
   game: boolean;
 };
 
