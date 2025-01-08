@@ -4,28 +4,49 @@ import Button from './components/Button/Button';
 import Gauge from './components/Gauge/Gauge';
 import { Circle, Square, Triangle } from 'react-bootstrap-icons';
 
+const SYMBOLS = {
+  CIRCLE: 'circle',
+  SQUARE: 'square',
+  TRIANGLE: 'triangle',
+};
+
+const symbolMap: Record<string, JSX.Element> = {
+  [SYMBOLS.CIRCLE]: <Circle />,
+  [SYMBOLS.SQUARE]: <Square />,
+  [SYMBOLS.TRIANGLE]: <Triangle />,
+};
+
 function App() {
-  const [selectedSymbol, setSelectedSymbol] = useState<
-    JSX.Element | undefined
-  >();
-  const [opponentChoice, setOpponentChoice] = useState<
-    JSX.Element | undefined
-  >();
+  const [selectedSymbol, setSelectedSymbol] = useState<string | undefined>();
+  const [opponentChoice, setOpponentChoice] = useState<string | undefined>();
   const [resultString, setResultString] = useState('');
-  const opponentPossibleChoices = [<Circle />, <Square />, <Triangle />];
   const [playerHP, setPlayerHP] = useState(100);
   const [opponentHP, setOpponentHP] = useState(100);
   const [round, setRound] = useState(0);
   const [game, setGame] = useState(true);
+  const [playerHistory, setPlayerHistory] = useState<JSX.Element[]>([]);
+  const [opponenHistory, setOpponentHistory] = useState<JSX.Element[]>([]);
 
-  const handleSymbolClick = (symbol: JSX.Element) => {
+  const handleSymbolClick = (symbol: string) => {
+    console.log(symbol);
+
     const rand = Math.floor(Math.random() * 3);
     setSelectedSymbol(symbol);
-    setOpponentChoice(opponentPossibleChoices[rand]);
+    setOpponentChoice(Object.keys(symbolMap)[rand]);
     setRound((prev) => prev + 1);
   };
 
+  const addToPlayerHistory = (symbol: string) => {
+    setPlayerHistory((prev) => [...prev, symbolMap[symbol]]);
+  };
+
+  const addToOpponentHistory = (symbol: JSX.Element) => {
+    setOpponentHistory((prev) => [...prev, symbol]);
+  };
+
   const handleRetryClick = () => {
+    setPlayerHistory([]);
+    setOpponentHistory([]);
     setPlayerHP(100);
     setOpponentHP(100);
     setRound(0);
@@ -41,14 +62,23 @@ function App() {
     if (game) {
       if (selectedSymbol === opponentChoice) {
         setResultString('DRAW');
+        addToPlayerHistory(selectedSymbol);
+        addToOpponentHistory(symbolMap[opponentChoice]);
       } else if (
-        (selectedSymbol === <Circle /> && opponentChoice === <Triangle />) ||
-        (selectedSymbol === <Square /> && opponentChoice === <Circle />) ||
-        (selectedSymbol === <Triangle /> && opponentChoice === <Square />)
+        (selectedSymbol === SYMBOLS.CIRCLE &&
+          opponentChoice === SYMBOLS.TRIANGLE) ||
+        (selectedSymbol === SYMBOLS.SQUARE &&
+          opponentChoice === SYMBOLS.CIRCLE) ||
+        (selectedSymbol === SYMBOLS.TRIANGLE &&
+          opponentChoice === SYMBOLS.SQUARE)
       ) {
+        addToPlayerHistory(selectedSymbol);
+        addToOpponentHistory(symbolMap[opponentChoice]);
         setOpponentHP((prev) => Math.max(prev - 20, 0));
         setResultString('Opponent loses 20 HP');
       } else {
+        addToPlayerHistory(selectedSymbol);
+        addToOpponentHistory(symbolMap[opponentChoice]);
         setPlayerHP((prev) => Math.max(prev - 20, 0));
         setResultString('You lose 20 HP');
       }
@@ -67,28 +97,53 @@ function App() {
 
   return (
     <div className='m-3'>
-      <h1 className='text-center my-3'>JAN KEN PON</h1>
+      <h1 className='text-center my-2'>SF Rock-Paper-Cisors</h1>
+      <div className={style.history}>
+        <p className={style.historyLabel}>History</p>
+        <div className={style.iconContainer}>
+          <span className={style.playerHistoryLabel}>Player:</span>
+          {playerHistory
+            .slice(-3)
+            .reverse()
+            .map((item, index) => (
+              <span key={index} className='icon-inline'>
+                {item}{' '}
+              </span>
+            ))}
+        </div>
+        <div className={style.iconContainer}>
+          <span className='me-2'>Opponent:</span>
+          {opponenHistory
+            .slice(-3)
+            .reverse()
+            .map((item, index) => (
+              <span key={index} className='icon-inline'>
+                {item}{' '}
+              </span>
+            ))}
+        </div>
+      </div>
       <h2 className='text-center my-3'>Pick a symbol</h2>
       <div className={style.flexCenter}>
         <div
           className={`text-center p-3 border rounded rounded-3 ${style.flexCenter} ${style.fit}`}
         >
           <Button
-            label={<Circle />}
+            label={symbolMap[SYMBOLS.CIRCLE]}
             color='danger'
-            onClick={handleSymbolClick}
+            onClick={() => handleSymbolClick(SYMBOLS.CIRCLE)}
             game={game}
           />
           <Button
-            label={<Square />}
+            label={symbolMap[SYMBOLS.SQUARE]}
             color='success'
-            onClick={handleSymbolClick}
+            onClick={() => handleSymbolClick(SYMBOLS.SQUARE)}
             game={game}
           />
           <Button
-            label={<Triangle />}
+            label={symbolMap[SYMBOLS.TRIANGLE]}
             color='primary'
-            onClick={handleSymbolClick}
+            onClick={() => handleSymbolClick(SYMBOLS.TRIANGLE)}
             game={game}
           />
         </div>
@@ -97,14 +152,15 @@ function App() {
         {selectedSymbol && game ? (
           <>
             Your opponent plays:{' '}
-            <span className='icon-inline'>{opponentChoice}</span>.{' '}
+            <span className='icon-inline'>
+              {opponentChoice && symbolMap[opponentChoice]}
+            </span>{' '}
             {resultString}
           </>
         ) : (
           `${resultString}`
         )}
       </p>
-
       <Gauge label='Player' percent={playerHP} />
       <Gauge label='Opponent' percent={opponentHP} />
       <div className={style.flexCenter}>
