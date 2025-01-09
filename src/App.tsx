@@ -17,7 +17,7 @@ function App() {
   const [resultString, setResultString] = useState('');
   const [playerHP, setPlayerHP] = useState(100);
   const [opponentHP, setOpponentHP] = useState(100);
-  const [round, setRound] = useState(0);
+  const [round, setRound] = useState(1);
   const [game, setGame] = useState(true);
   const [playerHistory, setPlayerHistory] = useState<JSX.Element[]>([]);
   const [opponenHistory, setOpponentHistory] = useState<JSX.Element[]>([]);
@@ -41,6 +41,7 @@ function App() {
   };
 
   const handleSymbolClick = (symbol: string) => {
+    if (!game) return;
     const rand = Math.floor(Math.random() * 3);
     setSelectedSymbol(symbol);
     setOpponentChoice(Object.keys(symbolMap)[rand]);
@@ -84,7 +85,7 @@ function App() {
     setOpponentHistory([]);
     setPlayerHP(100);
     setOpponentHP(100);
-    setRound(0);
+    setRound(1);
     setSelectedSymbol(undefined);
     setOpponentChoice(undefined);
     setResultString('');
@@ -120,16 +121,72 @@ function App() {
   useEffect(() => {
     if (playerHP <= 0) {
       setGame(false);
-      setResultString(`GAME OVER. ${round} rounds game`);
+      setRound((prev) => prev - 1);
+      setResultString('GAME OVER.');
     } else if (opponentHP <= 0) {
       setGame(false);
-      setResultString(`YOU WIN. ${round} rounds game`);
+      setRound((prev) => prev - 1);
+      setResultString(playerHP === 100 ? 'YOU WIN! PERFECT' : 'YOU WIN!');
     }
   }, [playerHP, opponentHP]);
 
   return (
-    <div className='m-3'>
-      <h1 className='text-center my-2'>SF Rock-Paper-Scissors</h1>
+    <div className={style.mainContainer}>
+      <h1 className='text-center m-0 text-black'>ROUND {round}</h1>
+      <div className='d-flex justify-content-between'>
+        <Gauge label='PLAYER' percent={playerHP} />
+        <Gauge label='OPPONENT' percent={opponentHP} />
+      </div>
+      <div className={style.buttonContainer}>
+        <h2 className='text-center my-3'>Pick a symbol</h2>
+        <div className={style.flexCenter}>
+          <div
+            className={`text-center p-3 border rounded rounded-3 ${style.flexCenter} ${style.fit}`}
+          >
+            <Button
+              label={symbolMap['circle']}
+              color='danger'
+              onClick={() => handleSymbolClick('circle')}
+              game={game}
+            />
+            <Button
+              label={symbolMap['square']}
+              color='success'
+              onClick={() => handleSymbolClick('square')}
+              game={game}
+            />
+            <Button
+              label={symbolMap['triangle']}
+              color='primary'
+              onClick={() => handleSymbolClick('triangle')}
+              game={game}
+            />
+          </div>
+        </div>
+        <p className={style.resultString}>
+          {selectedSymbol && game ? (
+            <>
+              Your opponent plays:{' '}
+              <span className='icon-inline'>
+                {opponentChoice && symbolMap[opponentChoice]}
+              </span>{' '}
+              {resultString}
+            </>
+          ) : (
+            `${resultString}`
+          )}
+        </p>
+      </div>
+      <div className={style.retryButtonContainer}>
+        {!game && (
+          <button
+            className='btn btn-warning text-center my-2'
+            onClick={handleRetryClick}
+          >
+            Retry?
+          </button>
+        )}
+      </div>
       <div className={style.history}>
         <p className={style.historyLabel}>History</p>
         <div className={style.iconContainer}>
@@ -154,56 +211,6 @@ function App() {
               </span>
             ))}
         </div>
-      </div>
-      <h2 className='text-center my-3'>Pick a symbol</h2>
-      <div className={style.flexCenter}>
-        <div
-          className={`text-center p-3 border rounded rounded-3 ${style.flexCenter} ${style.fit}`}
-        >
-          <Button
-            label={symbolMap['circle']}
-            color='danger'
-            onClick={() => handleSymbolClick('circle')}
-            game={game}
-          />
-          <Button
-            label={symbolMap['square']}
-            color='success'
-            onClick={() => handleSymbolClick('square')}
-            game={game}
-          />
-          <Button
-            label={symbolMap['triangle']}
-            color='primary'
-            onClick={() => handleSymbolClick('triangle')}
-            game={game}
-          />
-        </div>
-      </div>
-      <p className='text-center my-3'>
-        {selectedSymbol && game ? (
-          <>
-            Your opponent plays:{' '}
-            <span className='icon-inline'>
-              {opponentChoice && symbolMap[opponentChoice]}
-            </span>{' '}
-            {resultString}
-          </>
-        ) : (
-          `${resultString}`
-        )}
-      </p>
-      <Gauge label='Player' percent={playerHP} />
-      <Gauge label='Opponent' percent={opponentHP} />
-      <div className={style.flexCenter}>
-        {!game && (
-          <button
-            className='btn btn-warning text-center my-3'
-            onClick={handleRetryClick}
-          >
-            Retry?
-          </button>
-        )}
       </div>
     </div>
   );
