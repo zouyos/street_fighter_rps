@@ -172,7 +172,7 @@ function App() {
   }, [playerHP, opponentHP]);
 
   useEffect(() => {
-    const animationInterval = 100; // 100ms between frames
+    const animationInterval = 100;
     const playerAnimation = setInterval(() => {
       setPlayerStanceFrameIndex(
         (prev) => (prev + 1) % playerStanceFrames.length
@@ -248,11 +248,7 @@ function App() {
           </button>
         )}
       </div>
-      <div className={style.bottomContainer}>
-        <MoveHistory
-          playerHistory={playerHistory}
-          opponentHistory={opponenHistory}
-        />
+      <div className={style.charactersContainer}>
         <div className={style.player}>
           <img
             src={playerStanceFrames[playerStanceFrameIndex]}
@@ -266,8 +262,15 @@ function App() {
           />
         </div>
       </div>
+      <MoveHistory
+        playerHistory={playerHistory}
+        opponentHistory={opponenHistory}
+      />
     </div>
   );
 }
 
 export default App;
+// TODO:
+// rem (+ check responsive design)
+// component Char
