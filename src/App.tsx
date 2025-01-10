@@ -10,6 +10,22 @@ import {
   Triangle,
   TriangleFill,
 } from 'react-bootstrap-icons';
+import player_stance_frame_01 from './assets/player_stance_frame_01_300_pcts.png';
+// import player_stance_frame_02 from './assets/player_stance_frame_02_300_pcts.png';
+// import player_stance_frame_03 from './assets/player_stance_frame_03_300_pcts.png';
+// import player_stance_frame_04 from './assets/player_stance_frame_04_300_pcts.png';
+// import player_stance_frame_05 from './assets/player_stance_frame_05_300_pcts.png';
+// import player_stance_frame_06 from './assets/player_stance_frame_06_300_pcts.png';
+// import player_stance_frame_07 from './assets/player_stance_frame_07_300_pcts.png';
+// import player_stance_frame_08 from './assets/player_stance_frame_08_300_pcts.png';
+import opponent_stance_frame_01 from './assets/opponent_stance_frame_01_300_pcts.png';
+// import opponent_stance_frame_02 from './assets/opponent_stance_frame_02_300_pcts.png';
+// import opponent_stance_frame_03 from './assets/opponent_stance_frame_03_300_pcts.png';
+// import opponent_stance_frame_04 from './assets/opponent_stance_frame_04_300_pcts.png';
+// import opponent_stance_frame_05 from './assets/opponent_stance_frame_05_300_pcts.png';
+// import opponent_stance_frame_06 from './assets/opponent_stance_frame_06_300_pcts.png';
+// import opponent_stance_frame_07 from './assets/opponent_stance_frame_07_300_pcts.png';
+// import opponent_stance_frame_08 from './assets/opponent_stance_frame_08_300_pcts.png';
 
 function App() {
   const [selectedSymbol, setSelectedSymbol] = useState<string | undefined>();
@@ -21,6 +37,8 @@ function App() {
   const [game, setGame] = useState(true);
   const [playerHistory, setPlayerHistory] = useState<JSX.Element[]>([]);
   const [opponenHistory, setOpponentHistory] = useState<JSX.Element[]>([]);
+  const [playerFrame, setPlayerFrame] = useState<string | undefined>();
+  const [opponentFrame, setOpponentFrame] = useState<string | undefined>();
 
   const symbolMap: Record<string, JSX.Element> = {
     circle: <Circle />,
@@ -130,6 +148,14 @@ function App() {
     }
   }, [playerHP, opponentHP]);
 
+  useEffect(() => {
+    setPlayerFrame(player_stance_frame_01);
+  }, []);
+
+  useEffect(() => {
+    setOpponentFrame(opponent_stance_frame_01);
+  }, []);
+
   return (
     <div className={style.mainContainer}>
       <h1 className='text-center m-0 text-black'>ROUND {round}</h1>
@@ -138,7 +164,7 @@ function App() {
         <Gauge label='OPPONENT' percent={opponentHP} />
       </div>
       <div className={style.buttonContainer}>
-        <h2 className='text-center my-3'>Pick a symbol</h2>
+        <h2 className='text-center mb-3'>Pick a symbol</h2>
         <div className={style.flexCenter}>
           <div
             className={`text-center p-3 border rounded rounded-3 ${style.flexCenter} ${style.fit}`}
@@ -187,29 +213,37 @@ function App() {
           </button>
         )}
       </div>
-      <div className={style.history}>
-        <p className={style.historyLabel}>History</p>
-        <div className={style.iconContainer}>
-          <span className={style.playerHistoryLabel}>Player:</span>
-          {playerHistory
-            .slice(-3)
-            .reverse()
-            .map((item, index) => (
-              <span key={index} className='icon-inline'>
-                {item}{' '}
-              </span>
-            ))}
+      <div className={style.bottomContainer}>
+        <div className={style.history}>
+          <p className={style.historyLabel}>History</p>
+          <div className={style.iconContainer}>
+            <span className={style.playerHistoryLabel}>Player:</span>
+            {playerHistory
+              .slice(-3)
+              .reverse()
+              .map((item, index) => (
+                <span key={index} className='icon-inline'>
+                  {item}{' '}
+                </span>
+              ))}
+          </div>
+          <div className={style.iconContainer}>
+            <span className='me-2'>Opponent:</span>
+            {opponenHistory
+              .slice(-3)
+              .reverse()
+              .map((item, index) => (
+                <span key={index} className='icon-inline'>
+                  {item}{' '}
+                </span>
+              ))}
+          </div>
         </div>
-        <div className={style.iconContainer}>
-          <span className='me-2'>Opponent:</span>
-          {opponenHistory
-            .slice(-3)
-            .reverse()
-            .map((item, index) => (
-              <span key={index} className='icon-inline'>
-                {item}{' '}
-              </span>
-            ))}
+        <div className={style.player}>
+          {playerFrame && <img src={playerFrame} alt='Ryu' />}
+        </div>
+        <div className={style.opponent}>
+          {opponentFrame && <img src={opponentFrame} alt='Evil Ryu' />}
         </div>
       </div>
     </div>
