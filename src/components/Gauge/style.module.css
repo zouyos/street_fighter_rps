@@ -1,8 +1,9 @@
-.flexCenter {
+.gauge {
   display: flex;
   justify-content: start;
+  height: 30px;
 }
 
-.gauge {
+.container {
   width: 40vw;
 }

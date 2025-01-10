@@ -10,7 +10,7 @@ type ButtonProps = {
 export default function Button({ label, color, onClick, game }: ButtonProps) {
   return (
     <button
-      className={`mx-3 my-1 btn btn-${color} ${style.fit}`}
+      className={`rounded-pill p-2 mx-3 my-1 btn btn-${color} ${style.fit}`}
       onClick={() => onClick(label)}
       disabled={!game}
     >

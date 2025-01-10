@@ -26,6 +26,7 @@ import opponentStanceFrame5 from './assets/opponent_stance_frame_05_300_pcts.png
 import opponentStanceFrame6 from './assets/opponent_stance_frame_06_300_pcts.png';
 import opponentStanceFrame7 from './assets/opponent_stance_frame_07_300_pcts.png';
 import opponentStanceFrame8 from './assets/opponent_stance_frame_08_300_pcts.png';
+import MoveHistory from './components/MoveHistory/MoveHistory';
 
 function App() {
   const [selectedSymbol, setSelectedSymbol] = useState<string | undefined>();
@@ -162,7 +163,7 @@ function App() {
     if (playerHP <= 0) {
       setGame(false);
       setRound((prev) => prev - 1);
-      setResultString('GAME OVER.');
+      setResultString('GAME OVER');
     } else if (opponentHP <= 0) {
       setGame(false);
       setRound((prev) => prev - 1);
@@ -192,31 +193,31 @@ function App() {
 
   return (
     <div className={style.mainContainer}>
-      <h1 className='text-center m-0 text-black'>ROUND {round}</h1>
+      <h1 className='text-center m-0 text-black fw-bold'>ROUND {round}</h1>
       <div className='d-flex justify-content-between'>
         <Gauge label='PLAYER' percent={playerHP} />
         <Gauge label='OPPONENT' percent={opponentHP} />
       </div>
       <div className={style.buttonContainer}>
-        <h2 className='text-center mb-3'>Pick a symbol</h2>
+        <h1 className='text-center mb-3'>PICK A SIGN</h1>
         <div className={style.flexCenter}>
           <div
-            className={`text-center p-3 border rounded rounded-3 ${style.flexCenter} ${style.fit}`}
+            className={`text-center p-2 border border-3 rounded rounded-5 ${style.flexCenter} ${style.fit}`}
           >
             <Button
-              label={symbolMap['circle']}
+              label={cloneElement(symbolMap['circle'], { size: 25 })}
               color='danger'
               onClick={() => handleSymbolClick('circle')}
               game={game}
             />
             <Button
-              label={symbolMap['square']}
+              label={cloneElement(symbolMap['square'], { size: 25 })}
               color='success'
               onClick={() => handleSymbolClick('square')}
               game={game}
             />
             <Button
-              label={symbolMap['triangle']}
+              label={cloneElement(symbolMap['triangle'], { size: 25 })}
               color='primary'
               onClick={() => handleSymbolClick('triangle')}
               game={game}
@@ -226,7 +227,7 @@ function App() {
         <p className={style.resultString}>
           {selectedSymbol && game ? (
             <>
-              Your opponent plays:{' '}
+              Your opponent plays{' '}
               <span className='icon-inline'>
                 {opponentChoice && symbolMap[opponentChoice]}
               </span>{' '}
@@ -248,31 +249,10 @@ function App() {
         )}
       </div>
       <div className={style.bottomContainer}>
-        <div className={style.history}>
-          <p className={style.historyLabel}>History</p>
-          <div className={style.iconContainer}>
-            <span className={style.playerHistoryLabel}>Player:</span>
-            {playerHistory
-              .slice(-3)
-              .reverse()
-              .map((item, index) => (
-                <span key={index} className='icon-inline'>
-                  {item}{' '}
-                </span>
-              ))}
-          </div>
-          <div className={style.iconContainer}>
-            <span className='me-2'>Opponent:</span>
-            {opponenHistory
-              .slice(-3)
-              .reverse()
-              .map((item, index) => (
-                <span key={index} className='icon-inline'>
-                  {item}{' '}
-                </span>
-              ))}
-          </div>
-        </div>
+        <MoveHistory
+          playerHistory={playerHistory}
+          opponentHistory={opponenHistory}
+        />
         <div className={style.player}>
           <img
             src={playerStanceFrames[playerStanceFrameIndex]}
