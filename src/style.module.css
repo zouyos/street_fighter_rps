@@ -43,9 +43,15 @@
 }
 
 .player {
-  margin: 25px;
+  position: absolute;
+  top: 75%;
+  left: 42.5%;
+  transform: translate(-50%, -50%);
 }
 
 .opponent {
-  margin: 25px;
+  position: absolute;
+  top: 75%;
+  left: 57.5%;
+  transform: translate(-50%, -50%);
 }
