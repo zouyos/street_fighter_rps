@@ -280,8 +280,9 @@ function App() {
   }, [playerHP, opponentHP]);
 
   useEffect(() => {
+    const animationInterval = 120;
+
     if (game) {
-      const animationInterval = 120;
       const playerAnimation = setInterval(() => {
         setPlayerFrameIndex((prev) => (prev + 1) % playerFrames[0].length);
       }, animationInterval);
@@ -295,7 +296,6 @@ function App() {
         clearInterval(opponentAnimation);
       };
     } else if (opponentHP <= 0) {
-      const animationInterval = 120;
       const playerAnimation = setInterval(() => {
         setPlayerFrameIndex((prev) => (prev + 1) % playerFrames[1].length);
       }, animationInterval);
@@ -308,8 +308,20 @@ function App() {
         clearInterval(playerAnimation);
         clearInterval(opponentAnimation);
       };
+    } else if (playerHP <= 0) {
+      const playerAnimation = setInterval(() => {
+        setPlayerFrameIndex((prev) => (prev + 1) % playerFrames[2].length);
+      }, animationInterval);
+
+      const opponentAnimation = setInterval(() => {
+        setOpponentFrameIndex((prev) => (prev + 1) % opponentFrames[1].length);
+      }, animationInterval);
+
+      return () => {
+        clearInterval(playerAnimation);
+        clearInterval(opponentAnimation);
+      };
     } else {
-      const animationInterval = 120;
       const playerAnimation = setInterval(() => {
         setPlayerFrameIndex((prev) => (prev + 1) % playerFrames[2].length);
       }, animationInterval);
@@ -324,6 +336,9 @@ function App() {
       };
     }
   }, [
+    game,
+    playerHP,
+    opponentHP,
     playerFrames[0].length,
     opponentFrames[0].length,
     playerFrames[1].length,
