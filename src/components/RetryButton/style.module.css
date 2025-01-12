@@ -1,0 +1,6 @@
+.retryButtonContainer {
+  display: flex;
+  justify-content: center;
+  height: 60px;
+  margin-top: 10px;
+}

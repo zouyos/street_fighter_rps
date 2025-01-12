@@ -1,6 +1,6 @@
 import { useState, useEffect, cloneElement } from 'react';
 import style from './style.module.css';
-import Button from './components/Button/Button';
+import SignButton from './components/SignButton/SignButton';
 import Gauge from './components/Gauge/Gauge';
 import MoveHistory from './components/MoveHistory/MoveHistory';
 import {
@@ -64,6 +64,7 @@ import opponentDefeatFrame5 from './assets/chars/opponent/defeat/opponent_defeat
 import opponentDefeatFrame6 from './assets/chars/opponent/defeat/opponent_defeat_frame_06_300pcts.png';
 import opponentDefeatFrame7 from './assets/chars/opponent/defeat/opponent_defeat_frame_07_300pcts.png';
 import opponentDefeatFrame8 from './assets/chars/opponent/defeat/opponent_defeat_frame_08_300pcts.png';
+import RetryButton from './components/RetryButton/RetryButton';
 
 function App() {
   const [selectedSymbol, setSelectedSymbol] = useState<string | undefined>();
@@ -360,19 +361,19 @@ function App() {
           <div
             className={`text-center p-2 border border-3 rounded rounded-5 ${style.flexCenter} ${style.fit}`}
           >
-            <Button
+            <SignButton
               label={cloneElement(symbolMap['circle'], { size: 25 })}
               color='danger'
               onClick={() => handleSymbolClick('circle')}
               game={game}
             />
-            <Button
+            <SignButton
               label={cloneElement(symbolMap['square'], { size: 25 })}
               color='success'
               onClick={() => handleSymbolClick('square')}
               game={game}
             />
-            <Button
+            <SignButton
               label={cloneElement(symbolMap['triangle'], { size: 25 })}
               color='primary'
               onClick={() => handleSymbolClick('triangle')}
@@ -394,16 +395,7 @@ function App() {
           )}
         </p>
       </div>
-      <div className={style.retryButtonContainer}>
-        {!game && (
-          <button
-            className='btn btn-warning text-center my-2'
-            onClick={handleRetryClick}
-          >
-            Retry?
-          </button>
-        )}
-      </div>
+      <RetryButton game={game} onClick={handleRetryClick} />
       <div className={style.charactersContainer}>
         <div className={playerHP >= 0 ? style.player : style.defeatedPlayer}>
           <img
