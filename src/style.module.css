@@ -42,16 +42,30 @@
   justify-content: center;
 }
 
-.player {
+.player,
+.opponent,
+.defeatedPlayer,
+.defeatedOpponent {
   position: absolute;
-  top: 75%;
-  left: 42.5%;
   transform: translate(-50%, -50%);
 }
 
+.player {
+  top: 75%;
+  left: 42.5%;
+}
+
 .opponent {
-  position: absolute;
   top: 75%;
   left: 57.5%;
-  transform: translate(-50%, -50%);
+}
+
+.defeatedPlayer {
+  top: 75.5%;
+  left: 42.5%;
+}
+
+.defeatedOpponent {
+  top: 75.5%;
+  left: 57.5%;
 }
