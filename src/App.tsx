@@ -423,5 +423,4 @@ function App() {
 
 export default App;
 // TODO:
-// rem (+ check responsive design)
 // component Char
