@@ -390,14 +390,14 @@ function App() {
         )}
       </div>
       <div className={style.charactersContainer}>
-        <div className={playerHP > 0 ? style.player : style.defeatedPlayer}>
+        <div className={playerHP >= 0 ? style.player : style.defeatedPlayer}>
           <img
             src={generatePlayerSrc(playerFrames, playerFrameIndex)}
             alt='Player Animation'
           />
         </div>
         <div
-          className={opponentHP > 0 ? style.opponent : style.defeatedOpponent}
+          className={opponentHP >= 0 ? style.opponent : style.defeatedOpponent}
         >
           <img
             src={generateOpponentSrc(opponentFrames, opponentFrameIndex)}
