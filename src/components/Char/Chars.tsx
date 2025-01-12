@@ -1,18 +1,21 @@
+// Char.tsx
+import React from 'react';
 import style from './style.module.css';
 
-type CharsProps = {
+type CharProps = {
   isPlayer: boolean;
   playerHP?: number;
-  playerFrames?: string[][];
-  playerFrameIndex?: number;
+  playerFrames: string[][];
+  playerFrameIndex: number;
   opponentHP?: number;
-  opponentFrames?: string[][];
-  opponentFrameIndex?: number;
-  generatePlayerSrc?: (frames: string[][], index: number) => string;
-  generateOpponentSrc?: (frames: string[][], index: number) => string;
+  opponentFrames: string[][];
+  opponentFrameIndex: number;
+  generatePlayerSrc: (frames: string[][], index: number) => string;
+  generateOpponentSrc: (frames: string[][], index: number) => string;
 };
 
-export default function Chars({
+export default function Char({
+  isPlayer,
   playerHP,
   playerFrames,
   playerFrameIndex,
@@ -21,39 +24,28 @@ export default function Chars({
   opponentFrameIndex,
   generatePlayerSrc,
   generateOpponentSrc,
-}: CharsProps) {
+}: CharProps) {
+  const frames = isPlayer ? playerFrames : opponentFrames;
+  const frameIndex = isPlayer ? playerFrameIndex : opponentFrameIndex;
+  const hp = isPlayer ? playerHP : opponentHP;
+  const generateSrc = isPlayer ? generatePlayerSrc : generateOpponentSrc;
+
   return (
-    <>
-      <div
-        className={
-          playerHP && playerHP >= 0 ? style.player : style.defeatedPlayer
-        }
-      >
-        <img
-          src={
-            generatePlayerSrc && playerFrames && playerFrameIndex
-              ? generatePlayerSrc(playerFrames, playerFrameIndex)
-              : ''
-          }
-          alt='Player Animation'
-        />
-      </div>
-      <div
-        className={
-          opponentHP && opponentHP >= 0
-            ? style.opponent
-            : style.defeatedOpponent
-        }
-      >
-        <img
-          src={
-            generateOpponentSrc && opponentFrames && opponentFrameIndex
-              ? generateOpponentSrc(opponentFrames, opponentFrameIndex)
-              : ''
-          }
-          alt='Opponent Animation'
-        />
-      </div>
-    </>
+    <div
+      className={
+        hp && hp > 0
+          ? isPlayer
+            ? style.player
+            : style.opponent
+          : isPlayer
+          ? style.defeatedPlayer
+          : style.defeatedOpponent
+      }
+    >
+      <img
+        src={generateSrc(frames, frameIndex)}
+        alt={isPlayer ? 'Player Animation' : 'Opponent Animation'}
+      />
+    </div>
   );
 }

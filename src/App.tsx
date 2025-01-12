@@ -65,6 +65,7 @@ import opponentDefeatFrame6 from './assets/chars/opponent/defeat/opponent_defeat
 import opponentDefeatFrame7 from './assets/chars/opponent/defeat/opponent_defeat_frame_07_300pcts.png';
 import opponentDefeatFrame8 from './assets/chars/opponent/defeat/opponent_defeat_frame_08_300pcts.png';
 import RetryButton from './components/RetryButton/RetryButton';
+import Char from './components/Char/Chars';
 
 function App() {
   const [selectedSymbol, setSelectedSymbol] = useState<string | undefined>();
@@ -397,20 +398,28 @@ function App() {
       </div>
       <RetryButton game={game} onClick={handleRetryClick} />
       <div className={style.charactersContainer}>
-        <div className={playerHP >= 0 ? style.player : style.defeatedPlayer}>
-          <img
-            src={generatePlayerSrc(playerFrames, playerFrameIndex)}
-            alt='Player Animation'
-          />
-        </div>
-        <div
-          className={opponentHP >= 0 ? style.opponent : style.defeatedOpponent}
-        >
-          <img
-            src={generateOpponentSrc(opponentFrames, opponentFrameIndex)}
-            alt='Opponent Animation'
-          />
-        </div>
+        <Char
+          isPlayer={true}
+          playerHP={playerHP}
+          playerFrames={playerFrames}
+          playerFrameIndex={playerFrameIndex}
+          opponentHP={opponentHP}
+          opponentFrames={opponentFrames}
+          opponentFrameIndex={opponentFrameIndex}
+          generatePlayerSrc={generatePlayerSrc}
+          generateOpponentSrc={generateOpponentSrc}
+        />
+        <Char
+          isPlayer={false}
+          playerHP={playerHP}
+          playerFrames={playerFrames}
+          playerFrameIndex={playerFrameIndex}
+          opponentHP={opponentHP}
+          opponentFrames={opponentFrames}
+          opponentFrameIndex={opponentFrameIndex}
+          generatePlayerSrc={generatePlayerSrc}
+          generateOpponentSrc={generateOpponentSrc}
+        />
       </div>
 
       <MoveHistory
