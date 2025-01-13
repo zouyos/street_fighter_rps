@@ -488,3 +488,6 @@ export default App;
 // TODO:
 // responsive design
 // change symbols + symbol label
+// best/worst element logic
+// boost and res logic
+// spe atck when draw

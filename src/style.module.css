@@ -36,13 +36,6 @@
   transform: translate(-50%, -50%);
 }
 
-.buttonContainer:hover {
-  position: absolute;
-  top: 65%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
 .signButton {
   margin: 0 10px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -51,6 +44,12 @@
 .signButton:hover {
   transform: translate(0, -5%);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.signButton:disabled:hover {
+  transform: none;
+  box-shadow: none;
+  cursor: not-allowed;
 }
 
 .resultString {
