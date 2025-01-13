@@ -17,15 +17,47 @@
   justify-content: center;
 }
 
+.questionCircle {
+  cursor: pointer;
+  margin-top: 150px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.questionCircle:hover {
+  transform: translate(0, -5%);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 150px;
+}
+
 .buttonContainer {
-  margin-top: 100px;
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.buttonContainer:hover {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.signButton {
+  margin: 0 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.signButton:hover {
+  transform: translate(0, -5%);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .resultString {
   text-align: center;
   padding: 20px 0;
   height: 30px;
-  font-size: 22px;
+  font-size: 18px;
 }
 
 .charactersContainer {
@@ -33,32 +65,4 @@
   margin-bottom: 45px;
   display: flex;
   justify-content: center;
-}
-
-.player,
-.opponent,
-.defeatedPlayer,
-.defeatedOpponent {
-  position: absolute;
-  transform: translate(-50%, -50%);
-}
-
-.player {
-  top: 75%;
-  left: 42.5%;
-}
-
-.opponent {
-  top: 75%;
-  left: 57.5%;
-}
-
-.defeatedPlayer {
-  top: 75.5%;
-  left: 42.5%;
-}
-
-.defeatedOpponent {
-  top: 75.5%;
-  left: 57.5%;
 }

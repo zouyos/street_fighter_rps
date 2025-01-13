@@ -6,66 +6,68 @@ import MoveHistory from './components/MoveHistory/MoveHistory';
 import {
   Circle,
   CircleFill,
+  QuestionCircle,
   Square,
   SquareFill,
   Triangle,
   TriangleFill,
 } from 'react-bootstrap-icons';
-import playerStanceFrame1 from './assets/chars/player/stance/player_stance_frame_01_300pcts.png';
-import playerStanceFrame2 from './assets/chars/player/stance/player_stance_frame_02_300pcts.png';
-import playerStanceFrame3 from './assets/chars/player/stance/player_stance_frame_03_300pcts.png';
-import playerStanceFrame4 from './assets/chars/player/stance/player_stance_frame_04_300pcts.png';
-import playerStanceFrame5 from './assets/chars/player/stance/player_stance_frame_05_300pcts.png';
-import playerStanceFrame6 from './assets/chars/player/stance/player_stance_frame_06_300pcts.png';
-import playerStanceFrame7 from './assets/chars/player/stance/player_stance_frame_07_300pcts.png';
-import playerStanceFrame8 from './assets/chars/player/stance/player_stance_frame_08_300pcts.png';
-import playerVictoryFrame1 from './assets/chars/player/victory/player_victory_frame_01_300pcts.png';
-import playerVictoryFrame2 from './assets/chars/player/victory/player_victory_frame_02_300pcts.png';
-import playerVictoryFrame3 from './assets/chars/player/victory/player_victory_frame_03_300pcts.png';
-import playerVictoryFrame4 from './assets/chars/player/victory/player_victory_frame_04_300pcts.png';
-import playerVictoryFrame5 from './assets/chars/player/victory/player_victory_frame_05_300pcts.png';
-import playerVictoryFrame6 from './assets/chars/player/victory/player_victory_frame_06_300pcts.png';
-import playerVictoryFrame7 from './assets/chars/player/victory/player_victory_frame_07_300pcts.png';
-import playerVictoryFrame8 from './assets/chars/player/victory/player_victory_frame_08_300pcts.png';
-import playerVictoryFrame9 from './assets/chars/player/victory/player_victory_frame_09_300pcts.png';
-import playerVictoryFrame10 from './assets/chars/player/victory/player_victory_frame_10_300pcts.png';
-import playerVictoryFrame11 from './assets/chars/player/victory/player_victory_frame_11_300pcts.png';
-import playerVictoryFrame12 from './assets/chars/player/victory/player_victory_frame_12_300pcts.png';
-import playerVictoryFrame13 from './assets/chars/player/victory/player_victory_frame_13_300pcts.png';
-import playerDefeatFrame1 from './assets/chars/player/defeat/player_defeat_frame_01_300pcts.png';
-import playerDefeatFrame2 from './assets/chars/player/defeat/player_defeat_frame_02_300pcts.png';
-import playerDefeatFrame3 from './assets/chars/player/defeat/player_defeat_frame_03_300pcts.png';
-import playerDefeatFrame4 from './assets/chars/player/defeat/player_defeat_frame_04_300pcts.png';
-import playerDefeatFrame5 from './assets/chars/player/defeat/player_defeat_frame_05_300pcts.png';
-import playerDefeatFrame6 from './assets/chars/player/defeat/player_defeat_frame_06_300pcts.png';
-import playerDefeatFrame7 from './assets/chars/player/defeat/player_defeat_frame_07_300pcts.png';
-import playerDefeatFrame8 from './assets/chars/player/defeat/player_defeat_frame_08_300pcts.png';
-import opponentStanceFrame1 from './assets/chars/opponent/stance/opponent_stance_frame_01_300pcts.png';
-import opponentStanceFrame2 from './assets/chars/opponent/stance/opponent_stance_frame_02_300pcts.png';
-import opponentStanceFrame3 from './assets/chars/opponent/stance/opponent_stance_frame_03_300pcts.png';
-import opponentStanceFrame4 from './assets/chars/opponent/stance/opponent_stance_frame_04_300pcts.png';
-import opponentStanceFrame5 from './assets/chars/opponent/stance/opponent_stance_frame_05_300pcts.png';
-import opponentStanceFrame6 from './assets/chars/opponent/stance/opponent_stance_frame_06_300pcts.png';
-import opponentStanceFrame7 from './assets/chars/opponent/stance/opponent_stance_frame_07_300pcts.png';
-import opponentStanceFrame8 from './assets/chars/opponent/stance/opponent_stance_frame_08_300pcts.png';
-import opponentVictoryFrame1 from './assets/chars/opponent/victory/opponent_victory_frame_01_300pcts.png';
-import opponentVictoryFrame2 from './assets/chars/opponent/victory/opponent_victory_frame_02_300pcts.png';
-import opponentVictoryFrame3 from './assets/chars/opponent/victory/opponent_victory_frame_03_300pcts.png';
-import opponentVictoryFrame4 from './assets/chars/opponent/victory/opponent_victory_frame_04_300pcts.png';
-import opponentVictoryFrame5 from './assets/chars/opponent/victory/opponent_victory_frame_05_300pcts.png';
-import opponentVictoryFrame6 from './assets/chars/opponent/victory/opponent_victory_frame_06_300pcts.png';
-import opponentVictoryFrame7 from './assets/chars/opponent/victory/opponent_victory_frame_07_300pcts.png';
-import opponentVictoryFrame8 from './assets/chars/opponent/victory/opponent_victory_frame_08_300pcts.png';
-import opponentDefeatFrame1 from './assets/chars/opponent/defeat/opponent_defeat_frame_01_300pcts.png';
-import opponentDefeatFrame2 from './assets/chars/opponent/defeat/opponent_defeat_frame_02_300pcts.png';
-import opponentDefeatFrame3 from './assets/chars/opponent/defeat/opponent_defeat_frame_03_300pcts.png';
-import opponentDefeatFrame4 from './assets/chars/opponent/defeat/opponent_defeat_frame_04_300pcts.png';
-import opponentDefeatFrame5 from './assets/chars/opponent/defeat/opponent_defeat_frame_05_300pcts.png';
-import opponentDefeatFrame6 from './assets/chars/opponent/defeat/opponent_defeat_frame_06_300pcts.png';
-import opponentDefeatFrame7 from './assets/chars/opponent/defeat/opponent_defeat_frame_07_300pcts.png';
-import opponentDefeatFrame8 from './assets/chars/opponent/defeat/opponent_defeat_frame_08_300pcts.png';
+import playerStanceFrame1 from './assets/chars/player/stance/player_stance_frame_01.png';
+import playerStanceFrame2 from './assets/chars/player/stance/player_stance_frame_02.png';
+import playerStanceFrame3 from './assets/chars/player/stance/player_stance_frame_03.png';
+import playerStanceFrame4 from './assets/chars/player/stance/player_stance_frame_04.png';
+import playerStanceFrame5 from './assets/chars/player/stance/player_stance_frame_05.png';
+import playerStanceFrame6 from './assets/chars/player/stance/player_stance_frame_06.png';
+import playerStanceFrame7 from './assets/chars/player/stance/player_stance_frame_07.png';
+import playerStanceFrame8 from './assets/chars/player/stance/player_stance_frame_08.png';
+import playerVictoryFrame1 from './assets/chars/player/victory/player_victory_frame_01.png';
+import playerVictoryFrame2 from './assets/chars/player/victory/player_victory_frame_02.png';
+import playerVictoryFrame3 from './assets/chars/player/victory/player_victory_frame_03.png';
+import playerVictoryFrame4 from './assets/chars/player/victory/player_victory_frame_04.png';
+import playerVictoryFrame5 from './assets/chars/player/victory/player_victory_frame_05.png';
+import playerVictoryFrame6 from './assets/chars/player/victory/player_victory_frame_06.png';
+import playerVictoryFrame7 from './assets/chars/player/victory/player_victory_frame_07.png';
+import playerVictoryFrame8 from './assets/chars/player/victory/player_victory_frame_08.png';
+import playerVictoryFrame9 from './assets/chars/player/victory/player_victory_frame_09.png';
+import playerVictoryFrame10 from './assets/chars/player/victory/player_victory_frame_10.png';
+import playerVictoryFrame11 from './assets/chars/player/victory/player_victory_frame_11.png';
+import playerVictoryFrame12 from './assets/chars/player/victory/player_victory_frame_12.png';
+import playerVictoryFrame13 from './assets/chars/player/victory/player_victory_frame_13.png';
+import playerDefeatFrame1 from './assets/chars/player/defeat/player_defeat_frame_01.png';
+import playerDefeatFrame2 from './assets/chars/player/defeat/player_defeat_frame_02.png';
+import playerDefeatFrame3 from './assets/chars/player/defeat/player_defeat_frame_03.png';
+import playerDefeatFrame4 from './assets/chars/player/defeat/player_defeat_frame_04.png';
+import playerDefeatFrame5 from './assets/chars/player/defeat/player_defeat_frame_05.png';
+import playerDefeatFrame6 from './assets/chars/player/defeat/player_defeat_frame_06.png';
+import playerDefeatFrame7 from './assets/chars/player/defeat/player_defeat_frame_07.png';
+import playerDefeatFrame8 from './assets/chars/player/defeat/player_defeat_frame_08.png';
+import opponentStanceFrame1 from './assets/chars/opponent/stance/opponent_stance_frame_01.png';
+import opponentStanceFrame2 from './assets/chars/opponent/stance/opponent_stance_frame_02.png';
+import opponentStanceFrame3 from './assets/chars/opponent/stance/opponent_stance_frame_03.png';
+import opponentStanceFrame4 from './assets/chars/opponent/stance/opponent_stance_frame_04.png';
+import opponentStanceFrame5 from './assets/chars/opponent/stance/opponent_stance_frame_05.png';
+import opponentStanceFrame6 from './assets/chars/opponent/stance/opponent_stance_frame_06.png';
+import opponentStanceFrame7 from './assets/chars/opponent/stance/opponent_stance_frame_07.png';
+import opponentStanceFrame8 from './assets/chars/opponent/stance/opponent_stance_frame_08.png';
+import opponentVictoryFrame1 from './assets/chars/opponent/victory/opponent_victory_frame_01.png';
+import opponentVictoryFrame2 from './assets/chars/opponent/victory/opponent_victory_frame_02.png';
+import opponentVictoryFrame3 from './assets/chars/opponent/victory/opponent_victory_frame_03.png';
+import opponentVictoryFrame4 from './assets/chars/opponent/victory/opponent_victory_frame_04.png';
+import opponentVictoryFrame5 from './assets/chars/opponent/victory/opponent_victory_frame_05.png';
+import opponentVictoryFrame6 from './assets/chars/opponent/victory/opponent_victory_frame_06.png';
+import opponentVictoryFrame7 from './assets/chars/opponent/victory/opponent_victory_frame_07.png';
+import opponentVictoryFrame8 from './assets/chars/opponent/victory/opponent_victory_frame_08.png';
+import opponentDefeatFrame1 from './assets/chars/opponent/defeat/opponent_defeat_frame_01.png';
+import opponentDefeatFrame2 from './assets/chars/opponent/defeat/opponent_defeat_frame_02.png';
+import opponentDefeatFrame3 from './assets/chars/opponent/defeat/opponent_defeat_frame_03.png';
+import opponentDefeatFrame4 from './assets/chars/opponent/defeat/opponent_defeat_frame_04.png';
+import opponentDefeatFrame5 from './assets/chars/opponent/defeat/opponent_defeat_frame_05.png';
+import opponentDefeatFrame6 from './assets/chars/opponent/defeat/opponent_defeat_frame_06.png';
+import opponentDefeatFrame7 from './assets/chars/opponent/defeat/opponent_defeat_frame_07.png';
+import opponentDefeatFrame8 from './assets/chars/opponent/defeat/opponent_defeat_frame_08.png';
 import RetryButton from './components/RetryButton/RetryButton';
 import Char from './components/Char/Chars';
+import { Button, Modal } from 'react-bootstrap';
 
 function App() {
   const [selectedSymbol, setSelectedSymbol] = useState<string | undefined>();
@@ -79,6 +81,10 @@ function App() {
   const [opponenHistory, setOpponentHistory] = useState<JSX.Element[]>([]);
   const [playerFrameIndex, setPlayerFrameIndex] = useState(0);
   const [opponentFrameIndex, setOpponentFrameIndex] = useState(0);
+  const [modalShow, setModalShow] = useState(false);
+
+  const handleModalClose = () => setModalShow(false);
+  const handleModalShow = () => setModalShow(true);
 
   const playerFrames = [
     [
@@ -356,30 +362,48 @@ function App() {
         <Gauge label='PLAYER' percent={playerHP} />
         <Gauge label='OPPONENT' percent={opponentHP} />
       </div>
+      <div className='d-flex justify-content-center'>
+        <div onClick={handleModalShow}>
+          <QuestionCircle
+            className={`rounded-pill ${style.questionCircle}`}
+            size={50}
+            color='#ffffff'
+          />
+        </div>
+      </div>
       <div className={style.buttonContainer}>
-        <h1 className='text-center mb-3'>PICK A SIGN</h1>
+        <h2 className='text-center mb-3'>PICK A SIGN</h2>
         <div className={style.flexCenter}>
           <div
             className={`text-center p-2 border border-3 rounded rounded-5 ${style.flexCenter} ${style.fit}`}
           >
-            <SignButton
-              label={cloneElement(symbolMap['circle'], { size: 25 })}
-              color='danger'
-              onClick={() => handleSymbolClick('circle')}
-              game={game}
-            />
-            <SignButton
-              label={cloneElement(symbolMap['square'], { size: 25 })}
-              color='success'
-              onClick={() => handleSymbolClick('square')}
-              game={game}
-            />
-            <SignButton
-              label={cloneElement(symbolMap['triangle'], { size: 25 })}
-              color='primary'
-              onClick={() => handleSymbolClick('triangle')}
-              game={game}
-            />
+            <div className={style.signButton}>
+              <SignButton
+                label={cloneElement(symbolMap['circle'], { size: 25 })}
+                color='danger'
+                onClick={() => handleSymbolClick('circle')}
+                game={game}
+              />
+              <div>ROCK</div>
+            </div>
+            <div className={style.signButton}>
+              <SignButton
+                label={cloneElement(symbolMap['square'], { size: 25 })}
+                color='success'
+                onClick={() => handleSymbolClick('square')}
+                game={game}
+              />
+              <div>PAPER</div>
+            </div>
+            <div className={style.signButton}>
+              <SignButton
+                label={cloneElement(symbolMap['triangle'], { size: 25 })}
+                color='primary'
+                onClick={() => handleSymbolClick('triangle')}
+                game={game}
+              />
+              <div>SCISSORS</div>
+            </div>
           </div>
         </div>
         <p className={style.resultString}>
@@ -395,8 +419,8 @@ function App() {
             `${resultString}`
           )}
         </p>
+        <RetryButton game={game} onClick={handleRetryClick} />
       </div>
-      <RetryButton game={game} onClick={handleRetryClick} />
       <div className={style.charactersContainer}>
         <Char
           isPlayer={true}
@@ -421,15 +445,46 @@ function App() {
           generateOpponentSrc={generateOpponentSrc}
         />
       </div>
-
       <MoveHistory
         playerHistory={playerHistory}
         opponentHistory={opponenHistory}
       />
+      <Modal show={modalShow} onHide={handleModalClose}>
+        <Modal.Header className='bg-info'>
+          <Modal.Title
+            className='fs-4 text-light text-center'
+            style={{ margin: '0 auto' }}
+          >
+            How To Play?
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body className='text-center'>
+          <p>rock beats</p>
+          <p>cissors paper beats</p>
+          <p>rock cissors beat paper</p>
+          <p>
+            Remove all 100 HP of your opponent by choosing a sign each round
+          </p>
+          <p>
+            When there is a draw, a random sign quickly appears, the first one
+            to click the right sign wins and deals 40 DMG
+          </p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button
+            variant='secondary'
+            onClick={handleModalClose}
+            style={{ margin: '0 auto' }}
+          >
+            Fermer
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 }
 
 export default App;
 // TODO:
-// component Char
+// responsive design
+// change symbols + symbol label
