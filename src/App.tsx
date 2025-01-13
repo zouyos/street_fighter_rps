@@ -66,7 +66,7 @@ import opponentDefeatFrame6 from './assets/chars/opponent/defeat/opponent_defeat
 import opponentDefeatFrame7 from './assets/chars/opponent/defeat/opponent_defeat_frame_07.png';
 import opponentDefeatFrame8 from './assets/chars/opponent/defeat/opponent_defeat_frame_08.png';
 import RetryButton from './components/RetryButton/RetryButton';
-import Char from './components/Char/Chars';
+import Char from './components/Char/Char';
 import { Button, Modal } from 'react-bootstrap';
 
 function App() {

@@ -21,6 +21,12 @@
   cursor: pointer;
   margin-top: 150px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: fit-content;
+  height: fit-content;
+  margin-top: auto;
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
 }
 
 .questionCircle:hover {
