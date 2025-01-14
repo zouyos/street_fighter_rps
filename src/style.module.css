@@ -1,6 +1,8 @@
 .mainContainer {
   background: no-repeat center / cover url('./assets/background.jpg');
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   padding: 15px;
@@ -18,32 +20,44 @@
 }
 
 .questionCircle {
+  margin: 3px 0 6px 0;
   cursor: pointer;
-  margin-top: 150px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  width: fit-content;
-  height: fit-content;
-  margin-top: auto;
-  position: absolute;
-  bottom: 15px;
-  right: 15px;
 }
 
 .questionCircle:hover {
   transform: translate(0, -5%);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin-top: 150px;
+}
+
+.gameContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .buttonContainer {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  justify-content: space-evenly;
+  opacity: 85%;
+  z-index: 1;
+}
+
+.retryButtonContainer {
   position: absolute;
-  top: 65%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  margin-top: 25px;
 }
 
 .signButton {
-  margin: 0 10px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -58,16 +72,8 @@
   cursor: not-allowed;
 }
 
-.resultString {
-  text-align: center;
-  padding: 20px 0;
-  height: 30px;
-  font-size: 18px;
-}
-
 .charactersContainer {
   margin-top: auto;
-  margin-bottom: 45px;
   display: flex;
   justify-content: center;
 }
@@ -80,4 +86,39 @@
 .smallIcon {
   width: 15px;
   height: 15px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(0, 0, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.message {
+  text-align: center;
+  color: white;
+}
+
+.animatedLogo {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: spin 2s infinite linear;
+}
+
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }

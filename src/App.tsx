@@ -62,10 +62,10 @@ import opponentDefeatFrame5 from './assets/chars/opponent/defeat/opponent_defeat
 import opponentDefeatFrame6 from './assets/chars/opponent/defeat/opponent_defeat_frame_06.png';
 import opponentDefeatFrame7 from './assets/chars/opponent/defeat/opponent_defeat_frame_07.png';
 import opponentDefeatFrame8 from './assets/chars/opponent/defeat/opponent_defeat_frame_08.png';
-import RetryButton from './components/RetryButton/RetryButton';
 import Char from './components/Char/Char';
 import { Button, Modal } from 'react-bootstrap';
-import { QuestionCircle } from 'react-bootstrap-icons';
+import { ArrowRepeat, QuestionCircle } from 'react-bootstrap-icons';
+import ResultString from './components/ResultString/ResultString';
 
 function App() {
   const [selectedSymbol, setSelectedSymbol] = useState<string | undefined>();
@@ -84,9 +84,12 @@ function App() {
   const [playerFrameIndex, setPlayerFrameIndex] = useState(0);
   const [opponentFrameIndex, setOpponentFrameIndex] = useState(0);
   const [modalShow, setModalShow] = useState(false);
+  const [isLandscape, setIsLandscape] = useState(false);
 
   const handleModalClose = () => setModalShow(false);
   const handleModalShow = () => setModalShow(true);
+
+  const isPortrait = !isLandscape;
 
   const playerFrames = [
     [
@@ -351,11 +354,34 @@ function App() {
     opponentFrames,
   ]);
 
+  useEffect(() => {
+    const checkOrientation = () => {
+      setIsLandscape(window.innerWidth > window.innerHeight);
+    };
+
+    checkOrientation();
+    window.addEventListener('resize', checkOrientation);
+
+    return () => {
+      window.removeEventListener('resize', checkOrientation);
+    };
+  }, []);
+
   return (
     <div className={style.mainContainer}>
+      {isPortrait && (
+        <div className={style.overlay}>
+          <div className={style.animatedLogo}>
+            <ArrowRepeat size={50} color='white' />
+          </div>
+          <div className={style.message}>
+            <p>PLEASE TURN YOUR PHONE TO LANDSCAPE MODE</p>
+          </div>
+        </div>
+      )}
       <h1 className='text-center m-0 text-black fw-bold'>ROUND {round}</h1>
       <div className='d-flex justify-content-between'>
-        <Gauge label='PLAYER' percent={playerHP} />
+        <Gauge isPlayer label='PLAYER' percent={playerHP} />
         <Gauge label='OPPONENT' percent={opponentHP} />
       </div>
       <div className='d-flex justify-content-center'>
@@ -367,55 +393,59 @@ function App() {
           />
         </div>
       </div>
-      <div className={style.buttonContainer}>
-        <h2 className='text-center mb-3'>PICK A SIGN</h2>
-        <div className={style.flexCenter}>
-          <div
-            className={`text-center p-2 border border-3 rounded rounded-5 ${style.flexCenter} ${style.fit}`}
-          >
-            <div className={style.signButton}>
-              <SignButton
-                label={cloneElement(symbolMap['punch'], { size: 25 })}
-                color='danger'
-                onClick={() => handleSymbolClick('punch')}
-                game={game}
-              />
-              <div>PUNCH</div>
-            </div>
-            <div className={style.signButton}>
-              <SignButton
-                label={cloneElement(symbolMap['kick'], { size: 25 })}
-                color='success'
-                onClick={() => handleSymbolClick('kick')}
-                game={game}
-              />
-              <div>KICK</div>
-            </div>
-            <div className={style.signButton}>
-              <SignButton
-                label={cloneElement(symbolMap['wave'], { size: 25 })}
-                color='primary'
-                onClick={() => handleSymbolClick('wave')}
-                game={game}
-              />
-              <div>WAVE</div>
-            </div>
+      <ResultString
+        game={game}
+        selectedSymbol={selectedSymbol}
+        opponentChoice={opponentChoice}
+        symbolMap={symbolMap}
+        resultString={resultString}
+      />
+      <div className={style.gameContainer}>
+        <MoveHistory
+          playerHistory={playerHistory}
+          opponentHistory={opponentHistory}
+        />
+        <div className={style.retryButtonContainer}>
+          {!game && (
+            <button
+              className='btn btn-lg btn-warning text-center'
+              onClick={handleRetryClick}
+            >
+              Retry?
+            </button>
+          )}
+        </div>
+        <div
+          className={`text-center p-3 border border-5 rounded rounded-5 ${style.buttonContainer}`}
+        >
+          <div className={style.signButton}>
+            <SignButton
+              label={cloneElement(symbolMap['punch'], { size: 30 })}
+              color='danger'
+              onClick={() => handleSymbolClick('punch')}
+              game={game}
+            />
+            <div>PUNCH</div>
+          </div>
+          <div className={style.signButton}>
+            <SignButton
+              label={cloneElement(symbolMap['kick'], { size: 30 })}
+              color='success'
+              onClick={() => handleSymbolClick('kick')}
+              game={game}
+            />
+            <div>KICK</div>
+          </div>
+          <div className={style.signButton}>
+            <SignButton
+              label={cloneElement(symbolMap['wave'], { size: 30 })}
+              color='primary'
+              onClick={() => handleSymbolClick('wave')}
+              game={game}
+            />
+            <div>WAVE</div>
           </div>
         </div>
-        <p className={style.resultString}>
-          {selectedSymbol && game ? (
-            <>
-              Your opponent plays{' '}
-              <span className='icon-inline'>
-                {opponentChoice && symbolMap[opponentChoice]}
-              </span>{' '}
-              {resultString}
-            </>
-          ) : (
-            `${resultString}`
-          )}
-        </p>
-        <RetryButton game={game} onClick={handleRetryClick} />
       </div>
       <div className={style.charactersContainer}>
         <Char
@@ -441,10 +471,6 @@ function App() {
           generateOpponentSrc={generateOpponentSrc}
         />
       </div>
-      <MoveHistory
-        playerHistory={playerHistory}
-        opponentHistory={opponentHistory}
-      />
       <Modal show={modalShow} onHide={handleModalClose}>
         <Modal.Header className='bg-info'>
           <Modal.Title
@@ -481,7 +507,7 @@ function App() {
             onClick={handleModalClose}
             style={{ margin: '0 auto' }}
           >
-            Fermer
+            Close
           </Button>
         </Modal.Footer>
       </Modal>
@@ -492,7 +518,7 @@ function App() {
 export default App;
 // TODO:
 // responsive design
-// change symbols + symbol label
+// bug: unsized icons in history when app reloads
 // best/worst element logic
 // boost and res logic
-// spe atck when draw
+// spe atck when draw (btn-lg)
