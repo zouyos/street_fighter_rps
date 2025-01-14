@@ -1,8 +1,8 @@
 import style from './style.module.css';
 
 type MoveHistoryProps = {
-  playerHistory: JSX.Element[];
-  opponentHistory: JSX.Element[];
+  playerHistory: (JSX.Element | string)[];
+  opponentHistory: (JSX.Element | string)[];
 };
 
 export default function MoveHistory({

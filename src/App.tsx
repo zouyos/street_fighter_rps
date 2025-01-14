@@ -3,15 +3,12 @@ import style from './style.module.css';
 import SignButton from './components/SignButton/SignButton';
 import Gauge from './components/Gauge/Gauge';
 import MoveHistory from './components/MoveHistory/MoveHistory';
-import {
-  Circle,
-  CircleFill,
-  QuestionCircle,
-  Square,
-  SquareFill,
-  Triangle,
-  TriangleFill,
-} from 'react-bootstrap-icons';
+import punch from './assets/punch_white.png';
+import punch_b from './assets/punch_black.png';
+import kick from './assets/kick_white.png';
+import kick_b from './assets/kick_black.png';
+import wave from './assets/wave_white.png';
+import wave_b from './assets/wave_black.png';
 import playerStanceFrame1 from './assets/chars/player/stance/player_stance_frame_01.png';
 import playerStanceFrame2 from './assets/chars/player/stance/player_stance_frame_02.png';
 import playerStanceFrame3 from './assets/chars/player/stance/player_stance_frame_03.png';
@@ -68,6 +65,7 @@ import opponentDefeatFrame8 from './assets/chars/opponent/defeat/opponent_defeat
 import RetryButton from './components/RetryButton/RetryButton';
 import Char from './components/Char/Char';
 import { Button, Modal } from 'react-bootstrap';
+import { QuestionCircle } from 'react-bootstrap-icons';
 
 function App() {
   const [selectedSymbol, setSelectedSymbol] = useState<string | undefined>();
@@ -77,8 +75,12 @@ function App() {
   const [opponentHP, setOpponentHP] = useState(100);
   const [round, setRound] = useState(1);
   const [game, setGame] = useState(true);
-  const [playerHistory, setPlayerHistory] = useState<JSX.Element[]>([]);
-  const [opponenHistory, setOpponentHistory] = useState<JSX.Element[]>([]);
+  const [playerHistory, setPlayerHistory] = useState<(JSX.Element | string)[]>(
+    []
+  );
+  const [opponentHistory, setOpponentHistory] = useState<
+    (JSX.Element | string)[]
+  >([]);
   const [playerFrameIndex, setPlayerFrameIndex] = useState(0);
   const [opponentFrameIndex, setOpponentFrameIndex] = useState(0);
   const [modalShow, setModalShow] = useState(false);
@@ -158,22 +160,28 @@ function App() {
   ];
 
   const symbolMap: Record<string, JSX.Element> = {
-    circle: <Circle />,
-    square: <Square />,
-    triangle: <Triangle />,
+    punch: <img className={style.icon} src={punch} alt='Punch Icon' />,
+    kick: <img className={style.icon} src={kick} alt='Kick Icon' />,
+    wave: <img className={style.icon} src={wave} alt='Wave Icon' />,
   };
 
   const filledSymbolMap: Record<string, JSX.Element> = {
-    circle: <CircleFill />,
-    square: <SquareFill />,
-    triangle: <TriangleFill />,
+    punch: (
+      <img className={style.smallIcon} src={punch_b} alt='Filled Punch Icon' />
+    ),
+    kick: (
+      <img className={style.smallIcon} src={kick_b} alt='Filled Kick Icon' />
+    ),
+    wave: (
+      <img className={style.smallIcon} src={wave_b} alt='Filled Wave Icon' />
+    ),
   };
 
-  const colorMap: Record<string, string> = {
-    circle: 'red',
-    square: 'green',
-    triangle: 'blue',
-  };
+  // const elementMap: Record<string, string> = {
+  //   punch: 'red',
+  //   kick: 'green',
+  //   wave: 'blue',
+  // };
 
   const handleSymbolClick = (symbol: string) => {
     if (!game) return;
@@ -183,36 +191,24 @@ function App() {
     setRound((prev) => prev + 1);
   };
 
-  const addToPlayerHistory = (symbol: string, color: string, win?: boolean) => {
-    if (win) {
-      setPlayerHistory((prev) => [
-        ...prev,
-        cloneElement(filledSymbolMap[symbol], { color }),
-      ]);
-    } else {
-      setPlayerHistory((prev) => [
-        ...prev,
-        cloneElement(symbolMap[symbol], { color }),
-      ]);
-    }
+  const addToPlayerHistory = (symbol: string) => {
+    const element = filledSymbolMap[symbol];
+    setPlayerHistory((prev) => [
+      ...prev,
+      typeof element === 'string'
+        ? element
+        : cloneElement(filledSymbolMap[symbol], { className: style.smallIcon }),
+    ]);
   };
 
-  const addToOpponentHistory = (
-    symbol: string,
-    color: string,
-    win?: boolean
-  ) => {
-    if (win) {
-      setOpponentHistory((prev) => [
-        ...prev,
-        cloneElement(filledSymbolMap[symbol], { color }),
-      ]);
-    } else {
-      setOpponentHistory((prev) => [
-        ...prev,
-        cloneElement(symbolMap[symbol], { color }),
-      ]);
-    }
+  const addToOpponentHistory = (symbol: string) => {
+    const element = filledSymbolMap[symbol];
+    setOpponentHistory((prev) => [
+      ...prev,
+      typeof element === 'string'
+        ? element
+        : cloneElement(element, { className: style.smallIcon }),
+    ]);
   };
 
   const handleRetryClick = () => {
@@ -255,20 +251,20 @@ function App() {
     if (game) {
       if (selectedSymbol === opponentChoice) {
         setResultString('DRAW');
-        addToPlayerHistory(selectedSymbol, colorMap[selectedSymbol]);
-        addToOpponentHistory(opponentChoice, colorMap[opponentChoice]);
+        addToPlayerHistory(selectedSymbol);
+        addToOpponentHistory(opponentChoice);
       } else if (
-        (selectedSymbol === 'circle' && opponentChoice === 'triangle') ||
-        (selectedSymbol === 'square' && opponentChoice === 'circle') ||
-        (selectedSymbol === 'triangle' && opponentChoice === 'square')
+        (selectedSymbol === 'punch' && opponentChoice === 'wave') ||
+        (selectedSymbol === 'kick' && opponentChoice === 'punch') ||
+        (selectedSymbol === 'wave' && opponentChoice === 'kick')
       ) {
-        addToPlayerHistory(selectedSymbol, colorMap[selectedSymbol], true);
-        addToOpponentHistory(opponentChoice, colorMap[opponentChoice]);
+        addToPlayerHistory(selectedSymbol);
+        addToOpponentHistory(opponentChoice);
         setOpponentHP((prev) => Math.max(prev - 20, 0));
         setResultString('Opponent loses 20 HP');
       } else {
-        addToOpponentHistory(opponentChoice, colorMap[opponentChoice], true);
-        addToPlayerHistory(selectedSymbol, colorMap[selectedSymbol]);
+        addToOpponentHistory(opponentChoice);
+        addToPlayerHistory(selectedSymbol);
         setPlayerHP((prev) => Math.max(prev - 20, 0));
         setResultString('You lose 20 HP');
       }
@@ -347,12 +343,12 @@ function App() {
     game,
     playerHP,
     opponentHP,
-    playerFrames[0].length,
-    opponentFrames[0].length,
-    playerFrames[1].length,
-    opponentFrames[1].length,
-    playerFrames[2].length,
-    opponentFrames[2].length,
+    playerFrames,
+    opponentFrames,
+    playerFrames,
+    opponentFrames,
+    playerFrames,
+    opponentFrames,
   ]);
 
   return (
@@ -379,30 +375,30 @@ function App() {
           >
             <div className={style.signButton}>
               <SignButton
-                label={cloneElement(symbolMap['circle'], { size: 25 })}
+                label={cloneElement(symbolMap['punch'], { size: 25 })}
                 color='danger'
-                onClick={() => handleSymbolClick('circle')}
+                onClick={() => handleSymbolClick('punch')}
                 game={game}
               />
-              <div>ROCK</div>
+              <div>PUNCH</div>
             </div>
             <div className={style.signButton}>
               <SignButton
-                label={cloneElement(symbolMap['square'], { size: 25 })}
+                label={cloneElement(symbolMap['kick'], { size: 25 })}
                 color='success'
-                onClick={() => handleSymbolClick('square')}
+                onClick={() => handleSymbolClick('kick')}
                 game={game}
               />
-              <div>PAPER</div>
+              <div>KICK</div>
             </div>
             <div className={style.signButton}>
               <SignButton
-                label={cloneElement(symbolMap['triangle'], { size: 25 })}
+                label={cloneElement(symbolMap['wave'], { size: 25 })}
                 color='primary'
-                onClick={() => handleSymbolClick('triangle')}
+                onClick={() => handleSymbolClick('wave')}
                 game={game}
               />
-              <div>SCISSORS</div>
+              <div>WAVE</div>
             </div>
           </div>
         </div>
@@ -447,7 +443,7 @@ function App() {
       </div>
       <MoveHistory
         playerHistory={playerHistory}
-        opponentHistory={opponenHistory}
+        opponentHistory={opponentHistory}
       />
       <Modal show={modalShow} onHide={handleModalClose}>
         <Modal.Header className='bg-info'>
@@ -459,9 +455,18 @@ function App() {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body className='text-center'>
-          <p>rock beats</p>
-          <p>cissors paper beats</p>
-          <p>rock cissors beat paper</p>
+          <p>
+            <img className={style.icon} src={punch_b} alt='Punch Icon' /> beats{' '}
+            <img className={style.icon} src={wave_b} alt='Wave Icon' />
+          </p>
+          <p>
+            <img className={style.icon} src={kick_b} alt='Kick Icon' /> beats{' '}
+            <img className={style.icon} src={punch_b} alt='Punch Icon' />
+          </p>
+          <p>
+            <img className={style.icon} src={wave_b} alt='Wave Icon' /> beats{' '}
+            <img className={style.icon} src={kick_b} alt='Kick Icon' />
+          </p>
           <p>
             Remove all 100 HP of your opponent by choosing a sign each round
           </p>
