@@ -517,7 +517,8 @@ function App() {
 
 export default App;
 // TODO:
-// responsive design
+// responsive design:
+// - modal
 // bug: unsized icons in history when app reloads
 // best/worst element logic
 // boost and res logic

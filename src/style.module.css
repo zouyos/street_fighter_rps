@@ -47,7 +47,7 @@
 
 .retryButtonContainer {
   position: absolute;
-  top: 60%;
+  top: 65%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
@@ -55,6 +55,8 @@
   align-items: center;
   height: 60px;
   margin-top: 25px;
+  opacity: 85%;
+  z-index: 2;
 }
 
 .signButton {
