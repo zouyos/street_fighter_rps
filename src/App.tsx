@@ -42,10 +42,6 @@ import opponentStanceFrame1 from './assets/chars/opponent/stance/opponent_stance
 import opponentStanceFrame2 from './assets/chars/opponent/stance/opponent_stance_frame_02.png';
 import opponentStanceFrame3 from './assets/chars/opponent/stance/opponent_stance_frame_03.png';
 import opponentStanceFrame4 from './assets/chars/opponent/stance/opponent_stance_frame_04.png';
-import opponentStanceFrame5 from './assets/chars/opponent/stance/opponent_stance_frame_05.png';
-import opponentStanceFrame6 from './assets/chars/opponent/stance/opponent_stance_frame_06.png';
-import opponentStanceFrame7 from './assets/chars/opponent/stance/opponent_stance_frame_07.png';
-import opponentStanceFrame8 from './assets/chars/opponent/stance/opponent_stance_frame_08.png';
 import opponentVictoryFrame1 from './assets/chars/opponent/victory/opponent_victory_frame_01.png';
 import opponentVictoryFrame2 from './assets/chars/opponent/victory/opponent_victory_frame_02.png';
 import opponentVictoryFrame3 from './assets/chars/opponent/victory/opponent_victory_frame_03.png';
@@ -135,10 +131,6 @@ function App() {
       opponentStanceFrame2,
       opponentStanceFrame3,
       opponentStanceFrame4,
-      opponentStanceFrame5,
-      opponentStanceFrame6,
-      opponentStanceFrame7,
-      opponentStanceFrame8,
     ],
     [
       opponentVictoryFrame1,
