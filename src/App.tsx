@@ -165,7 +165,7 @@ function App() {
   const symbolMap: Record<string, JSX.Element> = {
     punch: <img className={style.icon} src={punch} alt='Punch Icon' />,
     kick: <img className={style.icon} src={kick} alt='Kick Icon' />,
-    wave: <img className={style.icon} src={wave} alt='Wave Icon' />,
+    wave: <img className={style.wave} src={wave} alt='Wave Icon' />,
   };
 
   const filledSymbolMap: Record<string, JSX.Element> = {
@@ -416,7 +416,7 @@ function App() {
           )}
         </div>
         <div
-          className={`text-center p-3 border border-5 rounded rounded-5 ${style.buttonContainer}`}
+          className={`text-center p-3 border border-white border-5 rounded rounded-5 ${style.buttonContainer}`}
         >
           <div className={style.signButton}>
             <SignButton
@@ -519,6 +519,7 @@ export default App;
 // TODO:
 // responsive design:
 // - modal
+// animations
 // bug: unsized icons in history when app reloads
 // best/worst element logic
 // boost and res logic
