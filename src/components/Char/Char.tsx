@@ -1,7 +1,6 @@
 import style from './style.module.css';
 
 type CharProps = {
-  game: boolean;
   isPlayer: boolean;
   playerHP?: number;
   playerFrames: string[][];
@@ -14,7 +13,6 @@ type CharProps = {
 };
 
 export default function Char({
-  game,
   isPlayer,
   playerHP,
   playerFrames,
@@ -28,30 +26,20 @@ export default function Char({
   const frames = isPlayer ? playerFrames : opponentFrames;
   const frameIndex = isPlayer ? playerFrameIndex : opponentFrameIndex;
   const hp = isPlayer ? playerHP : opponentHP;
-  const victoriousPlayer = isPlayer && hp !== undefined && hp > 0;
-  const victoriousOpponent = isPlayer && hp !== undefined && hp > 0;
   const generateSrc = isPlayer ? generatePlayerSrc : generateOpponentSrc;
 
-  function generateClassName(
-    game: boolean,
-    isPlayer: boolean,
-    victoriousPlayer: boolean
-  ) {
-    if (game && isPlayer) {
-      return style.player;
-    } else if (game) {
-      return style.opponent;
-    }
-    if (victoriousPlayer) {
-      return style.player;
-    }
-    if (victoriousOpponent) {
-      return style.victoriousOpponent;
-    }
-  }
-
   return (
-    <div className={generateClassName(game, isPlayer, victoriousPlayer)}>
+    <div
+      className={
+        hp && hp > 0
+          ? isPlayer
+            ? style.player
+            : style.opponent
+          : isPlayer
+          ? style.defeatedPlayer
+          : style.defeatedOpponent
+      }
+    >
       <img
         src={generateSrc(frames, frameIndex)}
         alt={isPlayer ? 'Player Animation' : 'Opponent Animation'}
