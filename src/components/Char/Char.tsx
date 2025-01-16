@@ -29,6 +29,7 @@ export default function Char({
   const frameIndex = isPlayer ? playerFrameIndex : opponentFrameIndex;
   const hp = isPlayer ? playerHP : opponentHP;
   const victoriousPlayer = isPlayer && hp !== undefined && hp > 0;
+  const victoriousOpponent = isPlayer && hp !== undefined && hp > 0;
   const generateSrc = isPlayer ? generatePlayerSrc : generateOpponentSrc;
 
   function generateClassName(
@@ -43,8 +44,9 @@ export default function Char({
     }
     if (victoriousPlayer) {
       return style.player;
-    } else {
-      return style.opponent;
+    }
+    if (victoriousOpponent) {
+      return style.victoriousOpponent;
     }
   }
 
