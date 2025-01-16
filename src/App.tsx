@@ -46,18 +46,8 @@ import opponentVictoryFrame1 from './assets/chars/opponent/victory/opponent_vict
 import opponentVictoryFrame2 from './assets/chars/opponent/victory/opponent_victory_frame_02.png';
 import opponentVictoryFrame3 from './assets/chars/opponent/victory/opponent_victory_frame_03.png';
 import opponentVictoryFrame4 from './assets/chars/opponent/victory/opponent_victory_frame_04.png';
-import opponentVictoryFrame5 from './assets/chars/opponent/victory/opponent_victory_frame_05.png';
-import opponentVictoryFrame6 from './assets/chars/opponent/victory/opponent_victory_frame_06.png';
-import opponentVictoryFrame7 from './assets/chars/opponent/victory/opponent_victory_frame_07.png';
-import opponentVictoryFrame8 from './assets/chars/opponent/victory/opponent_victory_frame_08.png';
 import opponentDefeatFrame1 from './assets/chars/opponent/defeat/opponent_defeat_frame_01.png';
 import opponentDefeatFrame2 from './assets/chars/opponent/defeat/opponent_defeat_frame_02.png';
-import opponentDefeatFrame3 from './assets/chars/opponent/defeat/opponent_defeat_frame_03.png';
-import opponentDefeatFrame4 from './assets/chars/opponent/defeat/opponent_defeat_frame_04.png';
-import opponentDefeatFrame5 from './assets/chars/opponent/defeat/opponent_defeat_frame_05.png';
-import opponentDefeatFrame6 from './assets/chars/opponent/defeat/opponent_defeat_frame_06.png';
-import opponentDefeatFrame7 from './assets/chars/opponent/defeat/opponent_defeat_frame_07.png';
-import opponentDefeatFrame8 from './assets/chars/opponent/defeat/opponent_defeat_frame_08.png';
 import Char from './components/Char/Char';
 import { Button, Modal } from 'react-bootstrap';
 import { ArrowRepeat, QuestionCircle } from 'react-bootstrap-icons';
@@ -137,21 +127,8 @@ function App() {
       opponentVictoryFrame2,
       opponentVictoryFrame3,
       opponentVictoryFrame4,
-      opponentVictoryFrame5,
-      opponentVictoryFrame6,
-      opponentVictoryFrame7,
-      opponentVictoryFrame8,
     ],
-    [
-      opponentDefeatFrame1,
-      opponentDefeatFrame2,
-      opponentDefeatFrame3,
-      opponentDefeatFrame4,
-      opponentDefeatFrame5,
-      opponentDefeatFrame6,
-      opponentDefeatFrame7,
-      opponentDefeatFrame8,
-    ],
+    [opponentDefeatFrame1, opponentDefeatFrame2],
   ];
 
   const symbolMap: Record<string, JSX.Element> = {
@@ -400,7 +377,7 @@ function App() {
         <div className={style.retryButtonContainer}>
           {!game && (
             <button
-              className='btn btn-lg btn-warning text-center'
+              className='btn btn-lg btn-warning text-center p-3'
               onClick={handleRetryClick}
             >
               Retry?
