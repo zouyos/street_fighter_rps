@@ -389,7 +389,7 @@ function App() {
         >
           <div className={style.signButton}>
             <SignButton
-              label={cloneElement(symbolMap['punch'], { size: 30 })}
+              label={cloneElement(symbolMap['punch'], { size: 20 })}
               color='danger'
               onClick={() => handleSymbolClick('punch')}
               game={game}
@@ -398,7 +398,7 @@ function App() {
           </div>
           <div className={style.signButton}>
             <SignButton
-              label={cloneElement(symbolMap['kick'], { size: 30 })}
+              label={cloneElement(symbolMap['kick'], { size: 20 })}
               color='success'
               onClick={() => handleSymbolClick('kick')}
               game={game}
@@ -407,7 +407,7 @@ function App() {
           </div>
           <div className={style.signButton}>
             <SignButton
-              label={cloneElement(symbolMap['wave'], { size: 30 })}
+              label={cloneElement(symbolMap['wave'], { size: 20 })}
               color='primary'
               onClick={() => handleSymbolClick('wave')}
               game={game}
@@ -493,3 +493,4 @@ export default App;
 // best/worst element logic
 // boost and res logic
 // spe atck when draw (btn-lg)
+// resize small icons in history

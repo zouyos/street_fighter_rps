@@ -2,26 +2,26 @@
   color: black;
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 20px;
-  padding: 15px;
-  width: fit-content;
+  padding: 20px;
+  width: 30vw;
   height: fit-content;
   z-index: 1;
+  border: white 4px solid;
 }
 
 .historyLabel {
-  font-size: 24px;
-  margin-bottom: 4px;
+  font-size: 25px;
+  margin-bottom: 12px;
 }
 
-.iconContainer {
-  margin-left: 8px;
-  width: 170px;
+.playerIconContainer {
+  width: fit-content;
+  font-size: 14px;
+  margin: 16px 0 16px 28px;
 }
 
-.playerHistoryLabel {
-  font-size: 16px;
-}
-
-.opponentHistoryLabel {
-  font-size: 16px;
+.opponentIconContainer {
+  width: fit-content;
+  font-size: 14px;
+  margin: 8px 0 8px 4px;
 }

@@ -15,7 +15,7 @@ export default function SignButton({
 }: ButtonProps) {
   return (
     <button
-      className={`rounded-pill p-3 mx-3 my-1 btn btn-${color} ${style.fit}`}
+      className={`rounded-pill p-2 mx-2 my-1 btn btn-${color} ${style.fit}`}
       onClick={() => onClick(label)}
       disabled={!game}
     >
