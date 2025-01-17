@@ -19,5 +19,9 @@
 }
 
 .playerHistoryLabel {
-  margin-right: 38px;
+  font-size: 16px;
+}
+
+.opponentHistoryLabel {
+  font-size: 16px;
 }

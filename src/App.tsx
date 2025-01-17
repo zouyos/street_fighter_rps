@@ -385,7 +385,7 @@ function App() {
           )}
         </div>
         <div
-          className={`text-center p-3 border border-white border-5 rounded rounded-5 ${style.buttonContainer}`}
+          className={`text-center p-3 border border-white border-4 rounded rounded-5 ${style.buttonContainer}`}
         >
           <div className={style.signButton}>
             <SignButton
