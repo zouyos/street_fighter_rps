@@ -88,12 +88,6 @@
   right: 2px;
 }
 
-.charactersContainer {
-  margin-top: auto;
-  display: flex;
-  justify-content: center;
-}
-
 .icon {
   width: 40px;
   height: 40px;

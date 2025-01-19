@@ -28,18 +28,24 @@ export default function Char({
   const hp = isPlayer ? playerHP : opponentHP;
   const generateSrc = isPlayer ? generatePlayerSrc : generateOpponentSrc;
 
-  return (
-    <div
-      className={
-        hp && hp > 0
-          ? isPlayer
-            ? style.player
-            : style.opponent
-          : isPlayer
-          ? style.defeatedPlayer
-          : style.defeatedOpponent
+  function generateClassName() {
+    if (hp && hp > 0) {
+      if (isPlayer) {
+        return style.player;
+      } else {
+        return style.opponent;
       }
-    >
+    } else {
+      if (isPlayer) {
+        return style.defeatedPlayer;
+      } else {
+        return style.defeatedOpponent;
+      }
+    }
+  }
+
+  return (
+    <div className={generateClassName()}>
       <img
         src={generateSrc(frames, frameIndex)}
         alt={isPlayer ? 'Player Animation' : 'Opponent Animation'}

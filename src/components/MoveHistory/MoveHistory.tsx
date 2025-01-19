@@ -12,7 +12,7 @@ export default function MoveHistory({
   return (
     <div className={style.history}>
       <p className={style.historyLabel}>HISTORY:</p>
-      <div className={`${style.playerHistoryLabel} mb-3`}>
+      <div className={`${style.playerHistory}`}>
         PLAYER:
         <span className={style.playerIconContainer}>
           {playerHistory
@@ -25,7 +25,7 @@ export default function MoveHistory({
             ))}
         </span>
       </div>
-      <div className={`${style.opponentHistoryLabel} mb-2`}>
+      <div className={`${style.opponentHistory}`}>
         OPPONENT:
         <span className={`${style.opponentIconContainer}`}>
           {opponentHistory

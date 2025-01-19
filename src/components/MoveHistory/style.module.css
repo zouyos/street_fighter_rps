@@ -2,7 +2,7 @@
   color: black;
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 20px;
-  padding: 20px;
+  padding: 10px 20px;
   width: 251px;
   height: fit-content;
   z-index: 1;
@@ -14,14 +14,18 @@
   margin-bottom: 12px;
 }
 
-.playerIconContainer {
+.playerHistory {
   width: fit-content;
-  font-size: 14px;
-  margin: 16px 0 16px 28px;
+  height: 30px;
+  font-size: 16px;
 }
 
-.opponentIconContainer {
+.playerIconContainer {
+  margin-left: 28px;
+}
+
+.opponentHistory {
   width: fit-content;
-  font-size: 14px;
-  margin: 8px 0 8px 4px;
+  height: 30px;
+  font-size: 16px;
 }

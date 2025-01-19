@@ -414,30 +414,28 @@ function App() {
           </div>
         </div>
       </div>
-      <div className={style.charactersContainer}>
-        <Char
-          isPlayer={true}
-          playerHP={playerHP}
-          playerFrames={playerFrames}
-          playerFrameIndex={playerFrameIndex}
-          opponentHP={opponentHP}
-          opponentFrames={opponentFrames}
-          opponentFrameIndex={opponentFrameIndex}
-          generatePlayerSrc={generatePlayerSrc}
-          generateOpponentSrc={generateOpponentSrc}
-        />
-        <Char
-          isPlayer={false}
-          playerHP={playerHP}
-          playerFrames={playerFrames}
-          playerFrameIndex={playerFrameIndex}
-          opponentHP={opponentHP}
-          opponentFrames={opponentFrames}
-          opponentFrameIndex={opponentFrameIndex}
-          generatePlayerSrc={generatePlayerSrc}
-          generateOpponentSrc={generateOpponentSrc}
-        />
-      </div>
+      <Char
+        isPlayer={true}
+        playerHP={playerHP}
+        playerFrames={playerFrames}
+        playerFrameIndex={playerFrameIndex}
+        opponentHP={opponentHP}
+        opponentFrames={opponentFrames}
+        opponentFrameIndex={opponentFrameIndex}
+        generatePlayerSrc={generatePlayerSrc}
+        generateOpponentSrc={generateOpponentSrc}
+      />
+      <Char
+        isPlayer={false}
+        playerHP={playerHP}
+        playerFrames={playerFrames}
+        playerFrameIndex={playerFrameIndex}
+        opponentHP={opponentHP}
+        opponentFrames={opponentFrames}
+        opponentFrameIndex={opponentFrameIndex}
+        generatePlayerSrc={generatePlayerSrc}
+        generateOpponentSrc={generateOpponentSrc}
+      />
       <Modal show={modalShow} onHide={handleModalClose}>
         <Modal.Header className='bg-info'>
           <Modal.Title
