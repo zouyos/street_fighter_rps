@@ -484,9 +484,9 @@ export default App;
 // TODO:
 // responsive design:
 // - modal
+// glitch when opponent loses
 // animations
 // bug: unsized icons in history when app reloads
 // best/worst element logic
 // boost and res logic
 // spe atck when draw (btn-lg)
-// resize small icons in history
