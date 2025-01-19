@@ -16,7 +16,7 @@ export default function MoveHistory({
         PLAYER:
         <span className={style.playerIconContainer}>
           {playerHistory
-            .slice(-4)
+            .slice(-3)
             .reverse()
             .map((item, index) => (
               <span key={index} className='icon-inline mx-1'>
@@ -29,7 +29,7 @@ export default function MoveHistory({
         OPPONENT:
         <span className={`${style.opponentIconContainer}`}>
           {opponentHistory
-            .slice(-4)
+            .slice(-3)
             .reverse()
             .map((item, index) => (
               <span key={index} className='icon-inline mx-1'>

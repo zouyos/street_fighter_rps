@@ -8,20 +8,20 @@
 
 .player {
   top: 82%;
-  left: 35%;
+  left: 39.6%;
 }
 
 .opponent {
-  top: 82%;
-  left: 65%;
+  top: 82.5%;
+  left: 60.1%;
 }
 
 .defeatedPlayer {
   top: 82.25%;
-  left: 37%;
+  left: 39.6%;
 }
 
 .defeatedOpponent {
-  top: 83%;
-  left: 68%;
+  top: 83.5%;
+  left: 60.1%;
 }

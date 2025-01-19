@@ -384,9 +384,7 @@ function App() {
             </button>
           )}
         </div>
-        <div
-          className={`text-center p-3 border border-white border-4 rounded rounded-5 ${style.buttonContainer}`}
-        >
+        <div className={style.buttonContainer}>
           <div className={style.signButton}>
             <SignButton
               label={cloneElement(symbolMap['punch'], { size: 20 })}
@@ -394,7 +392,7 @@ function App() {
               onClick={() => handleSymbolClick('punch')}
               game={game}
             />
-            <div>PUNCH</div>
+            <div className='fw-bold'>PUNCH</div>
           </div>
           <div className={style.signButton}>
             <SignButton
@@ -403,7 +401,7 @@ function App() {
               onClick={() => handleSymbolClick('kick')}
               game={game}
             />
-            <div>KICK</div>
+            <div className='fw-bold'>KICK</div>
           </div>
           <div className={style.signButton}>
             <SignButton
@@ -412,7 +410,7 @@ function App() {
               onClick={() => handleSymbolClick('wave')}
               game={game}
             />
-            <div>WAVE</div>
+            <div className='fw-bold'>WAVE</div>
           </div>
         </div>
       </div>

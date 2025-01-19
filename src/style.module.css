@@ -23,7 +23,6 @@
   margin: 3px 0 6px 0;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 2px solid white;
 }
 
 .questionCircle:hover {
@@ -60,6 +59,10 @@
   justify-content: space-evenly;
   background-color: rgba(255, 255, 255, 0.2);
   z-index: 1;
+  text-align: center;
+  border-radius: 30px;
+  padding: 10px;
+  border: white 4px solid;
 }
 
 .signButton {
