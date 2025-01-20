@@ -30,6 +30,10 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.charsContainer {
+  position: relative;
+}
+
 .gameContainer {
   display: flex;
   justify-content: space-between;
@@ -38,18 +42,15 @@
 
 .retryButtonContainer {
   position: absolute;
-  top: 65%;
+  top: 75%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 60px;
-  margin-top: 25px;
+  height: 50px;
   opacity: 75%;
   z-index: 1;
-  padding: 20px;
-  font-size: 30px;
 }
 
 .buttonContainer {

@@ -377,7 +377,7 @@ function App() {
         <div className={style.retryButtonContainer}>
           {!game && (
             <button
-              className='btn btn-lg btn-warning text-center p-3'
+              className='btn btn-warning text-center p-2 fs-5'
               onClick={handleRetryClick}
             >
               Retry?
@@ -414,28 +414,30 @@ function App() {
           </div>
         </div>
       </div>
-      <Char
-        isPlayer={true}
-        playerHP={playerHP}
-        playerFrames={playerFrames}
-        playerFrameIndex={playerFrameIndex}
-        opponentHP={opponentHP}
-        opponentFrames={opponentFrames}
-        opponentFrameIndex={opponentFrameIndex}
-        generatePlayerSrc={generatePlayerSrc}
-        generateOpponentSrc={generateOpponentSrc}
-      />
-      <Char
-        isPlayer={false}
-        playerHP={playerHP}
-        playerFrames={playerFrames}
-        playerFrameIndex={playerFrameIndex}
-        opponentHP={opponentHP}
-        opponentFrames={opponentFrames}
-        opponentFrameIndex={opponentFrameIndex}
-        generatePlayerSrc={generatePlayerSrc}
-        generateOpponentSrc={generateOpponentSrc}
-      />
+      <div className={style.charsContainer}>
+        <Char
+          isPlayer={true}
+          playerHP={playerHP}
+          playerFrames={playerFrames}
+          playerFrameIndex={playerFrameIndex}
+          opponentHP={opponentHP}
+          opponentFrames={opponentFrames}
+          opponentFrameIndex={opponentFrameIndex}
+          generatePlayerSrc={generatePlayerSrc}
+          generateOpponentSrc={generateOpponentSrc}
+        />
+        <Char
+          isPlayer={false}
+          playerHP={playerHP}
+          playerFrames={playerFrames}
+          playerFrameIndex={playerFrameIndex}
+          opponentHP={opponentHP}
+          opponentFrames={opponentFrames}
+          opponentFrameIndex={opponentFrameIndex}
+          generatePlayerSrc={generatePlayerSrc}
+          generateOpponentSrc={generateOpponentSrc}
+        />
+      </div>
       <Modal show={modalShow} onHide={handleModalClose}>
         <Modal.Header className='bg-info'>
           <Modal.Title
