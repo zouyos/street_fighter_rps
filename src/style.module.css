@@ -31,6 +31,7 @@
 }
 
 .charsContainer {
+  margin-top: auto;
   position: relative;
 }
 
@@ -42,7 +43,7 @@
 
 .retryButtonContainer {
   position: absolute;
-  top: 75%;
+  top: 72.5%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
