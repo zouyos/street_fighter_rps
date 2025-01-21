@@ -357,7 +357,7 @@ function App() {
         <div onClick={handleModalShow}>
           <QuestionCircle
             className={`rounded-pill ${style.questionCircle}`}
-            size={50}
+            size={30}
             color='#ffffff'
           />
         </div>
@@ -487,7 +487,7 @@ export default App;
 // responsive design:
 // - modal
 // glitch when opponent loses
-// animations
+// animations (fix player victory frame)
 // bug: unsized icons in history when app reloads
 // best/worst element logic
 // boost and res logic

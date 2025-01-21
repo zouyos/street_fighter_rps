@@ -43,7 +43,7 @@
 
 .retryButtonContainer {
   position: absolute;
-  top: 72.5%;
+  top: 75%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
@@ -63,7 +63,7 @@
   z-index: 1;
   text-align: center;
   border-radius: 30px;
-  padding: 10px;
+  padding: 10px 5px;
   border: white 4px solid;
 }
 
@@ -96,8 +96,8 @@
 }
 
 .smallIcon {
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
 }
 
 .overlay {

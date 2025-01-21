@@ -7,21 +7,21 @@
 }
 
 .player {
-  bottom: 5%;
+  bottom: 2%;
   left: 25%;
 }
 
 .opponent {
-  bottom: 4.75%;
+  bottom: 1.75%;
   right: 25%;
 }
 
 .defeatedPlayer {
-  bottom: 5%;
+  bottom: 2%;
   left: 25%;
 }
 
 .defeatedOpponent {
-  bottom: 3.75%;
+  bottom: 0;
   right: 25%;
 }
