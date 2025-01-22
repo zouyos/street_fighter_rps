@@ -149,12 +149,6 @@ function App() {
     ),
   };
 
-  // const elementMap: Record<string, string> = {
-  //   punch: 'red',
-  //   kick: 'green',
-  //   wave: 'blue',
-  // };
-
   const handleSymbolClick = (symbol: string) => {
     if (!game) return;
     const rand = Math.floor(Math.random() * 3);
@@ -489,6 +483,7 @@ export default App;
 // glitch when opponent loses
 // animations (fix player victory frame)
 // bug: unsized icons in history when app reloads
-// best/worst element logic
 // boost and res logic
-// spe atck when draw (btn-lg)
+// input prompt when draw
+// spe move logic (win 3 times with your char move)
+// combo logic (x2 x3) and combo breaker
