@@ -2,11 +2,21 @@
   color: black;
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 20px;
-  padding: 10px;
+  padding: 15px;
   width: 204px;
   height: fit-content;
   z-index: 1;
-  border: white 4px solid;
+  position: fixed;
+  bottom: 15px;
+  left: 15px;
+}
+
+@media (min-width: 1024px) {
+  .history {
+    position: fixed;
+    top: 80%;
+    left: 15px;
+  }
 }
 
 .historyLabel {

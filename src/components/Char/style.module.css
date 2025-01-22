@@ -3,25 +3,24 @@
 .defeatedPlayer,
 .defeatedOpponent {
   position: absolute;
-  transform: translateY(-15%);
 }
 
 .player {
   bottom: 2%;
-  left: 25%;
+  left: 30%;
 }
 
 .opponent {
   bottom: 1.75%;
-  right: 25%;
+  right: 30%;
 }
 
 .defeatedPlayer {
   bottom: 2%;
-  left: 25%;
+  left: 30%;
 }
 
 .defeatedOpponent {
   bottom: 0;
-  right: 25%;
+  right: 30%;
 }

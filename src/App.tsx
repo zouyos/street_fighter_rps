@@ -347,15 +347,12 @@ function App() {
         <Gauge isPlayer label='PLAYER' percent={playerHP} />
         <Gauge label='OPPONENT' percent={opponentHP} />
       </div>
-      <div className='d-flex justify-content-center'>
-        <div onClick={handleModalShow}>
-          <QuestionCircle
-            className={`rounded-pill ${style.questionCircle}`}
-            size={30}
-            color='#ffffff'
-          />
-        </div>
-      </div>
+      <QuestionCircle
+        className={`rounded-pill ${style.questionCircle}`}
+        size={35}
+        color='#ffffff'
+        onClick={handleModalShow}
+      />
       <ResultString
         game={game}
         selectedSymbol={selectedSymbol}
@@ -368,16 +365,6 @@ function App() {
           playerHistory={playerHistory}
           opponentHistory={opponentHistory}
         />
-        <div className={style.retryButtonContainer}>
-          {!game && (
-            <button
-              className='btn btn-warning text-center p-2 fs-5'
-              onClick={handleRetryClick}
-            >
-              Retry?
-            </button>
-          )}
-        </div>
         <div className={style.buttonContainer}>
           <div className={style.signButton}>
             <SignButton
@@ -386,7 +373,7 @@ function App() {
               onClick={() => handleSymbolClick('punch')}
               game={game}
             />
-            <div className='fw-bold'>PUNCH</div>
+            <div className='fw-bold text-black'>PUNCH</div>
           </div>
           <div className={style.signButton}>
             <SignButton
@@ -395,7 +382,7 @@ function App() {
               onClick={() => handleSymbolClick('kick')}
               game={game}
             />
-            <div className='fw-bold'>KICK</div>
+            <div className='fw-bold text-black'>KICK</div>
           </div>
           <div className={style.signButton}>
             <SignButton
@@ -404,9 +391,19 @@ function App() {
               onClick={() => handleSymbolClick('wave')}
               game={game}
             />
-            <div className='fw-bold'>WAVE</div>
+            <div className='fw-bold text-black'>WAVE</div>
           </div>
         </div>
+      </div>
+      <div className={style.retryButtonContainer}>
+        {!game && (
+          <button
+            className='btn btn-warning text-center p-3 fs-5'
+            onClick={handleRetryClick}
+          >
+            Retry?
+          </button>
+        )}
       </div>
       <div className={style.charsContainer}>
         <Char
@@ -480,6 +477,7 @@ export default App;
 // TODO:
 // responsive design:
 // - modal
+// change round count
 // glitch when opponent loses
 // animations (fix player victory frame)
 // bug: unsized icons in history when app reloads

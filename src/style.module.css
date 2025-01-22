@@ -23,10 +23,14 @@
   margin: 3px 0 6px 0;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: absolute;
+  top: 25vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .questionCircle:hover {
-  transform: translate(0, -5%);
+  transform: translate(-50%, -60%);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -35,23 +39,18 @@
   position: relative;
 }
 
+@media (min-width: 1024px) {
+  .charsContainer {
+    margin-top: 80vh;
+  }
+}
+
 .gameContainer {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-}
-
-.retryButtonContainer {
-  position: absolute;
-  top: 75%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 50px;
-  opacity: 75%;
-  z-index: 1;
+  align-items: flex-start;
+  position: relative;
+  width: 100%;
 }
 
 .buttonContainer {
@@ -59,12 +58,23 @@
   height: fit-content;
   display: flex;
   justify-content: space-evenly;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.3);
   z-index: 1;
   text-align: center;
   border-radius: 30px;
   padding: 10px 5px;
   border: white 4px solid;
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+}
+
+@media (min-width: 1024px) {
+  .buttonContainer {
+    position: fixed;
+    top: 80%;
+    right: 15px;
+  }
 }
 
 .signButton {
@@ -83,6 +93,13 @@
   cursor: not-allowed;
 }
 
+.signButtonLabel {
+  color: white;
+  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black,
+    2px 2px 0 black;
+  letter-spacing: 0.2em;
+}
+
 .wave {
   width: 40px;
   height: 40px;
@@ -98,6 +115,19 @@
 .smallIcon {
   width: 20px;
   height: 20px;
+}
+
+.retryButtonContainer {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  opacity: 65%;
+  z-index: 1;
 }
 
 .overlay {
