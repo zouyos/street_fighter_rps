@@ -41,7 +41,7 @@
 
 @media (min-width: 1024px) {
   .charsContainer {
-    margin-top: 80vh;
+    margin-top: 75vh;
   }
 }
 
@@ -72,7 +72,7 @@
 @media (min-width: 1024px) {
   .buttonContainer {
     position: fixed;
-    top: 82%;
+    top: 80%;
     right: 15px;
   }
 }

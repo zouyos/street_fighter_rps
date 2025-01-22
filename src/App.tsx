@@ -479,9 +479,10 @@ export default App;
 // - modal
 // change round count
 // glitch when opponent loses
-// animations (fix player victory frame)
+// animations
 // bug: unsized icons in history when app reloads
+// add chun li
 // boost and res logic
 // input prompt when draw
-// spe move logic (win 3 times with your char move)
 // combo logic (x2 x3) and combo breaker
+// spe move logic (win 3 times with your char move)
