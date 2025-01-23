@@ -79,7 +79,7 @@
 
 .signButton {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  opacity: 0.8;
+  /* opacity: 0.8; */
 }
 
 .signButton:hover {
@@ -163,4 +163,12 @@
   100% {
     transform: translate(-50%, -50%) rotate(360deg);
   }
+}
+
+.modalCloseButton {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  right: 15px;
 }

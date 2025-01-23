@@ -49,8 +49,8 @@ import opponentVictoryFrame4 from './assets/chars/opponent/victory/opponent_vict
 import opponentDefeatFrame1 from './assets/chars/opponent/defeat/opponent_defeat_frame_01.png';
 import opponentDefeatFrame2 from './assets/chars/opponent/defeat/opponent_defeat_frame_02.png';
 import Char from './components/Char/Char';
-import { Button, Modal } from 'react-bootstrap';
-import { ArrowRepeat, QuestionCircle } from 'react-bootstrap-icons';
+import { Modal } from 'react-bootstrap';
+import { ArrowRepeat, QuestionCircle, XCircle } from 'react-bootstrap-icons';
 import ResultString from './components/ResultString/ResultString';
 
 function App() {
@@ -59,7 +59,9 @@ function App() {
   const [resultString, setResultString] = useState('');
   const [playerHP, setPlayerHP] = useState(100);
   const [opponentHP, setOpponentHP] = useState(100);
+  const [count, setCount] = useState(1);
   const [round, setRound] = useState(1);
+  const [playerWins, setPlayerWins] = useState(0);
   const [game, setGame] = useState(true);
   const [playerHistory, setPlayerHistory] = useState<(JSX.Element | string)[]>(
     []
@@ -154,7 +156,7 @@ function App() {
     const rand = Math.floor(Math.random() * 3);
     setSelectedSymbol(symbol);
     setOpponentChoice(Object.keys(symbolMap)[rand]);
-    setRound((prev) => prev + 1);
+    setCount((prev) => prev + 1);
   };
 
   const addToPlayerHistory = (symbol: string) => {
@@ -182,7 +184,8 @@ function App() {
     setOpponentHistory([]);
     setPlayerHP(100);
     setOpponentHP(100);
-    setRound(1);
+    setCount(1);
+    setRound((prev) => prev + 1);
     setSelectedSymbol(undefined);
     setOpponentChoice(undefined);
     setResultString('');
@@ -235,16 +238,17 @@ function App() {
         setResultString('You lose 20 HP');
       }
     }
-  }, [round]);
+  }, [count]);
 
   useEffect(() => {
     if (playerHP <= 0) {
       setGame(false);
-      setRound((prev) => prev - 1);
-      setResultString('GAME OVER');
+      setCount((prev) => prev - 1);
+      setResultString('YOU LOSE');
     } else if (opponentHP <= 0) {
       setGame(false);
-      setRound((prev) => prev - 1);
+      setCount((prev) => prev - 1);
+      setPlayerWins((prev) => prev + 1);
       setResultString(playerHP === 100 ? 'YOU WIN! PERFECT' : 'YOU WIN!');
     }
   }, [playerHP, opponentHP]);
@@ -344,8 +348,19 @@ function App() {
       )}
       <h1 className='text-center m-0 text-black fw-bold'>ROUND {round}</h1>
       <div className='d-flex justify-content-between'>
-        <Gauge isPlayer label='PLAYER' percent={playerHP} />
-        <Gauge label='OPPONENT' percent={opponentHP} />
+        <Gauge
+          isPlayer
+          label='PLAYER'
+          percent={playerHP}
+          playerWins={playerWins}
+        />
+        <Gauge
+          label='OPPONENT'
+          percent={opponentHP}
+          round={round}
+          playerWins={playerWins}
+          game={game}
+        />
       </div>
       <QuestionCircle
         className={`rounded-pill ${style.questionCircle}`}
@@ -429,45 +444,62 @@ function App() {
           generateOpponentSrc={generateOpponentSrc}
         />
       </div>
-      <Modal show={modalShow} onHide={handleModalClose}>
-        <Modal.Header className='bg-info'>
+      <Modal show={modalShow} onHide={handleModalClose} centered>
+        <Modal.Header className='bg-info position-relative'>
           <Modal.Title
-            className='fs-4 text-light text-center'
+            className='fs-4 text-light text-center w-100'
             style={{ margin: '0 auto' }}
           >
             How To Play?
           </Modal.Title>
+          <XCircle
+            onClick={handleModalClose}
+            size={26}
+            color='white'
+            className={style.modalCloseButton}
+          />
         </Modal.Header>
         <Modal.Body className='text-center'>
           <p>
-            <img className={style.icon} src={punch_b} alt='Punch Icon' /> beats{' '}
-            <img className={style.icon} src={wave_b} alt='Wave Icon' />
+            <img
+              className={`${style.icon} img-fluid`}
+              src={punch_b}
+              alt='Punch Icon'
+            />{' '}
+            beats{' '}
+            <img
+              className={`${style.icon} img-fluid ms-1`}
+              src={wave_b}
+              alt='Wave Icon'
+            />
           </p>
           <p>
-            <img className={style.icon} src={kick_b} alt='Kick Icon' /> beats{' '}
-            <img className={style.icon} src={punch_b} alt='Punch Icon' />
+            <img
+              className={`${style.icon} img-fluid`}
+              src={kick_b}
+              alt='Kick Icon'
+            />{' '}
+            beats{' '}
+            <img
+              className={`${style.icon} img-fluid`}
+              src={punch_b}
+              alt='Punch Icon'
+            />
           </p>
           <p>
-            <img className={style.icon} src={wave_b} alt='Wave Icon' /> beats{' '}
-            <img className={style.icon} src={kick_b} alt='Kick Icon' />
-          </p>
-          <p>
-            Remove all 100 HP of your opponent by choosing a sign each round
-          </p>
-          <p>
-            When there is a draw, a random sign quickly appears, the first one
-            to click the right sign wins and deals 40 DMG
+            <img
+              className={`${style.icon} img-fluid me-2`}
+              src={wave_b}
+              alt='Wave Icon'
+            />{' '}
+            beats{' '}
+            <img
+              className={`${style.icon} img-fluid`}
+              src={kick_b}
+              alt='Kick Icon'
+            />
           </p>
         </Modal.Body>
-        <Modal.Footer>
-          <Button
-            variant='secondary'
-            onClick={handleModalClose}
-            style={{ margin: '0 auto' }}
-          >
-            Close
-          </Button>
-        </Modal.Footer>
       </Modal>
     </div>
   );
@@ -477,7 +509,6 @@ export default App;
 // TODO:
 // responsive design:
 // - modal
-// change round count
 // glitch when opponent loses
 // animations
 // bug: unsized icons in history when app reloads
