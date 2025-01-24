@@ -24,7 +24,7 @@ export default function Gauge({
         <span className={`bg-danger`} style={{ width: `${percent}%` }}></span>
         <span></span>
       </div>
-      <h5 className={`text-black ${!isPlayer ? 'text-end' : ''}`}>
+      <h5 className={`${!isPlayer ? 'text-end' : ''}`}>
         {isPlayer
           ? `WINS: ${playerWins}`
           : `WINS: ${

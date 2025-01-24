@@ -402,7 +402,7 @@ function App() {
       <div className={style.retryButtonContainer}>
         {!game && (
           <button
-            className='btn btn-warning text-center p-3 fs-5'
+            className='btn btn-warning text-center fs-5'
             onClick={handleRetryClick}
           >
             Retry?
