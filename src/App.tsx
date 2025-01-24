@@ -139,15 +139,15 @@ function App() {
     wave: <img className={style.wave} src={wave} alt='Wave Icon' />,
   };
 
-  const filledSymbolMap: Record<string, JSX.Element> = {
+  const smallSymbolMap: Record<string, JSX.Element> = {
     punch: (
-      <img className={style.smallIcon} src={punch_b} alt='Filled Punch Icon' />
+      <img className={style.smallIcon} src={punch_b} alt='Small Punch Icon' />
     ),
     kick: (
-      <img className={style.smallIcon} src={kick_b} alt='Filled Kick Icon' />
+      <img className={style.smallIcon} src={kick_b} alt='Small Kick Icon' />
     ),
     wave: (
-      <img className={style.smallIcon} src={wave_b} alt='Filled Wave Icon' />
+      <img className={style.smallIcon} src={wave_b} alt='Small Wave Icon' />
     ),
   };
 
@@ -160,17 +160,17 @@ function App() {
   };
 
   const addToPlayerHistory = (symbol: string) => {
-    const element = filledSymbolMap[symbol];
+    const element = smallSymbolMap[symbol];
     setPlayerHistory((prev) => [
       ...prev,
       typeof element === 'string'
         ? element
-        : cloneElement(filledSymbolMap[symbol], { className: style.smallIcon }),
+        : cloneElement(smallSymbolMap[symbol], { className: style.smallIcon }),
     ]);
   };
 
   const addToOpponentHistory = (symbol: string) => {
-    const element = filledSymbolMap[symbol];
+    const element = smallSymbolMap[symbol];
     setOpponentHistory((prev) => [
       ...prev,
       typeof element === 'string'
@@ -242,10 +242,12 @@ function App() {
 
   useEffect(() => {
     if (playerHP <= 0) {
+      setPlayerFrameIndex(0);
       setGame(false);
       setCount((prev) => prev - 1);
       setResultString('YOU LOSE');
     } else if (opponentHP <= 0) {
+      setOpponentFrameIndex(0);
       setGame(false);
       setCount((prev) => prev - 1);
       setPlayerWins((prev) => prev + 1);
@@ -283,19 +285,6 @@ function App() {
         clearInterval(opponentAnimation);
       };
     } else if (playerHP <= 0) {
-      const playerAnimation = setInterval(() => {
-        setPlayerFrameIndex((prev) => (prev + 1) % playerFrames[2].length);
-      }, animationInterval);
-
-      const opponentAnimation = setInterval(() => {
-        setOpponentFrameIndex((prev) => (prev + 1) % opponentFrames[1].length);
-      }, animationInterval);
-
-      return () => {
-        clearInterval(playerAnimation);
-        clearInterval(opponentAnimation);
-      };
-    } else {
       const playerAnimation = setInterval(() => {
         setPlayerFrameIndex((prev) => (prev + 1) % playerFrames[2].length);
       }, animationInterval);
@@ -507,13 +496,10 @@ function App() {
 
 export default App;
 // TODO:
-// responsive design:
-// - modal
-// glitch when opponent loses
 // animations
-// bug: unsized icons in history when app reloads
 // add chun li
 // boost and res logic
 // input prompt when draw
 // combo logic (x2 x3) and combo breaker
+// modal how to play + make it responsive
 // spe move logic (win 3 times with your char move)

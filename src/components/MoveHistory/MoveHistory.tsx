@@ -10,34 +10,37 @@ export default function MoveHistory({
   opponentHistory,
 }: MoveHistoryProps) {
   return (
-    <div className={style.history}>
-      <p className={style.historyLabel}>HISTORY:</p>
-      <div className={`${style.playerHistory}`}>
-        PLAYER:
-        <span className={style.playerIconContainer}>
-          {playerHistory
-            .slice(-3)
-            .reverse()
-            .map((item, index) => (
-              <span key={index} className='icon-inline mx-1'>
-                {item}
-              </span>
-            ))}
-        </span>
+    playerHistory &&
+    opponentHistory && (
+      <div className={style.history}>
+        <p className={style.historyLabel}>HISTORY:</p>
+        <div className={`${style.playerHistory}`}>
+          PLAYER:
+          <span className={style.playerIconContainer}>
+            {playerHistory
+              .slice(-3)
+              .reverse()
+              .map((item, index) => (
+                <span key={index} className='icon-inline mx-1'>
+                  {item}
+                </span>
+              ))}
+          </span>
+        </div>
+        <div className={`${style.opponentHistory}`}>
+          OPPONENT:
+          <span className={`${style.opponentIconContainer}`}>
+            {opponentHistory
+              .slice(-3)
+              .reverse()
+              .map((item, index) => (
+                <span key={index} className='icon-inline mx-1'>
+                  {item}
+                </span>
+              ))}
+          </span>
+        </div>
       </div>
-      <div className={`${style.opponentHistory}`}>
-        OPPONENT:
-        <span className={`${style.opponentIconContainer}`}>
-          {opponentHistory
-            .slice(-3)
-            .reverse()
-            .map((item, index) => (
-              <span key={index} className='icon-inline mx-1'>
-                {item}
-              </span>
-            ))}
-        </span>
-      </div>
-    </div>
+    )
   );
 }
