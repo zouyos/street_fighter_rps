@@ -38,6 +38,13 @@ import playerDefeatFrame5 from './assets/chars/player/defeat/player_defeat_frame
 import playerDefeatFrame6 from './assets/chars/player/defeat/player_defeat_frame_06.png';
 import playerDefeatFrame7 from './assets/chars/player/defeat/player_defeat_frame_07.png';
 import playerDefeatFrame8 from './assets/chars/player/defeat/player_defeat_frame_08.png';
+import playerHadoukenFrame1 from './assets/chars/player/hadouken/player_hadouken_frame_01.png';
+import playerHadoukenFrame2 from './assets/chars/player/hadouken/player_hadouken_frame_02.png';
+import playerHadoukenFrame3 from './assets/chars/player/hadouken/player_hadouken_frame_03.png';
+import playerHadoukenFrame4 from './assets/chars/player/hadouken/player_hadouken_frame_04.png';
+import playerHadoukenFrame5 from './assets/chars/player/hadouken/player_hadouken_frame_05.png';
+import playerHadoukenFrame6 from './assets/chars/player/hadouken/player_hadouken_frame_06.png';
+import playerHadoukenFrame7 from './assets/chars/player/hadouken/player_hadouken_frame_07.png';
 import opponentStanceFrame1 from './assets/chars/opponent/stance/opponent_stance_frame_01.png';
 import opponentStanceFrame2 from './assets/chars/opponent/stance/opponent_stance_frame_02.png';
 import opponentStanceFrame3 from './assets/chars/opponent/stance/opponent_stance_frame_03.png';
@@ -48,6 +55,15 @@ import opponentVictoryFrame3 from './assets/chars/opponent/victory/opponent_vict
 import opponentVictoryFrame4 from './assets/chars/opponent/victory/opponent_victory_frame_04.png';
 import opponentDefeatFrame1 from './assets/chars/opponent/defeat/opponent_defeat_frame_01.png';
 import opponentDefeatFrame2 from './assets/chars/opponent/defeat/opponent_defeat_frame_02.png';
+import opponentShoryukenFrame1 from './assets/chars/opponent/shoryuken/opponent_shoryuken_frame_01.png';
+import opponentShoryukenFrame2 from './assets/chars/opponent/shoryuken/opponent_shoryuken_frame_02.png';
+import opponentShoryukenFrame3 from './assets/chars/opponent/shoryuken/opponent_shoryuken_frame_03.png';
+import opponentShoryukenFrame4 from './assets/chars/opponent/shoryuken/opponent_shoryuken_frame_04.png';
+import opponentShoryukenFrame5 from './assets/chars/opponent/shoryuken/opponent_shoryuken_frame_05.png';
+import opponentShoryukenFrame6 from './assets/chars/opponent/shoryuken/opponent_shoryuken_frame_06.png';
+import opponentShoryukenFrame7 from './assets/chars/opponent/shoryuken/opponent_shoryuken_frame_07.png';
+import opponentShoryukenFrame8 from './assets/chars/opponent/shoryuken/opponent_shoryuken_frame_08.png';
+import opponentShoryukenFrame9 from './assets/chars/opponent/shoryuken/opponent_shoryuken_frame_09.png';
 import Char from './components/Char/Char';
 import { Modal } from 'react-bootstrap';
 import { ArrowRepeat, QuestionCircle, XCircle } from 'react-bootstrap-icons';
@@ -62,6 +78,7 @@ function App() {
   const [count, setCount] = useState(1);
   const [round, setRound] = useState(1);
   const [playerWins, setPlayerWins] = useState(0);
+  const [opponentWins, setOpponentWins] = useState(0);
   const [game, setGame] = useState(true);
   const [playerHistory, setPlayerHistory] = useState<(JSX.Element | string)[]>(
     []
@@ -115,6 +132,15 @@ function App() {
       playerDefeatFrame7,
       playerDefeatFrame8,
     ],
+    [
+      playerHadoukenFrame1,
+      playerHadoukenFrame2,
+      playerHadoukenFrame3,
+      playerHadoukenFrame4,
+      playerHadoukenFrame5,
+      playerHadoukenFrame6,
+      playerHadoukenFrame7,
+    ],
   ];
 
   const opponentFrames = [
@@ -131,6 +157,17 @@ function App() {
       opponentVictoryFrame4,
     ],
     [opponentDefeatFrame1, opponentDefeatFrame2],
+    [
+      opponentShoryukenFrame1,
+      opponentShoryukenFrame2,
+      opponentShoryukenFrame3,
+      opponentShoryukenFrame4,
+      opponentShoryukenFrame5,
+      opponentShoryukenFrame6,
+      opponentShoryukenFrame7,
+      opponentShoryukenFrame8,
+      opponentShoryukenFrame9,
+    ],
   ];
 
   const symbolMap: Record<string, JSX.Element> = {
@@ -152,7 +189,9 @@ function App() {
   };
 
   const handleSymbolClick = (symbol: string) => {
-    if (!game) return;
+    if (!game) {
+      return;
+    }
     const rand = Math.floor(Math.random() * 3);
     setSelectedSymbol(symbol);
     setOpponentChoice(Object.keys(symbolMap)[rand]);
@@ -194,9 +233,17 @@ function App() {
     setOpponentFrameIndex(0);
   };
 
-  const generatePlayerSrc = (frames: string[][], index: number) => {
+  const generatePlayerSrc = (
+    frames: string[][],
+    index: number,
+    selectedSymbol?: string
+  ) => {
     if (game) {
-      return frames[0][index];
+      if (selectedSymbol === 'wave') {
+        return frames[3][index];
+      } else {
+        return frames[0][index];
+      }
     } else if (opponentHP <= 0) {
       return frames[1][index];
     } else {
@@ -204,9 +251,17 @@ function App() {
     }
   };
 
-  const generateOpponentSrc = (frames: string[][], index: number) => {
+  const generateOpponentSrc = (
+    frames: string[][],
+    index: number,
+    opponentChoice?: string
+  ) => {
     if (game) {
-      return frames[0][index];
+      if (opponentChoice === 'punch') {
+        return frames[3][index];
+      } else {
+        return frames[0][index];
+      }
     } else if (playerHP <= 0) {
       return frames[1][index];
     } else {
@@ -242,35 +297,94 @@ function App() {
 
   useEffect(() => {
     if (playerHP <= 0) {
+      setSelectedSymbol(undefined);
+      setOpponentChoice(undefined);
       setPlayerFrameIndex(0);
       setGame(false);
       setCount((prev) => prev - 1);
+      setOpponentWins((prev) => prev + 1);
       setResultString('YOU LOSE');
     } else if (opponentHP <= 0) {
+      setSelectedSymbol(undefined);
+      setOpponentChoice(undefined);
       setOpponentFrameIndex(0);
       setGame(false);
       setCount((prev) => prev - 1);
       setPlayerWins((prev) => prev + 1);
       setResultString(playerHP === 100 ? 'YOU WIN! PERFECT' : 'YOU WIN!');
     }
-  }, [playerHP, opponentHP]);
+  }, [playerHP, opponentHP, selectedSymbol]);
+
+  useEffect(() => {
+    if (game) {
+      if (selectedSymbol) {
+        setPlayerFrameIndex(0);
+      }
+      if (opponentChoice) {
+        setOpponentFrameIndex(0);
+      }
+    }
+  }, [
+    game,
+    selectedSymbol,
+    opponentChoice,
+    setPlayerFrameIndex,
+    setOpponentFrameIndex,
+  ]);
 
   useEffect(() => {
     const animationInterval = 120;
 
     if (game) {
-      const playerAnimation = setInterval(() => {
-        setPlayerFrameIndex((prev) => (prev + 1) % playerFrames[0].length);
-      }, animationInterval);
+      if (selectedSymbol === 'wave') {
+        const playerAnimation = setInterval(() => {
+          setPlayerFrameIndex((prev) => (prev + 1) % playerFrames[3].length);
+        }, animationInterval);
 
-      const opponentAnimation = setInterval(() => {
-        setOpponentFrameIndex((prev) => (prev + 1) % opponentFrames[0].length);
-      }, animationInterval);
+        // replace by opponent hit animation
+        const opponentAnimation = setInterval(() => {
+          setOpponentFrameIndex(
+            (prev) => (prev + 1) % opponentFrames[0].length
+          );
+        }, animationInterval);
+        return () => {
+          clearInterval(playerAnimation);
+          clearInterval(opponentAnimation);
+        };
+      }
+      if (opponentChoice === 'punch') {
+        // replace by player hit animation
+        const playerAnimation = setInterval(() => {
+          setPlayerFrameIndex((prev) => (prev + 1) % playerFrames[0].length);
+        }, animationInterval);
 
-      return () => {
-        clearInterval(playerAnimation);
-        clearInterval(opponentAnimation);
-      };
+        const opponentAnimation = setInterval(() => {
+          setOpponentFrameIndex(
+            (prev) => (prev + 1) % opponentFrames[3].length
+          );
+        }, animationInterval);
+        return () => {
+          clearInterval(playerAnimation);
+          clearInterval(opponentAnimation);
+        };
+
+        // reste après
+      } else {
+        const playerAnimation = setInterval(() => {
+          setPlayerFrameIndex((prev) => (prev + 1) % playerFrames[0].length);
+        }, animationInterval);
+
+        const opponentAnimation = setInterval(() => {
+          setOpponentFrameIndex(
+            (prev) => (prev + 1) % opponentFrames[0].length
+          );
+        }, animationInterval);
+
+        return () => {
+          clearInterval(playerAnimation);
+          clearInterval(opponentAnimation);
+        };
+      }
     } else if (opponentHP <= 0) {
       const playerAnimation = setInterval(() => {
         setPlayerFrameIndex((prev) => (prev + 1) % playerFrames[1].length);
@@ -344,11 +458,10 @@ function App() {
           playerWins={playerWins}
         />
         <Gauge
+          isPlayer={false}
           label='OPPONENT'
           percent={opponentHP}
-          round={round}
-          playerWins={playerWins}
-          game={game}
+          opponentWins={opponentWins}
         />
       </div>
       <QuestionCircle
@@ -412,24 +525,20 @@ function App() {
       <div className={style.charsContainer}>
         <Char
           isPlayer={true}
-          playerHP={playerHP}
           playerFrames={playerFrames}
           playerFrameIndex={playerFrameIndex}
-          opponentHP={opponentHP}
           opponentFrames={opponentFrames}
           opponentFrameIndex={opponentFrameIndex}
+          selectedSymbol={selectedSymbol}
           generatePlayerSrc={generatePlayerSrc}
-          generateOpponentSrc={generateOpponentSrc}
         />
         <Char
           isPlayer={false}
-          playerHP={playerHP}
           playerFrames={playerFrames}
           playerFrameIndex={playerFrameIndex}
-          opponentHP={opponentHP}
           opponentFrames={opponentFrames}
           opponentFrameIndex={opponentFrameIndex}
-          generatePlayerSrc={generatePlayerSrc}
+          opponentChoice={opponentChoice}
           generateOpponentSrc={generateOpponentSrc}
         />
       </div>

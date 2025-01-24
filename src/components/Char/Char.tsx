@@ -2,52 +2,58 @@ import style from './style.module.css';
 
 type CharProps = {
   isPlayer: boolean;
-  playerHP?: number;
   playerFrames: string[][];
   playerFrameIndex: number;
-  opponentHP?: number;
   opponentFrames: string[][];
   opponentFrameIndex: number;
-  generatePlayerSrc: (frames: string[][], index: number) => string;
-  generateOpponentSrc: (frames: string[][], index: number) => string;
+  selectedSymbol?: string;
+  opponentChoice?: string;
+  generatePlayerSrc?: (
+    frames: string[][],
+    index: number,
+    selectedSymbol?: string
+  ) => string;
+  generateOpponentSrc?: (
+    frames: string[][],
+    index: number,
+    opponentChoice?: string
+  ) => string;
 };
 
 export default function Char({
   isPlayer,
-  playerHP,
   playerFrames,
   playerFrameIndex,
-  opponentHP,
   opponentFrames,
   opponentFrameIndex,
+  selectedSymbol,
+  opponentChoice,
   generatePlayerSrc,
   generateOpponentSrc,
 }: CharProps) {
   const frames = isPlayer ? playerFrames : opponentFrames;
   const frameIndex = isPlayer ? playerFrameIndex : opponentFrameIndex;
-  const hp = isPlayer ? playerHP : opponentHP;
-  const generateSrc = isPlayer ? generatePlayerSrc : generateOpponentSrc;
 
   function generateClassName() {
-    if (hp && hp > 0) {
-      if (isPlayer) {
-        return style.player;
-      } else {
-        return style.opponent;
-      }
+    if (isPlayer) {
+      return style.player;
     } else {
-      if (isPlayer) {
-        return style.defeatedPlayer;
-      } else {
-        return style.defeatedOpponent;
-      }
+      return style.opponent;
     }
   }
 
   return (
     <div className={generateClassName()}>
       <img
-        src={generateSrc(frames, frameIndex)}
+        src={
+          isPlayer
+            ? generatePlayerSrc && selectedSymbol
+              ? generatePlayerSrc(frames, frameIndex, selectedSymbol)
+              : generatePlayerSrc && generatePlayerSrc(frames, frameIndex)
+            : generateOpponentSrc && opponentChoice
+            ? generateOpponentSrc(frames, frameIndex, opponentChoice)
+            : generateOpponentSrc && generateOpponentSrc(frames, frameIndex)
+        }
         alt={isPlayer ? 'Player Animation' : 'Opponent Animation'}
       />
     </div>
