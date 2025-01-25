@@ -15,8 +15,6 @@ import playerStanceFrame3 from './assets/chars/player/stance/player_stance_frame
 import playerStanceFrame4 from './assets/chars/player/stance/player_stance_frame_04.png';
 import playerStanceFrame5 from './assets/chars/player/stance/player_stance_frame_05.png';
 import playerStanceFrame6 from './assets/chars/player/stance/player_stance_frame_06.png';
-import playerStanceFrame7 from './assets/chars/player/stance/player_stance_frame_07.png';
-import playerStanceFrame8 from './assets/chars/player/stance/player_stance_frame_08.png';
 import playerVictoryFrame1 from './assets/chars/player/victory/player_victory_frame_01.png';
 import playerVictoryFrame2 from './assets/chars/player/victory/player_victory_frame_02.png';
 import playerVictoryFrame3 from './assets/chars/player/victory/player_victory_frame_03.png';
@@ -26,18 +24,7 @@ import playerVictoryFrame6 from './assets/chars/player/victory/player_victory_fr
 import playerVictoryFrame7 from './assets/chars/player/victory/player_victory_frame_07.png';
 import playerVictoryFrame8 from './assets/chars/player/victory/player_victory_frame_08.png';
 import playerVictoryFrame9 from './assets/chars/player/victory/player_victory_frame_09.png';
-import playerVictoryFrame10 from './assets/chars/player/victory/player_victory_frame_10.png';
-import playerVictoryFrame11 from './assets/chars/player/victory/player_victory_frame_11.png';
-import playerVictoryFrame12 from './assets/chars/player/victory/player_victory_frame_12.png';
-import playerVictoryFrame13 from './assets/chars/player/victory/player_victory_frame_13.png';
 import playerDefeatFrame1 from './assets/chars/player/defeat/player_defeat_frame_01.png';
-import playerDefeatFrame2 from './assets/chars/player/defeat/player_defeat_frame_02.png';
-import playerDefeatFrame3 from './assets/chars/player/defeat/player_defeat_frame_03.png';
-import playerDefeatFrame4 from './assets/chars/player/defeat/player_defeat_frame_04.png';
-import playerDefeatFrame5 from './assets/chars/player/defeat/player_defeat_frame_05.png';
-import playerDefeatFrame6 from './assets/chars/player/defeat/player_defeat_frame_06.png';
-import playerDefeatFrame7 from './assets/chars/player/defeat/player_defeat_frame_07.png';
-import playerDefeatFrame8 from './assets/chars/player/defeat/player_defeat_frame_08.png';
 import playerHadoukenFrame1 from './assets/chars/player/hadouken/player_hadouken_frame_01.png';
 import playerHadoukenFrame2 from './assets/chars/player/hadouken/player_hadouken_frame_02.png';
 import playerHadoukenFrame3 from './assets/chars/player/hadouken/player_hadouken_frame_03.png';
@@ -45,16 +32,20 @@ import playerHadoukenFrame4 from './assets/chars/player/hadouken/player_hadouken
 import playerHadoukenFrame5 from './assets/chars/player/hadouken/player_hadouken_frame_05.png';
 import playerHadoukenFrame6 from './assets/chars/player/hadouken/player_hadouken_frame_06.png';
 import playerHadoukenFrame7 from './assets/chars/player/hadouken/player_hadouken_frame_07.png';
+import playerHadoukenFrame8 from './assets/chars/player/hadouken/player_hadouken_frame_08.png';
+import playerHadoukenFrame9 from './assets/chars/player/hadouken/player_hadouken_frame_09.png';
+import playerHadoukenFrame10 from './assets/chars/player/hadouken/player_hadouken_frame_10.png';
 import opponentStanceFrame1 from './assets/chars/opponent/stance/opponent_stance_frame_01.png';
 import opponentStanceFrame2 from './assets/chars/opponent/stance/opponent_stance_frame_02.png';
 import opponentStanceFrame3 from './assets/chars/opponent/stance/opponent_stance_frame_03.png';
 import opponentStanceFrame4 from './assets/chars/opponent/stance/opponent_stance_frame_04.png';
+import opponentStanceFrame5 from './assets/chars/opponent/stance/opponent_stance_frame_05.png';
+import opponentStanceFrame6 from './assets/chars/opponent/stance/opponent_stance_frame_06.png';
 import opponentVictoryFrame1 from './assets/chars/opponent/victory/opponent_victory_frame_01.png';
 import opponentVictoryFrame2 from './assets/chars/opponent/victory/opponent_victory_frame_02.png';
 import opponentVictoryFrame3 from './assets/chars/opponent/victory/opponent_victory_frame_03.png';
 import opponentVictoryFrame4 from './assets/chars/opponent/victory/opponent_victory_frame_04.png';
 import opponentDefeatFrame1 from './assets/chars/opponent/defeat/opponent_defeat_frame_01.png';
-import opponentDefeatFrame2 from './assets/chars/opponent/defeat/opponent_defeat_frame_02.png';
 import opponentShoryukenFrame1 from './assets/chars/opponent/shoryuken/opponent_shoryuken_frame_01.png';
 import opponentShoryukenFrame2 from './assets/chars/opponent/shoryuken/opponent_shoryuken_frame_02.png';
 import opponentShoryukenFrame3 from './assets/chars/opponent/shoryuken/opponent_shoryuken_frame_03.png';
@@ -104,8 +95,6 @@ function App() {
       playerStanceFrame4,
       playerStanceFrame5,
       playerStanceFrame6,
-      playerStanceFrame7,
-      playerStanceFrame8,
     ],
     [
       playerVictoryFrame1,
@@ -117,21 +106,8 @@ function App() {
       playerVictoryFrame7,
       playerVictoryFrame8,
       playerVictoryFrame9,
-      playerVictoryFrame10,
-      playerVictoryFrame11,
-      playerVictoryFrame12,
-      playerVictoryFrame13,
     ],
-    [
-      playerDefeatFrame1,
-      playerDefeatFrame2,
-      playerDefeatFrame3,
-      playerDefeatFrame4,
-      playerDefeatFrame5,
-      playerDefeatFrame6,
-      playerDefeatFrame7,
-      playerDefeatFrame8,
-    ],
+    [playerDefeatFrame1],
     [
       playerHadoukenFrame1,
       playerHadoukenFrame2,
@@ -140,6 +116,9 @@ function App() {
       playerHadoukenFrame5,
       playerHadoukenFrame6,
       playerHadoukenFrame7,
+      playerHadoukenFrame8,
+      playerHadoukenFrame9,
+      playerHadoukenFrame10,
     ],
   ];
 
@@ -149,6 +128,8 @@ function App() {
       opponentStanceFrame2,
       opponentStanceFrame3,
       opponentStanceFrame4,
+      opponentStanceFrame5,
+      opponentStanceFrame6,
     ],
     [
       opponentVictoryFrame1,
@@ -156,7 +137,7 @@ function App() {
       opponentVictoryFrame3,
       opponentVictoryFrame4,
     ],
-    [opponentDefeatFrame1, opponentDefeatFrame2],
+    [opponentDefeatFrame1],
     [
       opponentShoryukenFrame1,
       opponentShoryukenFrame2,
@@ -606,6 +587,7 @@ function App() {
 export default App;
 // TODO:
 // animations
+// add start pose/taunt
 // add chun li
 // boost and res logic
 // input list when draw
@@ -614,3 +596,4 @@ export default App;
 // (mini?) boss fight gp (play opposit sign quick)
 // (boss fight? play opposit input list quick)
 // replace modal by how to play mode
+// imagine more gameplay (input list based game, if you win you get to max combo)
