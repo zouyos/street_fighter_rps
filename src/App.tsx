@@ -608,7 +608,9 @@ export default App;
 // animations
 // add chun li
 // boost and res logic
-// input prompt when draw
+// input list when draw
 // combo logic (x2 x3) and combo breaker
-// modal how to play + make it responsive
 // spe move logic (win 3 times with your char move)
+// (mini?) boss fight gp (play opposit sign quick)
+// (boss fight? play opposit input list quick)
+// replace modal by how to play mode
