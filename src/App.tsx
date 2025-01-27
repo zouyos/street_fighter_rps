@@ -571,7 +571,7 @@ function App() {
     } else if (opponentHP <= 0) {
       playerFramesToAnimate = playerFrames[1];
       opponentFramesToAnimate = opponentFrames[2];
-      playerLoop = true;
+      playerLoop = false;
       opponentLoop = false;
       setPlayerFrameIndex(0);
       setOpponentFrameIndex(0);
@@ -579,7 +579,7 @@ function App() {
       playerFramesToAnimate = playerFrames[2];
       opponentFramesToAnimate = opponentFrames[1];
       playerLoop = false;
-      opponentLoop = true;
+      opponentLoop = false;
       setPlayerFrameIndex(0);
       setOpponentFrameIndex(0);
     }
