@@ -1,0 +1,18 @@
+.playerWave,
+.opponentWave {
+  position: absolute;
+  bottom: 42px;
+}
+
+.playerWave {
+  left: calc(30% + 180px);
+}
+
+.opponentWave {
+  transform: scaleX(-1);
+  right: 30%;
+}
+
+.opponent {
+  right: 30%;
+}

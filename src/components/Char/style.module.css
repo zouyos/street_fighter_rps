@@ -1,26 +1,14 @@
 .player,
-.opponent,
-.defeatedPlayer,
-.defeatedOpponent {
+.opponent {
   position: absolute;
+  bottom: 0;
 }
 
 .player {
-  bottom: 2%;
   left: 30%;
 }
 
 .opponent {
-  bottom: 1.75%;
   right: 30%;
-}
-
-.defeatedPlayer {
-  bottom: 2%;
-  left: 30%;
-}
-
-.defeatedOpponent {
-  bottom: 0;
-  right: 30%;
+  transform: scaleX(-1);
 }
