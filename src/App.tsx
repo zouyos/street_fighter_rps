@@ -9,124 +9,126 @@ import kick from './assets/kick_white.png';
 import kick_b from './assets/kick_black.png';
 import wave from './assets/wave_white.png';
 import wave_b from './assets/wave_black.png';
-import playerStanceFrame1 from './assets/chars/ryu/stance/ryu_stance_frame_01.png';
-import playerStanceFrame2 from './assets/chars/ryu/stance/ryu_stance_frame_02.png';
-import playerStanceFrame3 from './assets/chars/ryu/stance/ryu_stance_frame_03.png';
-import playerStanceFrame4 from './assets/chars/ryu/stance/ryu_stance_frame_04.png';
-import playerStanceFrame5 from './assets/chars/ryu/stance/ryu_stance_frame_05.png';
-import playerStanceFrame6 from './assets/chars/ryu/stance/ryu_stance_frame_06.png';
-import playerVictoryFrame1 from './assets/chars/ryu/victory/ryu_victory_frame_01.png';
-import playerVictoryFrame2 from './assets/chars/ryu/victory/ryu_victory_frame_02.png';
-import playerVictoryFrame3 from './assets/chars/ryu/victory/ryu_victory_frame_03.png';
-import playerVictoryFrame4 from './assets/chars/ryu/victory/ryu_victory_frame_04.png';
-import playerVictoryFrame5 from './assets/chars/ryu/victory/ryu_victory_frame_05.png';
-import playerVictoryFrame6 from './assets/chars/ryu/victory/ryu_victory_frame_06.png';
-import playerVictoryFrame7 from './assets/chars/ryu/victory/ryu_victory_frame_07.png';
-import playerVictoryFrame8 from './assets/chars/ryu/victory/ryu_victory_frame_08.png';
-import playerVictoryFrame9 from './assets/chars/ryu/victory/ryu_victory_frame_09.png';
-import playerDefeatFrame1 from './assets/chars/ryu/defeat/ryu_defeat_frame_01.png';
-import playerShoryukenFrame1 from './assets/chars/ryu/shoryuken/ryu_shoryuken_frame_01.png';
-import playerShoryukenFrame2 from './assets/chars/ryu/shoryuken/ryu_shoryuken_frame_02.png';
-import playerShoryukenFrame3 from './assets/chars/ryu/shoryuken/ryu_shoryuken_frame_03.png';
-import playerShoryukenFrame4 from './assets/chars/ryu/shoryuken/ryu_shoryuken_frame_04.png';
-import playerShoryukenFrame5 from './assets/chars/ryu/shoryuken/ryu_shoryuken_frame_05.png';
-import playerShoryukenFrame6 from './assets/chars/ryu/shoryuken/ryu_shoryuken_frame_06.png';
-import playerShoryukenFrame7 from './assets/chars/ryu/shoryuken/ryu_shoryuken_frame_07.png';
-import playerShoryukenFrame8 from './assets/chars/ryu/shoryuken/ryu_shoryuken_frame_08.png';
-import playerShoryukenFrame9 from './assets/chars/ryu/shoryuken/ryu_shoryuken_frame_09.png';
-import playerShoryukenFrame10 from './assets/chars/ryu/shoryuken/ryu_shoryuken_frame_10.png';
-import playerShoryukenFrame11 from './assets/chars/ryu/shoryuken/ryu_shoryuken_frame_11.png';
-import playerTatsumakiFrame1 from './assets/chars/ryu/tatsumaki/ryu_tatsumaki_frame_01.png';
-import playerTatsumakiFrame2 from './assets/chars/ryu/tatsumaki/ryu_tatsumaki_frame_02.png';
-import playerTatsumakiFrame3 from './assets/chars/ryu/tatsumaki/ryu_tatsumaki_frame_03.png';
-import playerTatsumakiFrame4 from './assets/chars/ryu/tatsumaki/ryu_tatsumaki_frame_04.png';
-import playerTatsumakiFrame5 from './assets/chars/ryu/tatsumaki/ryu_tatsumaki_frame_05.png';
-import playerTatsumakiFrame6 from './assets/chars/ryu/tatsumaki/ryu_tatsumaki_frame_06.png';
-import playerTatsumakiFrame7 from './assets/chars/ryu/tatsumaki/ryu_tatsumaki_frame_07.png';
-import playerTatsumakiFrame8 from './assets/chars/ryu/tatsumaki/ryu_tatsumaki_frame_08.png';
-import playerTatsumakiFrame9 from './assets/chars/ryu/tatsumaki/ryu_tatsumaki_frame_09.png';
-import playerTatsumakiFrame10 from './assets/chars/ryu/tatsumaki/ryu_tatsumaki_frame_10.png';
-import playerTatsumakiFrame11 from './assets/chars/ryu/tatsumaki/ryu_tatsumaki_frame_11.png';
-import playerTatsumakiFrame12 from './assets/chars/ryu/tatsumaki/ryu_tatsumaki_frame_12.png';
-import playerTatsumakiFrame13 from './assets/chars/ryu/tatsumaki/ryu_tatsumaki_frame_13.png';
-import playerTatsumakiFrame14 from './assets/chars/ryu/tatsumaki/ryu_tatsumaki_frame_14.png';
-import playerTatsumakiFrame15 from './assets/chars/ryu/tatsumaki/ryu_tatsumaki_frame_15.png';
-import playerTatsumakiFrame16 from './assets/chars/ryu/tatsumaki/ryu_tatsumaki_frame_16.png';
-import playerTatsumakiFrame17 from './assets/chars/ryu/tatsumaki/ryu_tatsumaki_frame_17.png';
-import playerTatsumakiFrame18 from './assets/chars/ryu/tatsumaki/ryu_tatsumaki_frame_18.png';
-import playerHadoukenFrame1 from './assets/chars/ryu/hadouken/ryu_hadouken_frame_01.png';
-import playerHadoukenFrame2 from './assets/chars/ryu/hadouken/ryu_hadouken_frame_02.png';
-import playerHadoukenFrame3 from './assets/chars/ryu/hadouken/ryu_hadouken_frame_03.png';
-import playerHadoukenFrame4 from './assets/chars/ryu/hadouken/ryu_hadouken_frame_04.png';
-import playerHadoukenFrame5 from './assets/chars/ryu/hadouken/ryu_hadouken_frame_05.png';
-import playerHadoukenFrame6 from './assets/chars/ryu/hadouken/ryu_hadouken_frame_06.png';
-import playerHadoukenFrame7 from './assets/chars/ryu/hadouken/ryu_hadouken_frame_07.png';
-import playerHadoukenFrame8 from './assets/chars/ryu/hadouken/ryu_hadouken_frame_08.png';
-import playerHadoukenFrame9 from './assets/chars/ryu/hadouken/ryu_hadouken_frame_09.png';
-import playerHadoukenFrame10 from './assets/chars/ryu/hadouken/ryu_hadouken_frame_10.png';
-// import playerWaveFrame01 from './assets/chars/ryu/hadouken/ryu_wave_frame_01.png';
-// import playerWaveFrame02 from './assets/chars/ryu/hadouken/ryu_wave_frame_02.png';
-// import playerWaveFrame03 from './assets/chars/ryu/hadouken/ryu_wave_frame_03.png';
-// import playerWaveFrame04 from './assets/chars/ryu/hadouken/ryu_wave_frame_04.png';
-// import playerWaveFrame05 from './assets/chars/ryu/hadouken/ryu_wave_frame_05.png';
-// import playerWaveFrame06 from './assets/chars/ryu/hadouken/ryu_wave_frame_06.png';
-// import playerWaveFrame07 from './assets/chars/ryu/hadouken/ryu_wave_frame_07.png';
-// import playerWaveFrame08 from './assets/chars/ryu/hadouken/ryu_wave_frame_08.png';
-// import playerWaveFrame09 from './assets/chars/ryu/hadouken/ryu_wave_frame_09.png';
-// import playerWaveFrame10 from './assets/chars/ryu/hadouken/ryu_wave_frame_10.png';
-// import playerWaveFrame11 from './assets/chars/ryu/hadouken/ryu_wave_frame_11.png';
-// import playerWaveFrame12 from './assets/chars/ryu/hadouken/ryu_wave_frame_12.png';
-// import playerWaveFrame13 from './assets/chars/ryu/hadouken/ryu_wave_frame_13.png';
-// import playerWaveFrame14 from './assets/chars/ryu/hadouken/ryu_wave_frame_14.png';
-import playerHurtFrame01 from './assets/chars/ryu/hurt/ryu_hurt_frame_01.png';
-import playerHurtFrame02 from './assets/chars/ryu/hurt/ryu_hurt_frame_02.png';
-import playerHurtFrame03 from './assets/chars/ryu/hurt/ryu_hurt_frame_03.png';
-import opponentStanceFrame1 from './assets/chars/ken/stance/ken_stance_frame_01.png';
-import opponentStanceFrame2 from './assets/chars/ken/stance/ken_stance_frame_02.png';
-import opponentStanceFrame3 from './assets/chars/ken/stance/ken_stance_frame_03.png';
-import opponentStanceFrame4 from './assets/chars/ken/stance/ken_stance_frame_04.png';
-import opponentStanceFrame5 from './assets/chars/ken/stance/ken_stance_frame_05.png';
-import opponentStanceFrame6 from './assets/chars/ken/stance/ken_stance_frame_06.png';
-import opponentVictoryFrame1 from './assets/chars/ken/victory/ken_victory_frame_01.png';
-import opponentVictoryFrame2 from './assets/chars/ken/victory/ken_victory_frame_02.png';
-import opponentVictoryFrame3 from './assets/chars/ken/victory/ken_victory_frame_03.png';
-import opponentVictoryFrame4 from './assets/chars/ken/victory/ken_victory_frame_04.png';
-import opponentDefeatFrame1 from './assets/chars/ken/defeat/ken_defeat_frame_01.png';
-import opponentShoryukenFrame1 from './assets/chars/ken/shoryuken/ken_shoryuken_frame_01.png';
-import opponentShoryukenFrame2 from './assets/chars/ken/shoryuken/ken_shoryuken_frame_02.png';
-import opponentShoryukenFrame3 from './assets/chars/ken/shoryuken/ken_shoryuken_frame_03.png';
-import opponentShoryukenFrame4 from './assets/chars/ken/shoryuken/ken_shoryuken_frame_04.png';
-import opponentShoryukenFrame5 from './assets/chars/ken/shoryuken/ken_shoryuken_frame_05.png';
-import opponentShoryukenFrame6 from './assets/chars/ken/shoryuken/ken_shoryuken_frame_06.png';
-import opponentShoryukenFrame7 from './assets/chars/ken/shoryuken/ken_shoryuken_frame_07.png';
-import opponentShoryukenFrame8 from './assets/chars/ken/shoryuken/ken_shoryuken_frame_08.png';
-import opponentShoryukenFrame9 from './assets/chars/ken/shoryuken/ken_shoryuken_frame_09.png';
-import opponentTatsumakiFrame1 from './assets/chars/ken/tatsumaki/ken_tatsumaki_frame_01.png';
-import opponentTatsumakiFrame2 from './assets/chars/ken/tatsumaki/ken_tatsumaki_frame_02.png';
-import opponentTatsumakiFrame3 from './assets/chars/ken/tatsumaki/ken_tatsumaki_frame_03.png';
-import opponentTatsumakiFrame4 from './assets/chars/ken/tatsumaki/ken_tatsumaki_frame_04.png';
-import opponentTatsumakiFrame5 from './assets/chars/ken/tatsumaki/ken_tatsumaki_frame_05.png';
-import opponentTatsumakiFrame6 from './assets/chars/ken/tatsumaki/ken_tatsumaki_frame_06.png';
-import opponentTatsumakiFrame7 from './assets/chars/ken/tatsumaki/ken_tatsumaki_frame_07.png';
-import opponentTatsumakiFrame8 from './assets/chars/ken/tatsumaki/ken_tatsumaki_frame_08.png';
-import opponentTatsumakiFrame9 from './assets/chars/ken/tatsumaki/ken_tatsumaki_frame_09.png';
-import opponentTatsumakiFrame10 from './assets/chars/ken/tatsumaki/ken_tatsumaki_frame_10.png';
-import opponentTatsumakiFrame11 from './assets/chars/ken/tatsumaki/ken_tatsumaki_frame_11.png';
-import opponentTatsumakiFrame12 from './assets/chars/ken/tatsumaki/ken_tatsumaki_frame_12.png';
-import opponentTatsumakiFrame13 from './assets/chars/ken/tatsumaki/ken_tatsumaki_frame_13.png';
-import opponentTatsumakiFrame14 from './assets/chars/ken/tatsumaki/ken_tatsumaki_frame_14.png';
-import opponentHadoukenFrame1 from './assets/chars/ken/hadouken/ken_hadouken_frame_01.png';
-import opponentHadoukenFrame2 from './assets/chars/ken/hadouken/ken_hadouken_frame_02.png';
-import opponentHadoukenFrame3 from './assets/chars/ken/hadouken/ken_hadouken_frame_03.png';
-import opponentHadoukenFrame4 from './assets/chars/ken/hadouken/ken_hadouken_frame_04.png';
-import opponentHadoukenFrame5 from './assets/chars/ken/hadouken/ken_hadouken_frame_05.png';
-import opponentHadoukenFrame6 from './assets/chars/ken/hadouken/ken_hadouken_frame_06.png';
-import opponentHadoukenFrame7 from './assets/chars/ken/hadouken/ken_hadouken_frame_07.png';
-import opponentHadoukenFrame8 from './assets/chars/ken/hadouken/ken_hadouken_frame_08.png';
-import opponentHadoukenFrame9 from './assets/chars/ken/hadouken/ken_hadouken_frame_09.png';
-import opponentHurtFrame1 from './assets/chars/ken/hurt/ken_hurt_frame_01.png';
-import opponentHurtFrame2 from './assets/chars/ken/hurt/ken_hurt_frame_02.png';
-import opponentHurtFrame3 from './assets/chars/ken/hurt/ken_hurt_frame_03.png';
+import ryuStanceFrame1 from './assets/chars/ryu/stance/ryu_stance_frame_01.png';
+import ryuStanceFrame2 from './assets/chars/ryu/stance/ryu_stance_frame_02.png';
+import ryuStanceFrame3 from './assets/chars/ryu/stance/ryu_stance_frame_03.png';
+import ryuStanceFrame4 from './assets/chars/ryu/stance/ryu_stance_frame_04.png';
+import ryuStanceFrame5 from './assets/chars/ryu/stance/ryu_stance_frame_05.png';
+import ryuStanceFrame6 from './assets/chars/ryu/stance/ryu_stance_frame_06.png';
+import ryuVictoryFrame1 from './assets/chars/ryu/victory/ryu_victory_frame_01.png';
+import ryuVictoryFrame2 from './assets/chars/ryu/victory/ryu_victory_frame_02.png';
+import ryuVictoryFrame3 from './assets/chars/ryu/victory/ryu_victory_frame_03.png';
+import ryuVictoryFrame4 from './assets/chars/ryu/victory/ryu_victory_frame_04.png';
+import ryuVictoryFrame5 from './assets/chars/ryu/victory/ryu_victory_frame_05.png';
+import ryuVictoryFrame6 from './assets/chars/ryu/victory/ryu_victory_frame_06.png';
+import ryuVictoryFrame7 from './assets/chars/ryu/victory/ryu_victory_frame_07.png';
+import ryuVictoryFrame8 from './assets/chars/ryu/victory/ryu_victory_frame_08.png';
+import ryuVictoryFrame9 from './assets/chars/ryu/victory/ryu_victory_frame_09.png';
+import ryuDefeatFrame1 from './assets/chars/ryu/defeat/ryu_defeat_frame_01.png';
+import ryuShoryukenFrame1 from './assets/chars/ryu/shoryuken/ryu_shoryuken_frame_01.png';
+import ryuShoryukenFrame2 from './assets/chars/ryu/shoryuken/ryu_shoryuken_frame_02.png';
+import ryuShoryukenFrame3 from './assets/chars/ryu/shoryuken/ryu_shoryuken_frame_03.png';
+import ryuShoryukenFrame4 from './assets/chars/ryu/shoryuken/ryu_shoryuken_frame_04.png';
+import ryuShoryukenFrame5 from './assets/chars/ryu/shoryuken/ryu_shoryuken_frame_05.png';
+import ryuShoryukenFrame6 from './assets/chars/ryu/shoryuken/ryu_shoryuken_frame_06.png';
+import ryuShoryukenFrame7 from './assets/chars/ryu/shoryuken/ryu_shoryuken_frame_07.png';
+import ryuShoryukenFrame8 from './assets/chars/ryu/shoryuken/ryu_shoryuken_frame_08.png';
+import ryuShoryukenFrame9 from './assets/chars/ryu/shoryuken/ryu_shoryuken_frame_09.png';
+import ryuShoryukenFrame10 from './assets/chars/ryu/shoryuken/ryu_shoryuken_frame_10.png';
+import ryuShoryukenFrame11 from './assets/chars/ryu/shoryuken/ryu_shoryuken_frame_11.png';
+import ryuTatsumakiFrame1 from './assets/chars/ryu/tatsumaki/ryu_tatsumaki_frame_01.png';
+import ryuTatsumakiFrame2 from './assets/chars/ryu/tatsumaki/ryu_tatsumaki_frame_02.png';
+import ryuTatsumakiFrame3 from './assets/chars/ryu/tatsumaki/ryu_tatsumaki_frame_03.png';
+import ryuTatsumakiFrame4 from './assets/chars/ryu/tatsumaki/ryu_tatsumaki_frame_04.png';
+import ryuTatsumakiFrame5 from './assets/chars/ryu/tatsumaki/ryu_tatsumaki_frame_05.png';
+import ryuTatsumakiFrame6 from './assets/chars/ryu/tatsumaki/ryu_tatsumaki_frame_06.png';
+import ryuTatsumakiFrame7 from './assets/chars/ryu/tatsumaki/ryu_tatsumaki_frame_07.png';
+import ryuTatsumakiFrame8 from './assets/chars/ryu/tatsumaki/ryu_tatsumaki_frame_08.png';
+import ryuTatsumakiFrame9 from './assets/chars/ryu/tatsumaki/ryu_tatsumaki_frame_09.png';
+import ryuTatsumakiFrame10 from './assets/chars/ryu/tatsumaki/ryu_tatsumaki_frame_10.png';
+import ryuTatsumakiFrame11 from './assets/chars/ryu/tatsumaki/ryu_tatsumaki_frame_11.png';
+import ryuTatsumakiFrame12 from './assets/chars/ryu/tatsumaki/ryu_tatsumaki_frame_12.png';
+import ryuTatsumakiFrame13 from './assets/chars/ryu/tatsumaki/ryu_tatsumaki_frame_13.png';
+import ryuTatsumakiFrame14 from './assets/chars/ryu/tatsumaki/ryu_tatsumaki_frame_14.png';
+import ryuTatsumakiFrame15 from './assets/chars/ryu/tatsumaki/ryu_tatsumaki_frame_15.png';
+import ryuTatsumakiFrame16 from './assets/chars/ryu/tatsumaki/ryu_tatsumaki_frame_16.png';
+import ryuTatsumakiFrame17 from './assets/chars/ryu/tatsumaki/ryu_tatsumaki_frame_17.png';
+import ryuTatsumakiFrame18 from './assets/chars/ryu/tatsumaki/ryu_tatsumaki_frame_18.png';
+import ryuHadoukenFrame1 from './assets/chars/ryu/hadouken/ryu_hadouken_frame_01.png';
+import ryuHadoukenFrame2 from './assets/chars/ryu/hadouken/ryu_hadouken_frame_02.png';
+import ryuHadoukenFrame3 from './assets/chars/ryu/hadouken/ryu_hadouken_frame_03.png';
+import ryuHadoukenFrame4 from './assets/chars/ryu/hadouken/ryu_hadouken_frame_04.png';
+import ryuHadoukenFrame5 from './assets/chars/ryu/hadouken/ryu_hadouken_frame_05.png';
+import ryuHadoukenFrame6 from './assets/chars/ryu/hadouken/ryu_hadouken_frame_06.png';
+import ryuHadoukenFrame7 from './assets/chars/ryu/hadouken/ryu_hadouken_frame_07.png';
+import ryuHadoukenFrame8 from './assets/chars/ryu/hadouken/ryu_hadouken_frame_08.png';
+import ryuHadoukenFrame9 from './assets/chars/ryu/hadouken/ryu_hadouken_frame_09.png';
+import ryuHadoukenFrame10 from './assets/chars/ryu/hadouken/ryu_hadouken_frame_10.png';
+// import ryuWaveFrame01 from './assets/chars/ryu/hadouken/ryu_wave_frame_01.png';
+// import ryuWaveFrame02 from './assets/chars/ryu/hadouken/ryu_wave_frame_02.png';
+// import ryuWaveFrame03 from './assets/chars/ryu/hadouken/ryu_wave_frame_03.png';
+// import ryuWaveFrame04 from './assets/chars/ryu/hadouken/ryu_wave_frame_04.png';
+// import ryuWaveFrame05 from './assets/chars/ryu/hadouken/ryu_wave_frame_05.png';
+// import ryuWaveFrame06 from './assets/chars/ryu/hadouken/ryu_wave_frame_06.png';
+// import ryuWaveFrame07 from './assets/chars/ryu/hadouken/ryu_wave_frame_07.png';
+// import ryuWaveFrame08 from './assets/chars/ryu/hadouken/ryu_wave_frame_08.png';
+// import ryuWaveFrame09 from './assets/chars/ryu/hadouken/ryu_wave_frame_09.png';
+// import ryuWaveFrame10 from './assets/chars/ryu/hadouken/ryu_wave_frame_10.png';
+// import ryuWaveFrame11 from './assets/chars/ryu/hadouken/ryu_wave_frame_11.png';
+// import ryuWaveFrame12 from './assets/chars/ryu/hadouken/ryu_wave_frame_12.png';
+// import ryuWaveFrame13 from './assets/chars/ryu/hadouken/ryu_wave_frame_13.png';
+// import ryuWaveFrame14 from './assets/chars/ryu/hadouken/ryu_wave_frame_14.png';
+import ryuHurtFrame1 from './assets/chars/ryu/hurt/ryu_hurt_frame_01.png';
+import ryuHurtFrame2 from './assets/chars/ryu/hurt/ryu_hurt_frame_02.png';
+import ryuHurtFrame3 from './assets/chars/ryu/hurt/ryu_hurt_frame_03.png';
+import ryuDrawFrame1 from './assets/chars/ryu/draw/ryu_draw_frame_01.png';
+import kenStanceFrame1 from './assets/chars/ken/stance/ken_stance_frame_01.png';
+import kenStanceFrame2 from './assets/chars/ken/stance/ken_stance_frame_02.png';
+import kenStanceFrame3 from './assets/chars/ken/stance/ken_stance_frame_03.png';
+import kenStanceFrame4 from './assets/chars/ken/stance/ken_stance_frame_04.png';
+import kenStanceFrame5 from './assets/chars/ken/stance/ken_stance_frame_05.png';
+import kenStanceFrame6 from './assets/chars/ken/stance/ken_stance_frame_06.png';
+import kenVictoryFrame1 from './assets/chars/ken/victory/ken_victory_frame_01.png';
+import kenVictoryFrame2 from './assets/chars/ken/victory/ken_victory_frame_02.png';
+import kenVictoryFrame3 from './assets/chars/ken/victory/ken_victory_frame_03.png';
+import kenVictoryFrame4 from './assets/chars/ken/victory/ken_victory_frame_04.png';
+import kenDefeatFrame1 from './assets/chars/ken/defeat/ken_defeat_frame_01.png';
+import kenShoryukenFrame1 from './assets/chars/ken/shoryuken/ken_shoryuken_frame_01.png';
+import kenShoryukenFrame2 from './assets/chars/ken/shoryuken/ken_shoryuken_frame_02.png';
+import kenShoryukenFrame3 from './assets/chars/ken/shoryuken/ken_shoryuken_frame_03.png';
+import kenShoryukenFrame4 from './assets/chars/ken/shoryuken/ken_shoryuken_frame_04.png';
+import kenShoryukenFrame5 from './assets/chars/ken/shoryuken/ken_shoryuken_frame_05.png';
+import kenShoryukenFrame6 from './assets/chars/ken/shoryuken/ken_shoryuken_frame_06.png';
+import kenShoryukenFrame7 from './assets/chars/ken/shoryuken/ken_shoryuken_frame_07.png';
+import kenShoryukenFrame8 from './assets/chars/ken/shoryuken/ken_shoryuken_frame_08.png';
+import kenShoryukenFrame9 from './assets/chars/ken/shoryuken/ken_shoryuken_frame_09.png';
+import kenTatsumakiFrame1 from './assets/chars/ken/tatsumaki/ken_tatsumaki_frame_01.png';
+import kenTatsumakiFrame2 from './assets/chars/ken/tatsumaki/ken_tatsumaki_frame_02.png';
+import kenTatsumakiFrame3 from './assets/chars/ken/tatsumaki/ken_tatsumaki_frame_03.png';
+import kenTatsumakiFrame4 from './assets/chars/ken/tatsumaki/ken_tatsumaki_frame_04.png';
+import kenTatsumakiFrame5 from './assets/chars/ken/tatsumaki/ken_tatsumaki_frame_05.png';
+import kenTatsumakiFrame6 from './assets/chars/ken/tatsumaki/ken_tatsumaki_frame_06.png';
+import kenTatsumakiFrame7 from './assets/chars/ken/tatsumaki/ken_tatsumaki_frame_07.png';
+import kenTatsumakiFrame8 from './assets/chars/ken/tatsumaki/ken_tatsumaki_frame_08.png';
+import kenTatsumakiFrame9 from './assets/chars/ken/tatsumaki/ken_tatsumaki_frame_09.png';
+import kenTatsumakiFrame10 from './assets/chars/ken/tatsumaki/ken_tatsumaki_frame_10.png';
+import kenTatsumakiFrame11 from './assets/chars/ken/tatsumaki/ken_tatsumaki_frame_11.png';
+import kenTatsumakiFrame12 from './assets/chars/ken/tatsumaki/ken_tatsumaki_frame_12.png';
+import kenTatsumakiFrame13 from './assets/chars/ken/tatsumaki/ken_tatsumaki_frame_13.png';
+import kenTatsumakiFrame14 from './assets/chars/ken/tatsumaki/ken_tatsumaki_frame_14.png';
+import kenHadoukenFrame1 from './assets/chars/ken/hadouken/ken_hadouken_frame_01.png';
+import kenHadoukenFrame2 from './assets/chars/ken/hadouken/ken_hadouken_frame_02.png';
+import kenHadoukenFrame3 from './assets/chars/ken/hadouken/ken_hadouken_frame_03.png';
+import kenHadoukenFrame4 from './assets/chars/ken/hadouken/ken_hadouken_frame_04.png';
+import kenHadoukenFrame5 from './assets/chars/ken/hadouken/ken_hadouken_frame_05.png';
+import kenHadoukenFrame6 from './assets/chars/ken/hadouken/ken_hadouken_frame_06.png';
+import kenHadoukenFrame7 from './assets/chars/ken/hadouken/ken_hadouken_frame_07.png';
+import kenHadoukenFrame8 from './assets/chars/ken/hadouken/ken_hadouken_frame_08.png';
+import kenHadoukenFrame9 from './assets/chars/ken/hadouken/ken_hadouken_frame_09.png';
+import kenHurtFrame1 from './assets/chars/ken/hurt/ken_hurt_frame_01.png';
+import kenHurtFrame2 from './assets/chars/ken/hurt/ken_hurt_frame_02.png';
+import kenHurtFrame3 from './assets/chars/ken/hurt/ken_hurt_frame_03.png';
+import kenDrawFrame1 from './assets/chars/ken/draw/ken_draw_frame_01.png';
 import Char from './components/Char/Char';
 import { Modal } from 'react-bootstrap';
 import { ArrowRepeat, QuestionCircle, XCircle } from 'react-bootstrap-icons';
@@ -164,147 +166,144 @@ function App() {
 
   const playerFrames = [
     [
-      playerStanceFrame1,
-      playerStanceFrame2,
-      playerStanceFrame3,
-      playerStanceFrame4,
-      playerStanceFrame5,
-      playerStanceFrame6,
+      ryuStanceFrame1,
+      ryuStanceFrame2,
+      ryuStanceFrame3,
+      ryuStanceFrame4,
+      ryuStanceFrame5,
+      ryuStanceFrame6,
     ],
     [
-      playerVictoryFrame1,
-      playerVictoryFrame2,
-      playerVictoryFrame3,
-      playerVictoryFrame4,
-      playerVictoryFrame5,
-      playerVictoryFrame6,
-      playerVictoryFrame7,
-      playerVictoryFrame8,
-      playerVictoryFrame9,
+      ryuVictoryFrame1,
+      ryuVictoryFrame2,
+      ryuVictoryFrame3,
+      ryuVictoryFrame4,
+      ryuVictoryFrame5,
+      ryuVictoryFrame6,
+      ryuVictoryFrame7,
+      ryuVictoryFrame8,
+      ryuVictoryFrame9,
     ],
-    [playerDefeatFrame1],
+    [ryuDefeatFrame1],
     [
-      playerShoryukenFrame1,
-      playerShoryukenFrame2,
-      playerShoryukenFrame3,
-      playerShoryukenFrame4,
-      playerShoryukenFrame5,
-      playerShoryukenFrame6,
-      playerShoryukenFrame7,
-      playerShoryukenFrame8,
-      playerShoryukenFrame9,
-      playerShoryukenFrame10,
-      playerShoryukenFrame11,
-    ],
-    [
-      playerTatsumakiFrame1,
-      playerTatsumakiFrame2,
-      playerTatsumakiFrame3,
-      playerTatsumakiFrame4,
-      playerTatsumakiFrame5,
-      playerTatsumakiFrame6,
-      playerTatsumakiFrame7,
-      playerTatsumakiFrame8,
-      playerTatsumakiFrame9,
-      playerTatsumakiFrame10,
-      playerTatsumakiFrame11,
-      playerTatsumakiFrame12,
-      playerTatsumakiFrame13,
-      playerTatsumakiFrame14,
-      playerTatsumakiFrame15,
-      playerTatsumakiFrame16,
-      playerTatsumakiFrame17,
-      playerTatsumakiFrame18,
+      ryuShoryukenFrame1,
+      ryuShoryukenFrame2,
+      ryuShoryukenFrame3,
+      ryuShoryukenFrame4,
+      ryuShoryukenFrame5,
+      ryuShoryukenFrame6,
+      ryuShoryukenFrame7,
+      ryuShoryukenFrame8,
+      ryuShoryukenFrame9,
+      ryuShoryukenFrame10,
+      ryuShoryukenFrame11,
     ],
     [
-      playerHadoukenFrame1,
-      playerHadoukenFrame2,
-      playerHadoukenFrame3,
-      playerHadoukenFrame4,
-      playerHadoukenFrame5,
-      playerHadoukenFrame6,
-      playerHadoukenFrame7,
-      playerHadoukenFrame8,
-      playerHadoukenFrame9,
-      playerHadoukenFrame10,
+      ryuTatsumakiFrame1,
+      ryuTatsumakiFrame2,
+      ryuTatsumakiFrame3,
+      ryuTatsumakiFrame4,
+      ryuTatsumakiFrame5,
+      ryuTatsumakiFrame6,
+      ryuTatsumakiFrame7,
+      ryuTatsumakiFrame8,
+      ryuTatsumakiFrame9,
+      ryuTatsumakiFrame10,
+      ryuTatsumakiFrame11,
+      ryuTatsumakiFrame12,
+      ryuTatsumakiFrame13,
+      ryuTatsumakiFrame14,
+      ryuTatsumakiFrame15,
+      ryuTatsumakiFrame16,
+      ryuTatsumakiFrame17,
+      ryuTatsumakiFrame18,
     ],
-    [playerHurtFrame01, playerHurtFrame02, playerHurtFrame03],
+    [
+      ryuHadoukenFrame1,
+      ryuHadoukenFrame2,
+      ryuHadoukenFrame3,
+      ryuHadoukenFrame4,
+      ryuHadoukenFrame5,
+      ryuHadoukenFrame6,
+      ryuHadoukenFrame7,
+      ryuHadoukenFrame8,
+      ryuHadoukenFrame9,
+      ryuHadoukenFrame10,
+    ],
+    [ryuHurtFrame1, ryuHurtFrame2, ryuHurtFrame3],
+    [ryuDrawFrame1],
   ];
 
-  // const playerWaveFrames = [
+  // const ryuWaveFrames = [
   //   [
-  //     playerWaveFrame01,
-  //     playerWaveFrame02,
-  //     playerWaveFrame03,
-  //     playerWaveFrame04,
-  //     playerWaveFrame05,
-  //     playerWaveFrame06,
-  //     playerWaveFrame07,
-  //     playerWaveFrame08,
-  //     playerWaveFrame09,
-  //     playerWaveFrame10,
-  //     playerWaveFrame11,
-  //     playerWaveFrame12,
-  //     playerWaveFrame13,
-  //     playerWaveFrame14,
+  //     ryuWaveFrame01,
+  //     ryuWaveFrame02,
+  //     ryuWaveFrame03,
+  //     ryuWaveFrame04,
+  //     ryuWaveFrame05,
+  //     ryuWaveFrame06,
+  //     ryuWaveFrame07,
+  //     ryuWaveFrame08,
+  //     ryuWaveFrame09,
+  //     ryuWaveFrame10,
+  //     ryuWaveFrame11,
+  //     ryuWaveFrame12,
+  //     ryuWaveFrame13,
+  //     ryuWaveFrame14,
   //   ],
   // ];
 
   const opponentFrames = [
     [
-      opponentStanceFrame1,
-      opponentStanceFrame2,
-      opponentStanceFrame3,
-      opponentStanceFrame4,
-      opponentStanceFrame5,
-      opponentStanceFrame6,
+      kenStanceFrame1,
+      kenStanceFrame2,
+      kenStanceFrame3,
+      kenStanceFrame4,
+      kenStanceFrame5,
+      kenStanceFrame6,
+    ],
+    [kenVictoryFrame1, kenVictoryFrame2, kenVictoryFrame3, kenVictoryFrame4],
+    [kenDefeatFrame1],
+    [
+      kenShoryukenFrame1,
+      kenShoryukenFrame2,
+      kenShoryukenFrame3,
+      kenShoryukenFrame4,
+      kenShoryukenFrame5,
+      kenShoryukenFrame6,
+      kenShoryukenFrame7,
+      kenShoryukenFrame8,
+      kenShoryukenFrame9,
     ],
     [
-      opponentVictoryFrame1,
-      opponentVictoryFrame2,
-      opponentVictoryFrame3,
-      opponentVictoryFrame4,
-    ],
-    [opponentDefeatFrame1],
-    [
-      opponentShoryukenFrame1,
-      opponentShoryukenFrame2,
-      opponentShoryukenFrame3,
-      opponentShoryukenFrame4,
-      opponentShoryukenFrame5,
-      opponentShoryukenFrame6,
-      opponentShoryukenFrame7,
-      opponentShoryukenFrame8,
-      opponentShoryukenFrame9,
+      kenTatsumakiFrame1,
+      kenTatsumakiFrame2,
+      kenTatsumakiFrame3,
+      kenTatsumakiFrame4,
+      kenTatsumakiFrame5,
+      kenTatsumakiFrame6,
+      kenTatsumakiFrame7,
+      kenTatsumakiFrame8,
+      kenTatsumakiFrame9,
+      kenTatsumakiFrame10,
+      kenTatsumakiFrame11,
+      kenTatsumakiFrame12,
+      kenTatsumakiFrame13,
+      kenTatsumakiFrame14,
     ],
     [
-      opponentTatsumakiFrame1,
-      opponentTatsumakiFrame2,
-      opponentTatsumakiFrame3,
-      opponentTatsumakiFrame4,
-      opponentTatsumakiFrame5,
-      opponentTatsumakiFrame6,
-      opponentTatsumakiFrame7,
-      opponentTatsumakiFrame8,
-      opponentTatsumakiFrame9,
-      opponentTatsumakiFrame10,
-      opponentTatsumakiFrame11,
-      opponentTatsumakiFrame12,
-      opponentTatsumakiFrame13,
-      opponentTatsumakiFrame14,
+      kenHadoukenFrame1,
+      kenHadoukenFrame2,
+      kenHadoukenFrame3,
+      kenHadoukenFrame4,
+      kenHadoukenFrame5,
+      kenHadoukenFrame6,
+      kenHadoukenFrame7,
+      kenHadoukenFrame8,
+      kenHadoukenFrame9,
     ],
-    [
-      opponentHadoukenFrame1,
-      opponentHadoukenFrame2,
-      opponentHadoukenFrame3,
-      opponentHadoukenFrame4,
-      opponentHadoukenFrame5,
-      opponentHadoukenFrame6,
-      opponentHadoukenFrame7,
-      opponentHadoukenFrame8,
-      opponentHadoukenFrame9,
-    ],
-    [opponentHurtFrame1, opponentHurtFrame2, opponentHurtFrame3],
+    [kenHurtFrame1, kenHurtFrame2, kenHurtFrame3],
+    [kenDrawFrame1],
   ];
 
   const symbolMap: Record<string, JSX.Element> = {
@@ -376,16 +375,60 @@ function App() {
     moveChoice?: string,
     isPlayer?: boolean
   ) => {
+    const isPlayerWin =
+      (selectedSymbol === 'punch' && opponentChoice === 'wave') ||
+      (selectedSymbol === 'kick' && opponentChoice === 'punch') ||
+      (selectedSymbol === 'wave' && opponentChoice === 'kick');
+
+    const isOpponentWin =
+      (opponentChoice === 'punch' && selectedSymbol === 'wave') ||
+      (opponentChoice === 'kick' && selectedSymbol === 'punch') ||
+      (opponentChoice === 'wave' && selectedSymbol === 'kick');
+
+    const draw =
+      (opponentChoice === 'punch' && selectedSymbol === 'punch') ||
+      (opponentChoice === 'kick' && selectedSymbol === 'kick') ||
+      (opponentChoice === 'wave' && selectedSymbol === 'wave');
+
     if (game) {
-      switch (moveChoice) {
-        case 'punch':
-          return frames[3][index];
-        case 'kick':
-          return frames[4][index];
-        case 'wave':
-          return frames[5][index];
-        default:
+      if (isPlayer) {
+        if (isPlayerWin) {
+          switch (true) {
+            case moveChoice === 'punch':
+              return frames[3][index];
+            case moveChoice === 'kick':
+              return frames[4][index];
+            case moveChoice === 'wave':
+              return frames[5][index];
+            default:
+              return frames[0][index];
+          }
+        } else if (isOpponentWin) {
+          return frames[6][index];
+        } else if (draw) {
+          return frames[7][index];
+        } else {
           return frames[0][index];
+        }
+      } else {
+        if (isOpponentWin) {
+          switch (true) {
+            case moveChoice === 'punch':
+              return frames[3][index];
+            case moveChoice === 'kick':
+              return frames[4][index];
+            case moveChoice === 'wave':
+              return frames[5][index];
+            default:
+              return frames[0][index];
+          }
+        } else if (isPlayerWin) {
+          return frames[6][index];
+        } else if (draw) {
+          return frames[7][index];
+        } else {
+          return frames[0][index];
+        }
       }
     } else if ((isPlayer ? opponentHP : playerHP) <= 0) {
       return frames[1][index];
@@ -485,61 +528,62 @@ function App() {
 
     if (game) {
       if (selectedSymbol && opponentChoice) {
-        // Determine player frames
-        switch (selectedSymbol) {
-          case 'punch':
-            playerFramesToAnimate = playerFrames[3]; // Shoryuken
-            playerLoop = false;
-            break;
-          case 'kick':
-            playerFramesToAnimate = playerFrames[4]; // Tatsumaki
-            playerLoop = false;
-            break;
-          case 'wave':
-            playerFramesToAnimate = playerFrames[5]; // Hadouken
-            playerLoop = false;
-            break;
-          default:
-            playerFramesToAnimate = playerFrames[0]; // Stance
-            playerLoop = true;
-        }
+        const isPlayerWin =
+          (selectedSymbol === 'punch' && opponentChoice === 'wave') ||
+          (selectedSymbol === 'kick' && opponentChoice === 'punch') ||
+          (selectedSymbol === 'wave' && opponentChoice === 'kick');
 
-        // Determine opponent frames
-        switch (opponentChoice) {
-          case 'punch':
-            opponentFramesToAnimate = opponentFrames[3];
-            opponentLoop = false;
-            break;
-          case 'kick':
-            opponentFramesToAnimate = opponentFrames[4];
-            opponentLoop = false;
-            break;
-          case 'wave':
-            opponentFramesToAnimate = opponentFrames[5];
-            opponentLoop = false;
-            break;
-          default:
-            opponentFramesToAnimate = opponentFrames[0]; // Stance
-            opponentLoop = true;
+        const isOpponentWin =
+          (opponentChoice === 'punch' && selectedSymbol === 'wave') ||
+          (opponentChoice === 'kick' && selectedSymbol === 'punch') ||
+          (opponentChoice === 'wave' && selectedSymbol === 'kick');
+
+        if (isPlayerWin) {
+          playerFramesToAnimate =
+            playerFrames[3 + ['punch', 'kick', 'wave'].indexOf(selectedSymbol)];
+          opponentFramesToAnimate = opponentFrames[6];
+          playerLoop = false;
+          opponentLoop = false;
+          setPlayerFrameIndex(0);
+          setOpponentFrameIndex(0);
+        } else if (isOpponentWin) {
+          playerFramesToAnimate = playerFrames[6];
+          opponentFramesToAnimate =
+            opponentFrames[
+              3 + ['punch', 'kick', 'wave'].indexOf(opponentChoice)
+            ];
+          playerLoop = false;
+          opponentLoop = false;
+          setPlayerFrameIndex(0);
+          setOpponentFrameIndex(0);
+        } else {
+          playerFramesToAnimate = playerFrames[7];
+          opponentFramesToAnimate = opponentFrames[7];
+          playerLoop = false;
+          opponentLoop = false;
+          setPlayerFrameIndex(0);
+          setOpponentFrameIndex(0);
         }
       } else {
-        // Default to stance frames when no move is selected
         playerFramesToAnimate = playerFrames[0];
         opponentFramesToAnimate = opponentFrames[0];
       }
     } else if (opponentHP <= 0) {
-      playerFramesToAnimate = playerFrames[1]; // Victory
-      opponentFramesToAnimate = opponentFrames[2]; // Defeat
+      playerFramesToAnimate = playerFrames[1];
+      opponentFramesToAnimate = opponentFrames[2];
       playerLoop = true;
       opponentLoop = false;
+      setPlayerFrameIndex(0);
+      setOpponentFrameIndex(0);
     } else if (playerHP <= 0) {
-      playerFramesToAnimate = playerFrames[2]; // Defeat
-      opponentFramesToAnimate = opponentFrames[1]; // Victory
+      playerFramesToAnimate = playerFrames[2];
+      opponentFramesToAnimate = opponentFrames[1];
       playerLoop = false;
       opponentLoop = true;
+      setPlayerFrameIndex(0);
+      setOpponentFrameIndex(0);
     }
 
-    // Player animation
     const playerAnimation = setInterval(() => {
       setPlayerFrameIndex((prev) =>
         playerLoop
@@ -548,7 +592,6 @@ function App() {
       );
     }, animationInterval);
 
-    // Opponent animation
     const opponentAnimation = setInterval(() => {
       setOpponentFrameIndex((prev) =>
         opponentLoop
