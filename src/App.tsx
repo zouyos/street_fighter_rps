@@ -139,13 +139,14 @@ function App() {
   const [selectedSymbol, setSelectedSymbol] = useState<string | undefined>();
   const [opponentChoice, setOpponentChoice] = useState<string | undefined>();
   const [resultString, setResultString] = useState('');
+  const [playerResultString, setPlayerResultString] = useState('');
+  const [opponentResultString, setOpponentResultString] = useState('');
   const [playerHP, setPlayerHP] = useState(100);
   const [opponentHP, setOpponentHP] = useState(100);
   const [count, setCount] = useState(1);
   const [round, setRound] = useState(1);
   const [playerWins, setPlayerWins] = useState(0);
   const [opponentWins, setOpponentWins] = useState(0);
-  // const [playerWinsMove, setPlayerWinsMove] = useState<boolean | undefined>();
   const [game, setGame] = useState(true);
   const [playerHistory, setPlayerHistory] = useState<(JSX.Element | string)[]>(
     []
@@ -328,6 +329,7 @@ function App() {
     if (!game) {
       return;
     }
+    setResultString('');
     const rand = Math.floor(Math.random() * 3);
     setSelectedSymbol(symbol);
     setOpponentChoice(Object.keys(symbolMap)[rand]);
@@ -471,18 +473,26 @@ function App() {
         addToPlayerHistory(selectedSymbol);
         addToOpponentHistory(opponentChoice);
         setOpponentHP((prev) => Math.max(prev - 20, 0));
-        setResultString('Opponent loses 20 HP');
+        setOpponentResultString('- 20');
+        setTimeout(() => {
+          setOpponentResultString('');
+        }, 1000);
       } else {
         addToOpponentHistory(opponentChoice);
         addToPlayerHistory(selectedSymbol);
         setPlayerHP((prev) => Math.max(prev - 20, 0));
-        setResultString('You lose 20 HP');
+        setPlayerResultString('- 20');
+        setTimeout(() => {
+          setPlayerResultString('');
+        }, 1000);
       }
     }
   }, [count]);
 
   useEffect(() => {
     if (playerHP <= 0) {
+      setOpponentResultString('');
+      setPlayerResultString('');
       setSelectedSymbol(undefined);
       setOpponentChoice(undefined);
       setPlayerFrameIndex(0);
@@ -491,6 +501,8 @@ function App() {
       setOpponentWins((prev) => prev + 1);
       setResultString('YOU LOSE');
     } else if (opponentHP <= 0) {
+      setOpponentResultString('');
+      setPlayerResultString('');
       setSelectedSymbol(undefined);
       setOpponentChoice(undefined);
       setOpponentFrameIndex(0);
@@ -652,13 +664,9 @@ function App() {
         color='#ffffff'
         onClick={handleModalShow}
       />
-      <ResultString
-        game={game}
-        selectedSymbol={selectedSymbol}
-        opponentChoice={opponentChoice}
-        symbolMap={symbolMap}
-        resultString={resultString}
-      />
+      <div className={style.gameResultString}>
+        <ResultString resultString={resultString} />
+      </div>
       <div className={style.gameContainer}>
         <MoveHistory
           playerHistory={playerHistory}
@@ -705,6 +713,9 @@ function App() {
         )}
       </div>
       <div className={style.charsContainer}>
+        <span className={`${style.playerResultString} text-danger`}>
+          <ResultString resultString={playerResultString} />
+        </span>
         <Char
           isPlayer
           frames={playerFrames}
@@ -722,6 +733,9 @@ function App() {
             generateWaveSrc={generateWaveSrc}
           />
         )} */}
+        <span className={`${style.opponentResultString} text-danger`}>
+          <ResultString resultString={opponentResultString} />
+        </span>
         <Char
           isPlayer={false}
           frames={opponentFrames}
@@ -797,9 +811,10 @@ export default App;
 // animations
 // add start pose/taunt
 // defense choice
-// add chun li
-// boost and res logic
 // input list when draw
+//
+// add chun li and choose character menu
+// boost and res logic
 // combo logic (x2 x3) and combo breaker
 // spe move logic (win 3 times with your char move)
 // (mini?) boss fight gp (play opposit sign quick)
