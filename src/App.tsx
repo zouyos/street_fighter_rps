@@ -24,6 +24,9 @@ import ryuVictoryFrame6 from './assets/chars/ryu/victory/ryu_victory_frame_06.pn
 import ryuVictoryFrame7 from './assets/chars/ryu/victory/ryu_victory_frame_07.png';
 import ryuVictoryFrame8 from './assets/chars/ryu/victory/ryu_victory_frame_08.png';
 import ryuVictoryFrame9 from './assets/chars/ryu/victory/ryu_victory_frame_09.png';
+import ryuPerfectFrame1 from './assets/chars/ryu/perfect/ryu_perfect_frame_01.png';
+import ryuPerfectFrame2 from './assets/chars/ryu/perfect/ryu_perfect_frame_02.png';
+import ryuPerfectFrame3 from './assets/chars/ryu/perfect/ryu_perfect_frame_03.png';
 import ryuDefeatFrame1 from './assets/chars/ryu/defeat/ryu_defeat_frame_01.png';
 import ryuShoryukenFrame1 from './assets/chars/ryu/shoryuken/ryu_shoryuken_frame_01.png';
 import ryuShoryukenFrame2 from './assets/chars/ryu/shoryuken/ryu_shoryuken_frame_02.png';
@@ -92,6 +95,9 @@ import kenVictoryFrame1 from './assets/chars/ken/victory/ken_victory_frame_01.pn
 import kenVictoryFrame2 from './assets/chars/ken/victory/ken_victory_frame_02.png';
 import kenVictoryFrame3 from './assets/chars/ken/victory/ken_victory_frame_03.png';
 import kenVictoryFrame4 from './assets/chars/ken/victory/ken_victory_frame_04.png';
+import kenPerfectFrame1 from './assets/chars/ken/perfect/ken_perfect_frame_01.png';
+import kenPerfectFrame2 from './assets/chars/ken/perfect/ken_perfect_frame_02.png';
+import kenPerfectFrame3 from './assets/chars/ken/perfect/ken_perfect_frame_03.png';
 import kenDefeatFrame1 from './assets/chars/ken/defeat/ken_defeat_frame_01.png';
 import kenShoryukenFrame1 from './assets/chars/ken/shoryuken/ken_shoryuken_frame_01.png';
 import kenShoryukenFrame2 from './assets/chars/ken/shoryuken/ken_shoryuken_frame_02.png';
@@ -233,6 +239,7 @@ function App() {
     ],
     [ryuHurtFrame1, ryuHurtFrame2, ryuHurtFrame3],
     [ryuDrawFrame1],
+    [ryuPerfectFrame1, ryuPerfectFrame2, ryuPerfectFrame3],
   ];
 
   // const ryuWaveFrames = [
@@ -305,6 +312,7 @@ function App() {
     ],
     [kenHurtFrame1, kenHurtFrame2, kenHurtFrame3],
     [kenDrawFrame1],
+    [kenPerfectFrame1, kenPerfectFrame2, kenPerfectFrame3],
   ];
 
   const symbolMap: Record<string, JSX.Element> = {
@@ -433,7 +441,11 @@ function App() {
         }
       }
     } else if ((isPlayer ? opponentHP : playerHP) <= 0) {
-      return frames[1][index];
+      if ((isPlayer ? playerHP : opponentHP) === 100) {
+        return frames[8][index];
+      } else {
+        return frames[1][index];
+      }
     } else {
       return frames[2][index];
     }
@@ -581,19 +593,37 @@ function App() {
         opponentFramesToAnimate = opponentFrames[0];
       }
     } else if (opponentHP <= 0) {
-      playerFramesToAnimate = playerFrames[1];
-      opponentFramesToAnimate = opponentFrames[2];
-      playerLoop = false;
-      opponentLoop = false;
-      setPlayerFrameIndex(0);
-      setOpponentFrameIndex(0);
+      if (playerHP === 100) {
+        playerFramesToAnimate = playerFrames[8];
+        opponentFramesToAnimate = opponentFrames[2];
+        playerLoop = false;
+        opponentLoop = false;
+        setPlayerFrameIndex(0);
+        setOpponentFrameIndex(0);
+      } else {
+        playerFramesToAnimate = playerFrames[1];
+        opponentFramesToAnimate = opponentFrames[2];
+        playerLoop = false;
+        opponentLoop = false;
+        setPlayerFrameIndex(0);
+        setOpponentFrameIndex(0);
+      }
     } else if (playerHP <= 0) {
-      playerFramesToAnimate = playerFrames[2];
-      opponentFramesToAnimate = opponentFrames[1];
-      playerLoop = false;
-      opponentLoop = false;
-      setPlayerFrameIndex(0);
-      setOpponentFrameIndex(0);
+      if (opponentHP === 100) {
+        opponentFramesToAnimate = opponentFrames[8];
+        playerFramesToAnimate = playerFrames[2];
+        playerLoop = false;
+        opponentLoop = false;
+        setPlayerFrameIndex(0);
+        setOpponentFrameIndex(0);
+      } else {
+        playerFramesToAnimate = playerFrames[2];
+        opponentFramesToAnimate = opponentFrames[1];
+        playerLoop = false;
+        opponentLoop = false;
+        setPlayerFrameIndex(0);
+        setOpponentFrameIndex(0);
+      }
     }
 
     const playerAnimation = setInterval(() => {
