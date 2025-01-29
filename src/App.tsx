@@ -837,14 +837,12 @@ function App() {
 
 export default App;
 // TODO:
-// perfect frames
-// animations
+// hadouken
 // add start pose/taunt
-// defense choice
-// input list when draw
-//
 // add chun li and choose character menu
 // boost and res logic
+// defense choice
+// input list when draw
 // combo logic (x2 x3) and combo breaker
 // spe move logic (win 3 times with your char move)
 // (mini?) boss fight gp (play opposit sign quick)
