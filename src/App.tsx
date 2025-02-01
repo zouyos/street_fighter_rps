@@ -85,6 +85,10 @@ import ryuHurtFrame1 from './assets/chars/ryu/hurt/ryu_hurt_frame_01.png';
 import ryuHurtFrame2 from './assets/chars/ryu/hurt/ryu_hurt_frame_02.png';
 import ryuHurtFrame3 from './assets/chars/ryu/hurt/ryu_hurt_frame_03.png';
 import ryuDrawFrame1 from './assets/chars/ryu/draw/ryu_draw_frame_01.png';
+import ryuTauntFrame1 from './assets/chars/ryu/taunt/ryu_taunt_frame_01.png';
+import ryuTauntFrame2 from './assets/chars/ryu/taunt/ryu_taunt_frame_02.png';
+import ryuTauntFrame3 from './assets/chars/ryu/taunt/ryu_taunt_frame_03.png';
+import ryuTauntFrame4 from './assets/chars/ryu/taunt/ryu_taunt_frame_04.png';
 import kenStanceFrame1 from './assets/chars/ken/stance/ken_stance_frame_01.png';
 import kenStanceFrame2 from './assets/chars/ken/stance/ken_stance_frame_02.png';
 import kenStanceFrame3 from './assets/chars/ken/stance/ken_stance_frame_03.png';
@@ -135,6 +139,12 @@ import kenHurtFrame1 from './assets/chars/ken/hurt/ken_hurt_frame_01.png';
 import kenHurtFrame2 from './assets/chars/ken/hurt/ken_hurt_frame_02.png';
 import kenHurtFrame3 from './assets/chars/ken/hurt/ken_hurt_frame_03.png';
 import kenDrawFrame1 from './assets/chars/ken/draw/ken_draw_frame_01.png';
+import kenTauntFrame1 from './assets/chars/ken/taunt/ken_taunt_frame_01.png';
+import kenTauntFrame2 from './assets/chars/ken/taunt/ken_taunt_frame_02.png';
+import kenTauntFrame3 from './assets/chars/ken/taunt/ken_taunt_frame_03.png';
+import kenTauntFrame4 from './assets/chars/ken/taunt/ken_taunt_frame_04.png';
+import kenTauntFrame5 from './assets/chars/ken/taunt/ken_taunt_frame_05.png';
+import kenTauntFrame6 from './assets/chars/ken/taunt/ken_taunt_frame_06.png';
 import Char from './components/Char/Char';
 import { Modal } from 'react-bootstrap';
 import { ArrowRepeat, QuestionCircle, XCircle } from 'react-bootstrap-icons';
@@ -240,6 +250,7 @@ function App() {
     [ryuHurtFrame1, ryuHurtFrame2, ryuHurtFrame3],
     [ryuDrawFrame1],
     [ryuPerfectFrame1, ryuPerfectFrame2, ryuPerfectFrame3],
+    [ryuTauntFrame1, ryuTauntFrame2, ryuTauntFrame3, ryuTauntFrame4],
   ];
 
   // const ryuWaveFrames = [
@@ -313,6 +324,14 @@ function App() {
     [kenHurtFrame1, kenHurtFrame2, kenHurtFrame3],
     [kenDrawFrame1],
     [kenPerfectFrame1, kenPerfectFrame2, kenPerfectFrame3],
+    [
+      kenTauntFrame1,
+      kenTauntFrame2,
+      kenTauntFrame3,
+      kenTauntFrame4,
+      kenTauntFrame5,
+      kenTauntFrame6,
+    ],
   ];
 
   const symbolMap: Record<string, JSX.Element> = {
@@ -401,6 +420,14 @@ function App() {
       (opponentChoice === 'wave' && selectedSymbol === 'wave');
 
     if (game) {
+      if (
+        playerHP === 100 &&
+        opponentHP === 100 &&
+        selectedSymbol == undefined &&
+        opponentChoice === undefined
+      ) {
+        return frames[9][index];
+      }
       if (isPlayer) {
         if (isPlayerWin) {
           switch (true) {
@@ -551,6 +578,21 @@ function App() {
     let opponentLoop = true;
 
     if (game) {
+      // HERE I WANT THE PLAYER FRAMES TO ITERATE TILL END, currently it displays undefined frames cause
+      // opponent taunt frames are longer
+      if (
+        playerHP === 100 &&
+        opponentHP === 100 &&
+        selectedSymbol === undefined &&
+        opponentChoice === undefined
+      ) {
+        playerFramesToAnimate = playerFrames[9];
+        opponentFramesToAnimate = opponentFrames[9];
+        playerLoop = false;
+        opponentLoop = false;
+        setPlayerFrameIndex(0);
+        setOpponentFrameIndex(0);
+      }
       if (selectedSymbol && opponentChoice) {
         const isPlayerWin =
           (selectedSymbol === 'punch' && opponentChoice === 'wave') ||
@@ -796,7 +838,7 @@ function App() {
               src={punch_b}
               alt='Punch Icon'
             />
-            <span className='mx-3'>BEATS</span>
+            <span className='mx-3'>beats</span>
             <img
               className={`${style.icon} img-fluid`}
               src={wave_b}
@@ -809,7 +851,7 @@ function App() {
               src={kick_b}
               alt='Kick Icon'
             />
-            <span className='mx-3'>BEATS</span>
+            <span className='mx-3'>beats</span>
             <img
               className={`${style.icon} img-fluid`}
               src={punch_b}
@@ -822,7 +864,7 @@ function App() {
               src={wave_b}
               alt='Wave Icon'
             />
-            <span className='mx-3'>BEATS</span>
+            <span className='mx-3'>beats</span>
             <img
               className={`${style.icon} img-fluid`}
               src={kick_b}
