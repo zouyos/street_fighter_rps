@@ -21,12 +21,12 @@ import ryuVictoryFrame3 from './assets/chars/ryu/victory/ryu_victory_frame_03.pn
 import ryuVictoryFrame4 from './assets/chars/ryu/victory/ryu_victory_frame_04.png';
 import ryuVictoryFrame5 from './assets/chars/ryu/victory/ryu_victory_frame_05.png';
 import ryuVictoryFrame6 from './assets/chars/ryu/victory/ryu_victory_frame_06.png';
-import ryuVictoryFrame7 from './assets/chars/ryu/victory/ryu_victory_frame_07.png';
-import ryuVictoryFrame8 from './assets/chars/ryu/victory/ryu_victory_frame_08.png';
-import ryuVictoryFrame9 from './assets/chars/ryu/victory/ryu_victory_frame_09.png';
-import ryuPerfectFrame1 from './assets/chars/ryu/perfect/ryu_perfect_frame_01.png';
-import ryuPerfectFrame2 from './assets/chars/ryu/perfect/ryu_perfect_frame_02.png';
-import ryuPerfectFrame3 from './assets/chars/ryu/perfect/ryu_perfect_frame_03.png';
+import ryuPerfectFrame1 from './assets/chars/ryu/victory/ryu_victory_frame_01.png';
+import ryuPerfectFrame2 from './assets/chars/ryu/victory/ryu_victory_frame_02.png';
+import ryuPerfectFrame3 from './assets/chars/ryu/victory/ryu_victory_frame_03.png';
+import ryuPerfectFrame4 from './assets/chars/ryu/victory/ryu_victory_frame_04.png';
+import ryuPerfectFrame5 from './assets/chars/ryu/victory/ryu_victory_frame_05.png';
+import ryuPerfectFrame6 from './assets/chars/ryu/victory/ryu_victory_frame_06.png';
 import ryuDefeatFrame1 from './assets/chars/ryu/defeat/ryu_defeat_frame_01.png';
 import ryuShoryukenFrame1 from './assets/chars/ryu/shoryuken/ryu_shoryuken_frame_01.png';
 import ryuShoryukenFrame2 from './assets/chars/ryu/shoryuken/ryu_shoryuken_frame_02.png';
@@ -89,6 +89,8 @@ import ryuTauntFrame1 from './assets/chars/ryu/taunt/ryu_taunt_frame_01.png';
 import ryuTauntFrame2 from './assets/chars/ryu/taunt/ryu_taunt_frame_02.png';
 import ryuTauntFrame3 from './assets/chars/ryu/taunt/ryu_taunt_frame_03.png';
 import ryuTauntFrame4 from './assets/chars/ryu/taunt/ryu_taunt_frame_04.png';
+import ryuTauntFrame5 from './assets/chars/ryu/taunt/ryu_taunt_frame_05.png';
+import ryuTauntFrame6 from './assets/chars/ryu/taunt/ryu_taunt_frame_06.png';
 import kenStanceFrame1 from './assets/chars/ken/stance/ken_stance_frame_01.png';
 import kenStanceFrame2 from './assets/chars/ken/stance/ken_stance_frame_02.png';
 import kenStanceFrame3 from './assets/chars/ken/stance/ken_stance_frame_03.png';
@@ -197,9 +199,6 @@ function App() {
       ryuVictoryFrame4,
       ryuVictoryFrame5,
       ryuVictoryFrame6,
-      ryuVictoryFrame7,
-      ryuVictoryFrame8,
-      ryuVictoryFrame9,
     ],
     [ryuDefeatFrame1],
     [
@@ -249,8 +248,22 @@ function App() {
     ],
     [ryuHurtFrame1, ryuHurtFrame2, ryuHurtFrame3],
     [ryuDrawFrame1],
-    [ryuPerfectFrame1, ryuPerfectFrame2, ryuPerfectFrame3],
-    [ryuTauntFrame1, ryuTauntFrame2, ryuTauntFrame3, ryuTauntFrame4],
+    [
+      ryuPerfectFrame1,
+      ryuPerfectFrame2,
+      ryuPerfectFrame3,
+      ryuPerfectFrame4,
+      ryuPerfectFrame5,
+      ryuPerfectFrame6,
+    ],
+    [
+      ryuTauntFrame1,
+      ryuTauntFrame2,
+      ryuTauntFrame3,
+      ryuTauntFrame4,
+      ryuTauntFrame5,
+      ryuTauntFrame6,
+    ],
   ];
 
   // const ryuWaveFrames = [
@@ -578,8 +591,6 @@ function App() {
     let opponentLoop = true;
 
     if (game) {
-      // HERE I WANT THE PLAYER FRAMES TO ITERATE TILL END, currently it displays undefined frames cause
-      // opponent taunt frames are longer
       if (
         playerHP === 100 &&
         opponentHP === 100 &&
@@ -880,7 +891,6 @@ function App() {
 export default App;
 // TODO:
 // hadouken
-// add start pose/taunt
 // add chun li and choose character menu
 // boost and res logic
 // defense choice
