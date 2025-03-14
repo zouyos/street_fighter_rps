@@ -67,6 +67,12 @@ import ryuHadoukenFrame7 from './assets/chars/ryu/hadouken/ryu_hadouken_frame_07
 import ryuHadoukenFrame8 from './assets/chars/ryu/hadouken/ryu_hadouken_frame_08.png';
 import ryuHadoukenFrame9 from './assets/chars/ryu/hadouken/ryu_hadouken_frame_09.png';
 import ryuHadoukenFrame10 from './assets/chars/ryu/hadouken/ryu_hadouken_frame_10.png';
+import ryuHadoukenFrame11 from './assets/chars/ryu/hadouken/ryu_hadouken_frame_11.png';
+import ryuHadoukenFrame12 from './assets/chars/ryu/hadouken/ryu_hadouken_frame_12.png';
+import ryuHadoukenFrame13 from './assets/chars/ryu/hadouken/ryu_hadouken_frame_13.png';
+import ryuHadoukenFrame14 from './assets/chars/ryu/hadouken/ryu_hadouken_frame_14.png';
+import ryuHadoukenFrame15 from './assets/chars/ryu/hadouken/ryu_hadouken_frame_15.png';
+import ryuHadoukenFrame16 from './assets/chars/ryu/hadouken/ryu_hadouken_frame_16.png';
 // import ryuWaveFrame01 from './assets/chars/ryu/hadouken/ryu_wave_frame_01.png';
 // import ryuWaveFrame02 from './assets/chars/ryu/hadouken/ryu_wave_frame_02.png';
 // import ryuWaveFrame03 from './assets/chars/ryu/hadouken/ryu_wave_frame_03.png';
@@ -245,6 +251,12 @@ function App() {
       ryuHadoukenFrame8,
       ryuHadoukenFrame9,
       ryuHadoukenFrame10,
+      ryuHadoukenFrame11,
+      ryuHadoukenFrame12,
+      ryuHadoukenFrame13,
+      ryuHadoukenFrame14,
+      ryuHadoukenFrame15,
+      ryuHadoukenFrame16,
     ],
     [ryuHurtFrame1, ryuHurtFrame2, ryuHurtFrame3],
     [ryuDrawFrame1],
@@ -491,24 +503,6 @@ function App() {
     }
   };
 
-  // const generateWaveSrc = (
-  //   frames: string[][],
-  //   index: number,
-  //   charIndex: number,
-  //   moveChoice?: string,
-  //   isPlayer?: boolean
-  // ) => {
-  //   if (isPlayer) {
-  //     if (game && moveChoice === 'wave' && charIndex === 4) {
-  //       return frames[0][index];
-  //     }
-  //   } else {
-  //     if (game && moveChoice === 'wave' && charIndex === 4) {
-  //       return frames[0][index];
-  //     }
-  //   }
-  // };
-
   useEffect(() => {
     if (!selectedSymbol || !opponentChoice) return;
 
@@ -583,12 +577,25 @@ function App() {
   ]);
 
   useEffect(() => {
-    const animationInterval = 100;
+    const baseAnimationInterval = 100;
+    const waveWinAnimationInterval = 35;
 
     let playerFramesToAnimate: string[] = [];
     let opponentFramesToAnimate: string[] = [];
     let playerLoop = true;
     let opponentLoop = true;
+
+    // Define isPlayerWin based on the condition
+    const isPlayerWin =
+      (selectedSymbol === 'punch' && opponentChoice === 'wave') ||
+      (selectedSymbol === 'kick' && opponentChoice === 'punch') ||
+      (selectedSymbol === 'wave' && opponentChoice === 'kick');
+
+    // Determine the animation interval based on the 'wave' symbol win condition
+    const animationInterval =
+      selectedSymbol === 'wave' && opponentChoice && isPlayerWin
+        ? waveWinAnimationInterval
+        : baseAnimationInterval;
 
     if (game) {
       if (
@@ -806,16 +813,6 @@ function App() {
           moveChoice={selectedSymbol}
           generateSrc={generateSrc}
         />
-        {/* {selectedSymbol === 'wave' && (
-          <Wave
-            isPlayer
-            frames={playerWaveFrames}
-            frameIndex={playerFrameIndex}
-            charIndex={playerFrameIndex}
-            moveChoice={selectedSymbol}
-            generateWaveSrc={generateWaveSrc}
-          />
-        )} */}
         <span className={`${style.opponentResultString} text-danger`}>
           <ResultString resultString={opponentResultString} />
         </span>
