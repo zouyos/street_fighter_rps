@@ -73,20 +73,6 @@ import ryuHadoukenFrame13 from './assets/chars/ryu/hadouken/ryu_hadouken_frame_1
 import ryuHadoukenFrame14 from './assets/chars/ryu/hadouken/ryu_hadouken_frame_14.png';
 import ryuHadoukenFrame15 from './assets/chars/ryu/hadouken/ryu_hadouken_frame_15.png';
 import ryuHadoukenFrame16 from './assets/chars/ryu/hadouken/ryu_hadouken_frame_16.png';
-// import ryuWaveFrame01 from './assets/chars/ryu/hadouken/ryu_wave_frame_01.png';
-// import ryuWaveFrame02 from './assets/chars/ryu/hadouken/ryu_wave_frame_02.png';
-// import ryuWaveFrame03 from './assets/chars/ryu/hadouken/ryu_wave_frame_03.png';
-// import ryuWaveFrame04 from './assets/chars/ryu/hadouken/ryu_wave_frame_04.png';
-// import ryuWaveFrame05 from './assets/chars/ryu/hadouken/ryu_wave_frame_05.png';
-// import ryuWaveFrame06 from './assets/chars/ryu/hadouken/ryu_wave_frame_06.png';
-// import ryuWaveFrame07 from './assets/chars/ryu/hadouken/ryu_wave_frame_07.png';
-// import ryuWaveFrame08 from './assets/chars/ryu/hadouken/ryu_wave_frame_08.png';
-// import ryuWaveFrame09 from './assets/chars/ryu/hadouken/ryu_wave_frame_09.png';
-// import ryuWaveFrame10 from './assets/chars/ryu/hadouken/ryu_wave_frame_10.png';
-// import ryuWaveFrame11 from './assets/chars/ryu/hadouken/ryu_wave_frame_11.png';
-// import ryuWaveFrame12 from './assets/chars/ryu/hadouken/ryu_wave_frame_12.png';
-// import ryuWaveFrame13 from './assets/chars/ryu/hadouken/ryu_wave_frame_13.png';
-// import ryuWaveFrame14 from './assets/chars/ryu/hadouken/ryu_wave_frame_14.png';
 import ryuHurtFrame1 from './assets/chars/ryu/hurt/ryu_hurt_frame_01.png';
 import ryuHurtFrame2 from './assets/chars/ryu/hurt/ryu_hurt_frame_02.png';
 import ryuHurtFrame3 from './assets/chars/ryu/hurt/ryu_hurt_frame_03.png';
@@ -157,7 +143,6 @@ import Char from './components/Char/Char';
 import { Modal } from 'react-bootstrap';
 import { ArrowRepeat, QuestionCircle, XCircle } from 'react-bootstrap-icons';
 import ResultString from './components/ResultString/ResultString';
-// import Wave from './components/Wave/Wave';
 
 function App() {
   const [selectedSymbol, setSelectedSymbol] = useState<string | undefined>();
@@ -180,7 +165,6 @@ function App() {
   >([]);
   const [playerFrameIndex, setPlayerFrameIndex] = useState(0);
   const [opponentFrameIndex, setOpponentFrameIndex] = useState(0);
-  // const [playerWaveFrameIndex, setPlayerWaveFrameIndex] = useState(0);
   const [modalShow, setModalShow] = useState(false);
   const [isLandscape, setIsLandscape] = useState(false);
 
@@ -277,25 +261,6 @@ function App() {
       ryuTauntFrame6,
     ],
   ];
-
-  // const ryuWaveFrames = [
-  //   [
-  //     ryuWaveFrame01,
-  //     ryuWaveFrame02,
-  //     ryuWaveFrame03,
-  //     ryuWaveFrame04,
-  //     ryuWaveFrame05,
-  //     ryuWaveFrame06,
-  //     ryuWaveFrame07,
-  //     ryuWaveFrame08,
-  //     ryuWaveFrame09,
-  //     ryuWaveFrame10,
-  //     ryuWaveFrame11,
-  //     ryuWaveFrame12,
-  //     ryuWaveFrame13,
-  //     ryuWaveFrame14,
-  //   ],
-  // ];
 
   const opponentFrames = [
     [
@@ -578,20 +543,18 @@ function App() {
 
   useEffect(() => {
     const baseAnimationInterval = 100;
-    const waveWinAnimationInterval = 35;
+    const waveWinAnimationInterval = 50;
 
     let playerFramesToAnimate: string[] = [];
     let opponentFramesToAnimate: string[] = [];
     let playerLoop = true;
     let opponentLoop = true;
 
-    // Define isPlayerWin based on the condition
     const isPlayerWin =
       (selectedSymbol === 'punch' && opponentChoice === 'wave') ||
       (selectedSymbol === 'kick' && opponentChoice === 'punch') ||
       (selectedSymbol === 'wave' && opponentChoice === 'kick');
 
-    // Determine the animation interval based on the 'wave' symbol win condition
     const animationInterval =
       selectedSymbol === 'wave' && opponentChoice && isPlayerWin
         ? waveWinAnimationInterval
