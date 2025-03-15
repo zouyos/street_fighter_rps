@@ -129,6 +129,10 @@ import kenHadoukenFrame6 from './assets/chars/ken/hadouken/ken_hadouken_frame_06
 import kenHadoukenFrame7 from './assets/chars/ken/hadouken/ken_hadouken_frame_07.png';
 import kenHadoukenFrame8 from './assets/chars/ken/hadouken/ken_hadouken_frame_08.png';
 import kenHadoukenFrame9 from './assets/chars/ken/hadouken/ken_hadouken_frame_09.png';
+import kenHadoukenFrame10 from './assets/chars/ken/hadouken/ken_hadouken_frame_10.png';
+import kenHadoukenFrame11 from './assets/chars/ken/hadouken/ken_hadouken_frame_11.png';
+import kenHadoukenFrame12 from './assets/chars/ken/hadouken/ken_hadouken_frame_12.png';
+import kenHadoukenFrame13 from './assets/chars/ken/hadouken/ken_hadouken_frame_13.png';
 import kenHurtFrame1 from './assets/chars/ken/hurt/ken_hurt_frame_01.png';
 import kenHurtFrame2 from './assets/chars/ken/hurt/ken_hurt_frame_02.png';
 import kenHurtFrame3 from './assets/chars/ken/hurt/ken_hurt_frame_03.png';
@@ -165,6 +169,8 @@ function App() {
   >([]);
   const [playerFrameIndex, setPlayerFrameIndex] = useState(0);
   const [opponentFrameIndex, setOpponentFrameIndex] = useState(0);
+  const [playerZIndex, setPlayerZIndex] = useState(0);
+  const [opponentZIndex, setOpponentZIndex] = useState(0);
   const [modalShow, setModalShow] = useState(false);
   const [isLandscape, setIsLandscape] = useState(false);
 
@@ -310,6 +316,10 @@ function App() {
       kenHadoukenFrame7,
       kenHadoukenFrame8,
       kenHadoukenFrame9,
+      kenHadoukenFrame10,
+      kenHadoukenFrame11,
+      kenHadoukenFrame12,
+      kenHadoukenFrame13,
     ],
     [kenHurtFrame1, kenHurtFrame2, kenHurtFrame3],
     [kenDrawFrame1],
@@ -558,6 +568,8 @@ function App() {
     const animationInterval =
       selectedSymbol === 'wave' && opponentChoice && isPlayerWin
         ? waveWinAnimationInterval
+        : opponentChoice === 'wave' && selectedSymbol && !isPlayerWin
+        ? waveWinAnimationInterval
         : baseAnimationInterval;
 
     if (game) {
@@ -672,6 +684,21 @@ function App() {
   }, [game, selectedSymbol, opponentChoice, playerHP, opponentHP]);
 
   useEffect(() => {
+    if (selectedSymbol === 'wave' && playerWins) {
+      setOpponentZIndex(0);
+      setPlayerZIndex(1);
+    } else {
+      setPlayerZIndex(0);
+    }
+    if (opponentChoice === 'wave' && !playerWins) {
+      setPlayerZIndex(0);
+      setOpponentZIndex(1);
+    } else {
+      setOpponentZIndex(0);
+    }
+  }, [selectedSymbol, opponentChoice]);
+
+  useEffect(() => {
     const checkOrientation = () => {
       setIsLandscape(window.innerWidth > window.innerHeight);
     };
@@ -774,6 +801,7 @@ function App() {
           frames={playerFrames}
           frameIndex={playerFrameIndex}
           moveChoice={selectedSymbol}
+          zIndex={playerZIndex}
           generateSrc={generateSrc}
         />
         <span className={`${style.opponentResultString} text-danger`}>
@@ -784,6 +812,7 @@ function App() {
           frames={opponentFrames}
           frameIndex={opponentFrameIndex}
           moveChoice={opponentChoice}
+          zIndex={opponentZIndex}
           generateSrc={generateSrc}
         />
       </div>

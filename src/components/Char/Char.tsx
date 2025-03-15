@@ -5,6 +5,7 @@ type CharProps = {
   frames: string[][];
   frameIndex: number;
   moveChoice?: string;
+  zIndex: number;
   generateSrc: (
     frames: string[][],
     index: number,
@@ -18,6 +19,7 @@ export default function Char({
   frames,
   frameIndex,
   moveChoice,
+  zIndex,
   generateSrc,
 }: CharProps) {
   function generateClassName() {
@@ -29,7 +31,7 @@ export default function Char({
   }
 
   return (
-    <div className={generateClassName()}>
+    <div className={generateClassName()} style={{ zIndex: zIndex }}>
       <img
         src={
           moveChoice
