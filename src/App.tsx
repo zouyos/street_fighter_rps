@@ -436,6 +436,8 @@ function App() {
             case moveChoice === 'kick':
               return frames[4][index];
             case moveChoice === 'wave':
+              setPlayerZIndex(1);
+              setOpponentZIndex(0);
               return frames[5][index];
             default:
               return frames[0][index];
@@ -455,6 +457,8 @@ function App() {
             case moveChoice === 'kick':
               return frames[4][index];
             case moveChoice === 'wave':
+              setPlayerZIndex(0);
+              setOpponentZIndex(1);
               return frames[5][index];
             default:
               return frames[0][index];
@@ -683,20 +687,20 @@ function App() {
     };
   }, [game, selectedSymbol, opponentChoice, playerHP, opponentHP]);
 
-  useEffect(() => {
-    if (selectedSymbol === 'wave' && playerWins) {
-      setOpponentZIndex(0);
-      setPlayerZIndex(1);
-    } else {
-      setPlayerZIndex(0);
-    }
-    if (opponentChoice === 'wave' && !playerWins) {
-      setPlayerZIndex(0);
-      setOpponentZIndex(1);
-    } else {
-      setOpponentZIndex(0);
-    }
-  }, [selectedSymbol, opponentChoice]);
+  // useEffect(() => {
+  //   if (selectedSymbol === 'wave' && playerWins) {
+  //     setOpponentZIndex(0);
+  //     setPlayerZIndex(1);
+  //   } else {
+  //     setPlayerZIndex(0);
+  //   }
+  //   if (opponentChoice === 'wave' && !playerWins) {
+  //     setPlayerZIndex(0);
+  //     setOpponentZIndex(1);
+  //   } else {
+  //     setOpponentZIndex(0);
+  //   }
+  // }, [count, selectedSymbol, opponentChoice]);
 
   useEffect(() => {
     const checkOrientation = () => {
