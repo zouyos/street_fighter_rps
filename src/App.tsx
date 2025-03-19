@@ -3,12 +3,12 @@ import style from './style.module.css';
 import SignButton from './components/SignButton/SignButton';
 import Gauge from './components/Gauge/Gauge';
 import MoveHistory from './components/MoveHistory/MoveHistory';
-import punch from './assets/punch_white.png';
-import punch_b from './assets/punch_black.png';
-import kick from './assets/kick_white.png';
-import kick_b from './assets/kick_black.png';
-import wave from './assets/wave_white.png';
-import wave_b from './assets/wave_black.png';
+import rock from './assets/rock_white.png';
+import rock_b from './assets/rock_black.png';
+import paper from './assets/paper_white.png';
+import paper_b from './assets/paper_black.png';
+import scissors from './assets/scissors_white.png';
+import scissors_b from './assets/scissors_black.png';
 import ryuStanceFrame1 from './assets/chars/ryu/stance/ryu_stance_frame_01.png';
 import ryuStanceFrame2 from './assets/chars/ryu/stance/ryu_stance_frame_02.png';
 import ryuStanceFrame3 from './assets/chars/ryu/stance/ryu_stance_frame_03.png';
@@ -335,20 +335,26 @@ function App() {
   ];
 
   const symbolMap: Record<string, JSX.Element> = {
-    punch: <img className={style.icon} src={punch} alt='Punch Icon' />,
-    kick: <img className={style.icon} src={kick} alt='Kick Icon' />,
-    wave: <img className={style.wave} src={wave} alt='Wave Icon' />,
+    rock: <img className={style.icon} src={rock} alt='rock Icon' />,
+    paper: <img className={style.icon} src={paper} alt='paper Icon' />,
+    scissors: (
+      <img className={style.scissors} src={scissors} alt='scissors Icon' />
+    ),
   };
 
   const smallSymbolMap: Record<string, JSX.Element> = {
-    punch: (
-      <img className={style.smallIcon} src={punch_b} alt='Small Punch Icon' />
+    rock: (
+      <img className={style.smallIcon} src={rock_b} alt='Small rock Icon' />
     ),
-    kick: (
-      <img className={style.smallIcon} src={kick_b} alt='Small Kick Icon' />
+    paper: (
+      <img className={style.smallIcon} src={paper_b} alt='Small paper Icon' />
     ),
-    wave: (
-      <img className={style.smallIcon} src={wave_b} alt='Small Wave Icon' />
+    scissors: (
+      <img
+        className={style.smallIcon}
+        src={scissors_b}
+        alt='Small scissors Icon'
+      />
     ),
   };
 
@@ -405,19 +411,19 @@ function App() {
     isPlayer?: boolean
   ) => {
     const isPlayerWin =
-      (selectedSymbol === 'punch' && opponentChoice === 'wave') ||
-      (selectedSymbol === 'kick' && opponentChoice === 'punch') ||
-      (selectedSymbol === 'wave' && opponentChoice === 'kick');
+      (selectedSymbol === 'rock' && opponentChoice === 'scissors') ||
+      (selectedSymbol === 'paper' && opponentChoice === 'rock') ||
+      (selectedSymbol === 'scissors' && opponentChoice === 'paper');
 
     const isOpponentWin =
-      (opponentChoice === 'punch' && selectedSymbol === 'wave') ||
-      (opponentChoice === 'kick' && selectedSymbol === 'punch') ||
-      (opponentChoice === 'wave' && selectedSymbol === 'kick');
+      (opponentChoice === 'rock' && selectedSymbol === 'scissors') ||
+      (opponentChoice === 'paper' && selectedSymbol === 'rock') ||
+      (opponentChoice === 'scissors' && selectedSymbol === 'paper');
 
     const draw =
-      (opponentChoice === 'punch' && selectedSymbol === 'punch') ||
-      (opponentChoice === 'kick' && selectedSymbol === 'kick') ||
-      (opponentChoice === 'wave' && selectedSymbol === 'wave');
+      (opponentChoice === 'rock' && selectedSymbol === 'rock') ||
+      (opponentChoice === 'paper' && selectedSymbol === 'paper') ||
+      (opponentChoice === 'scissors' && selectedSymbol === 'scissors');
 
     if (game) {
       if (
@@ -431,11 +437,11 @@ function App() {
       if (isPlayer) {
         if (isPlayerWin) {
           switch (true) {
-            case moveChoice === 'punch':
+            case moveChoice === 'rock':
               return frames[3][index];
-            case moveChoice === 'kick':
+            case moveChoice === 'paper':
               return frames[4][index];
-            case moveChoice === 'wave':
+            case moveChoice === 'scissors':
               setPlayerZIndex(1);
               setOpponentZIndex(0);
               return frames[5][index];
@@ -452,11 +458,11 @@ function App() {
       } else {
         if (isOpponentWin) {
           switch (true) {
-            case moveChoice === 'punch':
+            case moveChoice === 'rock':
               return frames[3][index];
-            case moveChoice === 'kick':
+            case moveChoice === 'paper':
               return frames[4][index];
-            case moveChoice === 'wave':
+            case moveChoice === 'scissors':
               setPlayerZIndex(0);
               setOpponentZIndex(1);
               return frames[5][index];
@@ -491,9 +497,9 @@ function App() {
         addToPlayerHistory(selectedSymbol);
         addToOpponentHistory(opponentChoice);
       } else if (
-        (selectedSymbol === 'punch' && opponentChoice === 'wave') ||
-        (selectedSymbol === 'kick' && opponentChoice === 'punch') ||
-        (selectedSymbol === 'wave' && opponentChoice === 'kick')
+        (selectedSymbol === 'rock' && opponentChoice === 'scissors') ||
+        (selectedSymbol === 'paper' && opponentChoice === 'rock') ||
+        (selectedSymbol === 'scissors' && opponentChoice === 'paper')
       ) {
         addToPlayerHistory(selectedSymbol);
         addToOpponentHistory(opponentChoice);
@@ -557,7 +563,7 @@ function App() {
 
   useEffect(() => {
     const baseAnimationInterval = 100;
-    const waveWinAnimationInterval = 50;
+    const scissorsWinAnimationInterval = 50;
 
     let playerFramesToAnimate: string[] = [];
     let opponentFramesToAnimate: string[] = [];
@@ -565,15 +571,15 @@ function App() {
     let opponentLoop = true;
 
     const isPlayerWin =
-      (selectedSymbol === 'punch' && opponentChoice === 'wave') ||
-      (selectedSymbol === 'kick' && opponentChoice === 'punch') ||
-      (selectedSymbol === 'wave' && opponentChoice === 'kick');
+      (selectedSymbol === 'rock' && opponentChoice === 'scissors') ||
+      (selectedSymbol === 'paper' && opponentChoice === 'rock') ||
+      (selectedSymbol === 'scissors' && opponentChoice === 'paper');
 
     const animationInterval =
-      selectedSymbol === 'wave' && opponentChoice && isPlayerWin
-        ? waveWinAnimationInterval
-        : opponentChoice === 'wave' && selectedSymbol && !isPlayerWin
-        ? waveWinAnimationInterval
+      selectedSymbol === 'scissors' && opponentChoice && isPlayerWin
+        ? scissorsWinAnimationInterval
+        : opponentChoice === 'scissors' && selectedSymbol && !isPlayerWin
+        ? scissorsWinAnimationInterval
         : baseAnimationInterval;
 
     if (game) {
@@ -592,18 +598,20 @@ function App() {
       }
       if (selectedSymbol && opponentChoice) {
         const isPlayerWin =
-          (selectedSymbol === 'punch' && opponentChoice === 'wave') ||
-          (selectedSymbol === 'kick' && opponentChoice === 'punch') ||
-          (selectedSymbol === 'wave' && opponentChoice === 'kick');
+          (selectedSymbol === 'rock' && opponentChoice === 'scissors') ||
+          (selectedSymbol === 'paper' && opponentChoice === 'rock') ||
+          (selectedSymbol === 'scissors' && opponentChoice === 'paper');
 
         const isOpponentWin =
-          (opponentChoice === 'punch' && selectedSymbol === 'wave') ||
-          (opponentChoice === 'kick' && selectedSymbol === 'punch') ||
-          (opponentChoice === 'wave' && selectedSymbol === 'kick');
+          (opponentChoice === 'rock' && selectedSymbol === 'scissors') ||
+          (opponentChoice === 'paper' && selectedSymbol === 'rock') ||
+          (opponentChoice === 'scissors' && selectedSymbol === 'paper');
 
         if (isPlayerWin) {
           playerFramesToAnimate =
-            playerFrames[3 + ['punch', 'kick', 'wave'].indexOf(selectedSymbol)];
+            playerFrames[
+              3 + ['rock', 'paper', 'scissors'].indexOf(selectedSymbol)
+            ];
           opponentFramesToAnimate = opponentFrames[6];
           playerLoop = false;
           opponentLoop = false;
@@ -613,7 +621,7 @@ function App() {
           playerFramesToAnimate = playerFrames[6];
           opponentFramesToAnimate =
             opponentFrames[
-              3 + ['punch', 'kick', 'wave'].indexOf(opponentChoice)
+              3 + ['rock', 'paper', 'scissors'].indexOf(opponentChoice)
             ];
           playerLoop = false;
           opponentLoop = false;
@@ -687,21 +695,6 @@ function App() {
     };
   }, [game, selectedSymbol, opponentChoice, playerHP, opponentHP]);
 
-  // useEffect(() => {
-  //   if (selectedSymbol === 'wave' && playerWins) {
-  //     setOpponentZIndex(0);
-  //     setPlayerZIndex(1);
-  //   } else {
-  //     setPlayerZIndex(0);
-  //   }
-  //   if (opponentChoice === 'wave' && !playerWins) {
-  //     setPlayerZIndex(0);
-  //     setOpponentZIndex(1);
-  //   } else {
-  //     setOpponentZIndex(0);
-  //   }
-  // }, [count, selectedSymbol, opponentChoice]);
-
   useEffect(() => {
     const checkOrientation = () => {
       setIsLandscape(window.innerWidth > window.innerHeight);
@@ -759,30 +752,30 @@ function App() {
         <div className={style.buttonContainer}>
           <div className={style.signButton}>
             <SignButton
-              label={cloneElement(symbolMap['punch'], { size: 20 })}
+              label={cloneElement(symbolMap['rock'], { size: 20 })}
               color='danger'
-              onClick={() => handleSymbolClick('punch')}
+              onClick={() => handleSymbolClick('rock')}
               game={game}
             />
-            <div className='fw-bold text-black'>PUNCH</div>
+            <div className='fw-bold text-black'>ROCK</div>
           </div>
           <div className={style.signButton}>
             <SignButton
-              label={cloneElement(symbolMap['kick'], { size: 20 })}
+              label={cloneElement(symbolMap['paper'], { size: 20 })}
               color='success'
-              onClick={() => handleSymbolClick('kick')}
+              onClick={() => handleSymbolClick('paper')}
               game={game}
             />
-            <div className='fw-bold text-black'>KICK</div>
+            <div className='fw-bold text-black'>PAPER</div>
           </div>
           <div className={style.signButton}>
             <SignButton
-              label={cloneElement(symbolMap['wave'], { size: 20 })}
+              label={cloneElement(symbolMap['scissors'], { size: 20 })}
               color='primary'
-              onClick={() => handleSymbolClick('wave')}
+              onClick={() => handleSymbolClick('scissors')}
               game={game}
             />
-            <div className='fw-bold text-black'>WAVE</div>
+            <div className='fw-bold text-black'>SCISSORS</div>
           </div>
         </div>
       </div>
@@ -839,40 +832,40 @@ function App() {
           <p>
             <img
               className={`${style.icon} img-fluid`}
-              src={punch_b}
-              alt='Punch Icon'
+              src={rock_b}
+              alt='rock Icon'
             />
             <span className='mx-3'>beats</span>
             <img
               className={`${style.icon} img-fluid`}
-              src={wave_b}
-              alt='Wave Icon'
+              src={scissors_b}
+              alt='scissors Icon'
             />
           </p>
           <p>
             <img
               className={`${style.icon} img-fluid`}
-              src={kick_b}
-              alt='Kick Icon'
+              src={paper_b}
+              alt='paper Icon'
             />
             <span className='mx-3'>beats</span>
             <img
               className={`${style.icon} img-fluid`}
-              src={punch_b}
-              alt='Punch Icon'
+              src={rock_b}
+              alt='rock Icon'
             />
           </p>
           <p>
             <img
               className={`${style.icon} img-fluid`}
-              src={wave_b}
-              alt='Wave Icon'
+              src={scissors_b}
+              alt='scissors Icon'
             />
             <span className='mx-3'>beats</span>
             <img
               className={`${style.icon} img-fluid`}
-              src={kick_b}
-              alt='Kick Icon'
+              src={paper_b}
+              alt='paper Icon'
             />
           </p>
         </Modal.Body>
