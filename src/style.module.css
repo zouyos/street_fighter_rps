@@ -50,7 +50,7 @@
   font-size: 20px;
   position: absolute;
   left: 30%;
-  bottom: 10rem;
+  bottom: 8rem;
 }
 
 .opponentHPString {
@@ -58,7 +58,7 @@
   font-size: 20px;
   position: absolute;
   right: 31.5%;
-  bottom: 10rem;
+  bottom: 8rem;
 }
 
 .playerResultString {
@@ -66,7 +66,7 @@
   font-size: 20px;
   position: absolute;
   left: 30%;
-  bottom: 15rem;
+  bottom: 11rem;
 }
 
 .opponentResultString {
@@ -74,7 +74,7 @@
   font-size: 20px;
   position: absolute;
   right: 31.5%;
-  bottom: 15rem;
+  bottom: 11rem;
 }
 
 .gameResultString {
