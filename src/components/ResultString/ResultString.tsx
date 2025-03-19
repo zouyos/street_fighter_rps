@@ -1,7 +1,7 @@
 import style from './style.module.css';
 
 type ResultStringProps = {
-  resultString: string;
+  resultString?: JSX.Element | string;
 };
 
 export default function ResultString({ resultString }: ResultStringProps) {

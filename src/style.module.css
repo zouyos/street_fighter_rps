@@ -45,7 +45,7 @@
   }
 }
 
-.playerResultString {
+.playerHPString {
   text-align: center;
   font-size: 20px;
   position: absolute;
@@ -53,12 +53,28 @@
   bottom: 10rem;
 }
 
-.opponentResultString {
+.opponentHPString {
   text-align: center;
   font-size: 20px;
   position: absolute;
   right: 31.5%;
   bottom: 10rem;
+}
+
+.playerResultString {
+  text-align: center;
+  font-size: 20px;
+  position: absolute;
+  left: 30%;
+  bottom: 15rem;
+}
+
+.opponentResultString {
+  text-align: center;
+  font-size: 20px;
+  position: absolute;
+  right: 31.5%;
+  bottom: 15rem;
 }
 
 .gameResultString {

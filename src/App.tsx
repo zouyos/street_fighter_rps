@@ -152,8 +152,14 @@ function App() {
   const [selectedSymbol, setSelectedSymbol] = useState<string | undefined>();
   const [opponentChoice, setOpponentChoice] = useState<string | undefined>();
   const [resultString, setResultString] = useState('');
-  const [playerResultString, setPlayerResultString] = useState('');
-  const [opponentResultString, setOpponentResultString] = useState('');
+  const [playerHPString, setPlayerHPString] = useState('');
+  const [opponentHPString, setOpponentHPString] = useState('');
+  const [playerResultString, setPlayerResultString] = useState<
+    JSX.Element | undefined | string
+  >(undefined);
+  const [opponentResultString, setOpponentResultString] = useState<
+    JSX.Element | undefined | string
+  >(undefined);
   const [playerHP, setPlayerHP] = useState(100);
   const [opponentHP, setOpponentHP] = useState(100);
   const [count, setCount] = useState(1);
@@ -493,9 +499,16 @@ function App() {
 
     if (game) {
       if (selectedSymbol === opponentChoice) {
+        setPlayerResultString(symbolMap[selectedSymbol]);
+        setOpponentResultString(symbolMap[opponentChoice]);
         setResultString('DRAW');
         addToPlayerHistory(selectedSymbol);
         addToOpponentHistory(opponentChoice);
+
+        setTimeout(() => {
+          setPlayerResultString('');
+          setOpponentResultString('');
+        }, 1000);
       } else if (
         (selectedSymbol === 'rock' && opponentChoice === 'scissors') ||
         (selectedSymbol === 'paper' && opponentChoice === 'rock') ||
@@ -504,17 +517,29 @@ function App() {
         addToPlayerHistory(selectedSymbol);
         addToOpponentHistory(opponentChoice);
         setOpponentHP((prev) => Math.max(prev - 20, 0));
-        setOpponentResultString('- 20');
+
+        setPlayerResultString(symbolMap[selectedSymbol]);
+        setOpponentResultString(symbolMap[opponentChoice]);
+        setOpponentHPString('- 20');
+
         setTimeout(() => {
+          setOpponentHPString('');
+          setPlayerResultString('');
           setOpponentResultString('');
         }, 1000);
       } else {
         addToOpponentHistory(opponentChoice);
         addToPlayerHistory(selectedSymbol);
         setPlayerHP((prev) => Math.max(prev - 20, 0));
-        setPlayerResultString('- 20');
+
+        setPlayerResultString(symbolMap[selectedSymbol]);
+        setOpponentResultString(symbolMap[opponentChoice]);
+        setPlayerHPString('- 20');
+
         setTimeout(() => {
+          setPlayerHPString('');
           setPlayerResultString('');
+          setOpponentResultString('');
         }, 1000);
       }
     }
@@ -522,6 +547,8 @@ function App() {
 
   useEffect(() => {
     if (playerHP <= 0) {
+      setOpponentHPString('');
+      setPlayerHPString('');
       setOpponentResultString('');
       setPlayerResultString('');
       setSelectedSymbol(undefined);
@@ -532,6 +559,8 @@ function App() {
       setOpponentWins((prev) => prev + 1);
       setResultString('YOU LOSE');
     } else if (opponentHP <= 0) {
+      setOpponentHPString('');
+      setPlayerHPString('');
       setOpponentResultString('');
       setPlayerResultString('');
       setSelectedSymbol(undefined);
@@ -790,8 +819,11 @@ function App() {
         )}
       </div>
       <div className={style.charsContainer}>
-        <span className={`${style.playerResultString} text-danger`}>
+        <span className={`${style.playerResultString} text-white`}>
           <ResultString resultString={playerResultString} />
+        </span>
+        <span className={`${style.playerHPString} text-danger`}>
+          <ResultString resultString={playerHPString} />
         </span>
         <Char
           isPlayer
@@ -801,8 +833,11 @@ function App() {
           zIndex={playerZIndex}
           generateSrc={generateSrc}
         />
-        <span className={`${style.opponentResultString} text-danger`}>
+        <span className={`${style.opponentResultString} text-white`}>
           <ResultString resultString={opponentResultString} />
+        </span>
+        <span className={`${style.opponentHPString} text-danger`}>
+          <ResultString resultString={opponentHPString} />
         </span>
         <Char
           isPlayer={false}
