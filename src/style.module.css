@@ -101,11 +101,11 @@
   display: flex;
   justify-content: space-evenly;
   background-color: rgba(255, 255, 255, 0.3);
-  z-index: 1;
+  z-index: 2;
   text-align: center;
   border-radius: 30px;
   padding: 10px 5px;
-  border: white 4px solid;
+  border: rgba(255, 255, 255, 0.9) 4px solid;
   position: fixed;
   bottom: 15px;
   right: 15px;
@@ -114,14 +114,13 @@
 @media (min-width: 1024px) {
   .buttonContainer {
     position: fixed;
-    top: 80%;
-    right: 15px;
+    bottom: 60px;
+    right: 60px;
   }
 }
 
 .signButton {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  /* opacity: 0.8; */
 }
 
 .signButton:hover {
@@ -136,17 +135,9 @@
 }
 
 .signButtonLabel {
-  color: white;
-  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black,
-    2px 2px 0 black;
-  letter-spacing: 0.2em;
-}
-
-.scissors {
-  width: 40px;
-  height: 40px;
-  position: relative;
-  right: 2px;
+  color: black;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .icon {

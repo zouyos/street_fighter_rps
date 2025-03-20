@@ -343,9 +343,7 @@ function App() {
   const symbolMap: Record<string, JSX.Element> = {
     rock: <img className={style.icon} src={rock} alt='rock Icon' />,
     paper: <img className={style.icon} src={paper} alt='paper Icon' />,
-    scissors: (
-      <img className={style.scissors} src={scissors} alt='scissors Icon' />
-    ),
+    scissors: <img className={style.icon} src={scissors} alt='scissors Icon' />,
   };
 
   const smallSymbolMap: Record<string, JSX.Element> = {
@@ -504,11 +502,10 @@ function App() {
         setResultString('DRAW');
         addToPlayerHistory(selectedSymbol);
         addToOpponentHistory(opponentChoice);
-
         setTimeout(() => {
           setPlayerResultString('');
           setOpponentResultString('');
-        }, 1000);
+        }, 1500);
       } else if (
         (selectedSymbol === 'rock' && opponentChoice === 'scissors') ||
         (selectedSymbol === 'paper' && opponentChoice === 'rock') ||
@@ -526,7 +523,7 @@ function App() {
           setOpponentHPString('');
           setPlayerResultString('');
           setOpponentResultString('');
-        }, 1000);
+        }, 1500);
       } else {
         addToOpponentHistory(opponentChoice);
         addToPlayerHistory(selectedSymbol);
@@ -540,7 +537,7 @@ function App() {
           setPlayerHPString('');
           setPlayerResultString('');
           setOpponentResultString('');
-        }, 1000);
+        }, 1500);
       }
     }
   }, [count]);
@@ -786,7 +783,7 @@ function App() {
               onClick={() => handleSymbolClick('rock')}
               game={game}
             />
-            <div className='fw-bold text-black'>ROCK</div>
+            <div className={style.signButtonLabel}>ROCK</div>
           </div>
           <div className={style.signButton}>
             <SignButton
@@ -795,7 +792,7 @@ function App() {
               onClick={() => handleSymbolClick('paper')}
               game={game}
             />
-            <div className='fw-bold text-black'>PAPER</div>
+            <div className={style.signButtonLabel}>PAPER</div>
           </div>
           <div className={style.signButton}>
             <SignButton
@@ -804,7 +801,7 @@ function App() {
               onClick={() => handleSymbolClick('scissors')}
               game={game}
             />
-            <div className='fw-bold text-black'>SCISSORS</div>
+            <div className={style.signButtonLabel}>SCISSORS</div>
           </div>
         </div>
       </div>
